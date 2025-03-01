@@ -1,18 +1,16 @@
 import { Outlet } from "react-router-dom";
 import "../App.css";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const Layout = () => {
-  // const location = useLocation();
-  // const isAuthPage =
-  //   location.pathname === "/login" || location.pathname === "/signup";
-
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full min-h-screen flex flex-col">
       <Header />
-      <main className="w-full h-[calc(100%-80px)] p-4 bg-bgPrimary overflow-y-auto">
+      <main className="w-full flex-grow  bg-bgPrimary mt-[85px]">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 };

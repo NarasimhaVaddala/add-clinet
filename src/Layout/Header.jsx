@@ -6,7 +6,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className='w-full h-[80px] flex justify-between items-center bg-black px-4'>
+    <div className='w-full h-[80px] flex justify-between items-center bg-black px-4 fixed'>
       <div className='w-[100px] h-full bg-red-300 flex justify-center items-center'>
       </div>
       

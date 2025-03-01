@@ -11,7 +11,7 @@ import RegisterProccessForm from "./features/dashboard/screen/RegisterProccessFo
 function App() {
   return (
     <>
-      <div className="flex flex-col w-full h-[100vh] overflow-hidden">
+      <div className="flex flex-col w-full">
         <ToastContainer
           position="top-right"
           autoClose={5000} // 5 seconds
