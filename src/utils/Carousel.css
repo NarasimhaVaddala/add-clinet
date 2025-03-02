@@ -1,0 +1,55 @@
+/* Style the container and swiper */
+.image-slider-container {
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.swiper {
+  width: 100%; /* Ensure the swiper takes full width */
+  max-width: 1200px; /* Optional: Add a max-width for larger screens */
+  padding: 20px 0; /* Add vertical padding */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out; /* Smooth scaling */
+}
+
+/* Default image style */
+.swiper-slide img {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+  transform: scale(0.9); /* Make the images smaller by default */
+}
+
+/* Scale up the center image */
+.swiper-slide-active img {
+  transform: scale(1.1); /* Scale the active (center) image */
+}
+
+/* Swiper Navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
