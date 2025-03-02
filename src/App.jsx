@@ -7,6 +7,7 @@ import Layout from "./Layout/Layout";
 import ProtectedRoute from "./Layout/ProtectedRoute";
 import { Route, Routes } from "react-router-dom";
 import RegisterProccessForm from "./features/dashboard/screen/RegisterProccessForm";
+import ChatbotScreen from "./features/Chatbot/ChatbotScreen";
 
 function App() {
   return (
@@ -30,8 +31,9 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route element={<Layout />}>
               <Route path="/" element={<HomeScreen />} />
-              <Route path="/register-form" element={<RegisterProccessForm />} />
+              <Route path="/chat-bot" element={<ChatbotScreen />} />
 
+              <Route path="/register-form" element={<RegisterProccessForm />} />
             </Route>
           </Route>
         </Routes>
