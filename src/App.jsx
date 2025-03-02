@@ -7,6 +7,11 @@ import Layout from "./Layout/Layout";
 import ProtectedRoute from "./Layout/ProtectedRoute";
 import { Route, Routes } from "react-router-dom";
 import RegisterProccessForm from "./features/dashboard/screen/RegisterProccessForm";
+
+import CheckPaymentStatusModal from "./features/dashboard/Modals/CheckPaymentStatusModal";
+import Contact from "./features/dashboard/screen/ContactUs";
+import About from "./features/dashboard/screen/About";
+
 import ChatbotScreen from "./features/Chatbot/ChatbotScreen";
 
 function App() {
@@ -25,16 +30,23 @@ function App() {
           pauseOnHover
         />
         <Routes>
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/signup" element={<Signup />} />
 
+        
           <Route element={<ProtectedRoute />}>
             <Route element={<Layout />}>
               <Route path="/" element={<HomeScreen />} />
               <Route path="/chat-bot" element={<ChatbotScreen />} />
 
               <Route path="/register-form" element={<RegisterProccessForm />} />
+//                  <Route path="/" element={<HomeScreen />} />
+//             <Route path="/register-form" element={<RegisterProccessForm />} />
+            <Route path="/check" element={<CheckPaymentStatusModal />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
             </Route>
+
           </Route>
         </Routes>
       </div>

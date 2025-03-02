@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
+    "aos": "^2.3.4",
     "axios": "^1.8.1",
     "formik": "^2.4.6",
+    "framer-motion": "^12.4.7",
     "lucide-react": "^0.476.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -21,6 +23,7 @@
     "react-router-dom": "^7.2.0",
     "react-spinners": "^0.15.0",
     "react-toastify": "^11.0.5",
+    "swiper": "^11.2.4",
     "yup": "^1.6.1"
   },
   "devDependencies": {

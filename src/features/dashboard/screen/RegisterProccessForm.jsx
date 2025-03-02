@@ -71,7 +71,7 @@ const RegisterProccessForm = () => {
           console.warn(`⚠️ ${field} is not a valid file`, values[field]);
         }
       });
-      
+
       try {
         const res = await API.patch("/upload", formData, {
           headers: {
@@ -211,7 +211,7 @@ const RegisterProccessForm = () => {
 
           <button
             type="submit"
-            className="w-full bg-primary text-white font-semibold py-2 mt-4 rounded-lg hover:bg-green-700 transition mb-7"
+            className="w-full bg-[#EA4C89] text-white font-semibold py-2 mt-4 rounded-lg hover:bg-[#d93c7a] transition duration-300 ease-in-out mb-7 focus:outline-none focus:ring-2 focus:ring-[#EA4C89] focus:ring-offset-2"
           >
             {isLoading ? <BeatLoader color="#fff" size={10} /> : "Submit Form"}
           </button>
