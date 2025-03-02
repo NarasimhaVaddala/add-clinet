@@ -22,9 +22,13 @@ export const signUpApi = async ({ formData }) => {
   console.log("formData", formData);
 
   try {
-    await API.post("/auth/sign-up", formData);
-    return true;
+    const res = await API.post("/auth/sign-up", formData);
+    return { status: true, token: res.data.token, user: res.data.user };
   } catch (error) {
-    return false;
+    return {
+      status: false,
+      error: error?.response?.data?.message,
+      user: error?.response?.data?.user,
+    };
   }
 };

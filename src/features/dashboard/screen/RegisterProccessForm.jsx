@@ -7,7 +7,7 @@ import { PlusCircle, Trash2 } from "lucide-react";
 import { uploadImageApis } from "../services/uploadImage.serv";
 import { useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
-import { API, APIS } from "../../../core/url";
+import { API } from "../../../core/url";
 const MAX_IMAGES = 10;
 const MIN_IMAGES = 4;
 

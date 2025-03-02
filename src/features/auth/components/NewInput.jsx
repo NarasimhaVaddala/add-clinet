@@ -10,7 +10,7 @@ const NewInput = ({
   isValid,
   isLoading,
   isDisplayRightBtn,
-
+  disable = false,
 }) => {
   return (
     <div className="flex flex-col gap-0">
@@ -21,7 +21,7 @@ const NewInput = ({
           // required
           value={value}
           onChange={onChange}
-      
+          disabled={disable}
         />
         <span
           className={`absolute z-0 left-3 px-2 text-sm uppercase text-gray-500 transition-all duration-500 ease-in-out top-3 peer-placeholder-shown:top-10 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-[-10px] peer-focus:text-xs peer-focus:text-green-500 peer-focus:border-x peer-focus:border-green-400 peer-focus:bg-gray-300 peer-focus:z-20  ${
