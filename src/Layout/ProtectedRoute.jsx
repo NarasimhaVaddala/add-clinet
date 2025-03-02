@@ -1,4 +1,4 @@
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import { fetchUserProfile } from "../features/auth/redux/profileSlice";
@@ -13,8 +13,6 @@ import { fetchUserProfile } from "../features/auth/redux/profileSlice";
 //   return role || localStorage.getItem("token")  || null;
 // };
 
-
-
 const ProtectedRoute = () => {
   const dispatch = useDispatch();
 
@@ -26,17 +24,18 @@ const ProtectedRoute = () => {
   const storedToken = useGetUserToken();
 
   useEffect(() => {
-    if (storedToken ) {
+    if (storedToken) {
+      console.log("protected route");
+
       dispatch(fetchUserProfile());
-    //   dispatch(setRoleFromStorage(userRole));
-    //   dispatch(setTokenFromStorage(storedToken));
+      //   dispatch(setRoleFromStorage(userRole));
+      //   dispatch(setTokenFromStorage(storedToken));
     }
   }, [storedToken, dispatch]);
 
   if (!storedToken) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/signup" />;
   }
-
 
   return <Outlet />;
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../../auth/components/Input";
 import FileUploadUi from "../components/FileUploadUi";
 import { BeatLoader } from "react-spinners";
-import { API, APIS } from "../../../core/url";
+import { API } from "../../../core/url";
 const NewRegisterForm = () => {
   const [formData, setFormData] = useState({
     directorName: "",
@@ -62,8 +62,7 @@ const NewRegisterForm = () => {
     // formDatan.append("producerName", formData.producerName);
     // formDatan.append("video", formData.video);
     try {
-      const res = await API.patch("/dahsboard/upload-image", formData, )
-      
+      const res = await API.patch("/dahsboard/upload-image", formData);
     } catch (error) {
       console.error("Error uploading image:", error);
     }
