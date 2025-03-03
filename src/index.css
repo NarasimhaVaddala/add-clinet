@@ -8,29 +8,41 @@
   margin: 0;
   padding: 0;
   /* box-sizing: border-box; */
+  /* border: 1px solid red; */
 }
 
-#hero-container {
+#hero-container,
+#hero-container-register {
   position: relative;
-  height: 100vh;
-
+  height: calc(100vh - 80px);
   background-color: rgb(243 217 221);
   width: 100%;
+  z-index: 2;
 }
 
-#hero-container::before {
+#hero-container::before,
+#hero-container-register::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("/hero.png");
+  width: 100%;
+  height: 100%;
+  background-image: url("/home-hero.png");
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
+  z-index: -1;
   /* opacity: ; */
   /* filter: blur(2px); */
+}
+
+#hero-container-register::before {
+  background-image: url("/bathtublady.png");
+  background-size: cover;
+  background-color: none;
 }
 
 @media (width < 768px) {
@@ -38,4 +50,7 @@
     max-height: 300px;
     /* background: linear-gradient(to top right, #edb1ba, white); */
   }
+}
+
+@media (width < 480px) {
 }

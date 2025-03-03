@@ -10,7 +10,7 @@ import NewInput from "../components/NewInput";
 import { useDispatch } from "react-redux";
 import { setProfile } from "../redux/profileSlice";
 
-const Signup = () => {
+const Signup = ({ setLoggedIn }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +57,7 @@ const Signup = () => {
           !apiRes.user?.paymentStatus)
       ) {
         saveUserData(apiRes);
-        navigate("/payment-screen", { replace: true });
+        navigate("/", { replace: true });
       }
 
       function saveUserData(apiRes) {
@@ -65,7 +65,7 @@ const Signup = () => {
         localStorage.setItem("user", JSON.stringify(apiRes.user));
 
         dispatch(setProfile(apiRes.user));
-
+        setLoggedIn(true);
       }
     },
   });
@@ -112,7 +112,6 @@ const Signup = () => {
       setFinalMobileNumberVerified(true);
 
       setVerifiedNumber(formik.values.mobile);
-
     }
   };
 
@@ -124,7 +123,6 @@ const Signup = () => {
           className=" w-full md:w-1/2 bg-white flex flex-col justify-center items-center overflow-y-scroll gap-6 p-8"
         >
           <p className="text-start w-full pl-11 text-lg font-semibold">
-            {" "}
             Sign Up
           </p>
           <NewInput

@@ -29,7 +29,7 @@ export const usePayment = () => {
       const { order_id } = response.data;
 
       const options = {
-        key: "rzp_live_zbmR4QaoePLouz",
+        key: "rzp_test_zCMFNwSBlZt1gx",
         amount: 1,
         currency: "INR",
         name: "Payment Towards Art Competetion",
@@ -96,21 +96,22 @@ export const usePayment = () => {
 
   const firstRender = useRef(true);
 
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      return;
-    }
+  // useEffect(() => {
+  //   if (firstRender.current) {
+  //     firstRender.current = false;
+  //     return;
+  //   }
 
-    let use = JSON.parse(localStorage.getItem("user"));
-    console.log("local", use);
+  //   let use = JSON.parse(localStorage.getItem("user"));
+  //   console.log("local", use);
 
-    if (!userProfile?.paymentStatus || !use?.paymentStatus) {
-      console.log("before payment ", userProfile);
-
-      makePayment();
-    }
-  }, [userProfile]);
+  //   if (!userProfile?.paymentStatus || !use?.paymentStatus) {
+  //     console.log("before payment ", userProfile);
+  //     makePayment();
+  //   } else {
+  //     navigate("/register-form");
+  //   }
+  // }, [userProfile]);
 
   return {
     verifyPayment,
