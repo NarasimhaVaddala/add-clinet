@@ -26,7 +26,7 @@ export default function About() {
 // Hero Section
 function HeroSec() {
   return (
-    <div className="container font-News bg-black text-white flex flex-col lg:flex-row w-full lg:h-[100vh] justify-between items-center gap-8 px-6 pt-5">
+    <div className=" font-News bg-black text-white flex flex-col lg:flex-row w-full lg:h-[100vh] justify-evenly items-center gap-8 px-6 pt-5">
       {/* Content Section */}
       <div className="lg:w-[40%] flex flex-col gap-5 text-center lg:text-start">
         <h2 className="text-3xl lg:text-5xl font-bold">
@@ -43,7 +43,7 @@ function HeroSec() {
       </div>
 
       {/* Image Section */}
-      <div className="lg:w-[60%] flex justify-center">
+      <div className="lg:w-[40%] flex justify-center">
         <img
           src="/thanos.png"
           alt="Video Competition"
@@ -74,13 +74,13 @@ function AboutSec({ paragraphData }) {
 // Participate Section
 function Participate() {
   return (
-    <div className="container flex flex-col-reverse lg:flex-row items-center gap-8 px-6 py-16 bg-black text-white">
+    <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-8 px-6 py-16 bg-black text-white">
       {/* Content Section (Left on large screens) */}
-      <div className="w-full lg:w-1/2 flex flex-col gap-6 text-center lg:text-left">
+      <div className="lg:w-[60%]  flex flex-col gap-6 text-center lg:text-left">
         <h1 className="text-2xl lg:text-5xl font-bold">
           Discover the Benefits of Participating
         </h1>
-        <p className="text-lg lg:text-xl px-4 lg:px-0">
+        <p className="text-lg lg:text-xl ">
           Our video competition offers a unique platform for aspiring
           filmmakers, videographers, and storytellers to showcase their skills
           and creativity. With attractive prizes, exposure to industry experts,
@@ -91,13 +91,12 @@ function Participate() {
           <NewBtn title="Submit Your Video" />
         </div>
       </div>
-
       {/* Image Section (Appears on top in mobile, right on large screens) */}
-      <div className="w-full lg:w-1/2 flex justify-center ">
+      <div className="lg:w-[30%]  items-center flex justify-center ">
         <img
           src="/sweaterpilla.png"
           alt="Competition Visual"
-          className="w-full lg:w-[80%] object-contain rounded-lg shadow-lg lg:h-[500px]"
+          className="object-contain rounded-lg shadow-lg lg:h-[500px]"
         />
       </div>
     </div>
@@ -106,9 +105,9 @@ function Participate() {
 
 function CreativePotential() {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between mt-5 px-6">
+    <div className="flex flex-col lg:flex-row items-center justify-center mt-5 px-6">
       {/* Left Section: Content */}
-      <div className="w-full lg:w-[50%] flex flex-col gap-6">
+      <div className="w-full lg:w-[48%] flex flex-col gap-6">
         <h3 className="text-3xl lg:text-5xl font-bold">
           Unlock Your Creative Potential
         </h3>
@@ -119,7 +118,7 @@ function CreativePotential() {
         </p>
 
         {/* Small Boxes */}
-        <div className="flex flex-col lg:flex-row gap-4">
+        <div className="flex flex-col lg:flex-row gap-6">
           <SmallBox
             image="/arrow.png"
             text="Our panel of esteemed judges will carefully evaluate each submission, looking for exceptional storytelling, technical mastery, and the ability to captivate the audience."
@@ -136,7 +135,7 @@ function CreativePotential() {
       </div>
 
       {/* Right Section: Image */}
-      <div className="w-full lg:w-[50%] flex items-center justify-center mt-8 lg:mt-0">
+      <div className="w-full lg:w-[48%] flex items-end justify-end mt-8 lg:mt-0">
         <img
           src="/twoladies.png"
           alt="Two Ladies"
@@ -149,17 +148,19 @@ function CreativePotential() {
 
 function FilmMakingHeights() {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between mt-5 px-6 bg-black text-white">
+    <div className="flex flex-col lg:flex-row items-center justify-center mt-5 px-6 py-8 bg-black text-white">
       {/* Left Section: Content */}
       <div className="w-full lg:w-[50%] flex flex-col gap-6">
-        <h3 className="text-3xl lg:text-5xl font-bold">
-          Unlock Your Creative Potential
-        </h3>
-        <p className="text-xl">
-          Participating in our video competition is an exciting journey that not
-          only allows you to showcase your talent but also provides you with
-          invaluable opportunities for growth and recognition.
-        </p>
+        <div className="text-center lg:text-start">
+          <h3 className="text-3xl lg:text-5xl font-bold">
+            Unlock Your Creative Potential
+          </h3>
+          <p className="text-xl">
+            Participating in our video competition is an exciting journey that
+            not only allows you to showcase your talent but also provides you
+            with invaluable opportunities for growth and recognition.
+          </p>
+        </div>
 
         {/* Small Boxes */}
         <div className="flex flex-col lg:flex-row gap-4">
@@ -179,11 +180,11 @@ function FilmMakingHeights() {
       </div>
 
       {/* Right Section: Image */}
-      <div className="w-full lg:w-[50%] flex items-center justify-center mt-8 lg:mt-0">
+      <div className="w-full lg:w-[50%] lg:h-[500px] flex items-center justify-center mt-8 lg:mt-0">
         <img
           src="/globe.png"
           alt="Globe"
-          className="w-full lg:w-[80%] h-auto object-cover rounded-lg shadow-lg"
+          className="w-full lg:w-[80%] lg:h-[90%] object-cover rounded-lg shadow-lg"
         />
       </div>
     </div>

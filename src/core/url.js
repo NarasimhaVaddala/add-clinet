@@ -3,11 +3,11 @@ import { errorMsgApi } from "./toast";
 import { useSelector } from "react-redux";
 
 export const API = axios.create({
-  baseURL: "http://192.168.1.12:5000",
+  baseURL: "http://localhost:5000",
 });
 
 export const APIS = axios.create({
-  baseURL: "http://192.168.1.12:5000",
+  baseURL: "http://localhost:5000",
 });
 
 export const imageUrl = "http://localhost:5000";
@@ -22,17 +22,15 @@ API.interceptors.request.use(
   (config) => {
     const token = useGetUserToken();
 
-
     if (
       token &&
       !config.url?.includes("/login") &&
       !config.url?.includes("/signup")
     ) {
       console.log(token);
-      
+
       config.headers.Authorization = `Bearer ${token}`;
     }
-
 
     config.headers["Content-Type"] =
       config.headers["Content-Type"] || "application/json";

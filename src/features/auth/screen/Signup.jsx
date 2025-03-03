@@ -36,13 +36,13 @@ const Signup = () => {
       address: Yup.string().min(5, "Address too short"),
     }),
     onSubmit: async (values) => {
-      if(!finalMobileNumberVerified){
+      if (!finalMobileNumberVerified) {
         errorMsgApi("Please verify the mobile number first.");
         return;
       }
       const apiRes = await signUpApi({ formData: values });
       if (apiRes) {
-        navigate("/login");
+        navigate("/");
       }
     },
   });
@@ -50,7 +50,8 @@ const Signup = () => {
   const [numberVerified, setNumberVerified] = useState(false);
   const [otpVerified, setOtpVerified] = useState(true);
 
-  const [finalMobileNumberVerified, setFinalMobileNumberVerified] = useState(false)
+  const [finalMobileNumberVerified, setFinalMobileNumberVerified] =
+    useState(false);
 
   const handleSenOtp = async () => {
     const mobileNumber = formik.values.mobile; // Get the entered number
@@ -84,7 +85,7 @@ const Signup = () => {
     if (apiStatus.status) {
       setNumberVerified(false);
       setOtpVerified(false);
-      setFinalMobileNumberVerified(true)
+      setFinalMobileNumberVerified(true);
     }
   };
 
@@ -143,13 +144,13 @@ const Signup = () => {
             isValid={formik.errors.address}
           />
           {/* <div className="w-full  md:pl-11 mt-[-10px] gap-1"> */}
-            <span className="text-end text-[12px]">
-              have an account{" "}
-              <Link to="/login" className="text-blue-500 font-medium">
-                Sign In
-              </Link>
-            </span>
-            <Button type="submit" text="Submit" isLoading={isLoading} />
+          <span className="text-end text-[12px]">
+            have an account{" "}
+            <Link to="/login" className="text-blue-500 font-medium">
+              Sign In
+            </Link>
+          </span>
+          <Button type="submit" text="Submit" isLoading={isLoading} />
           {/* </div> */}
         </form>
         <div className="w-1/2 bg-[#90e49d] hidden md:block"></div>

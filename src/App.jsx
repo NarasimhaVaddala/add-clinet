@@ -33,21 +33,20 @@ function App() {
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/signup" element={<Signup />} />
 
-        
-          <Route element={<ProtectedRoute />}>
-            <Route element={<Layout />}>
-              <Route path="/" element={<HomeScreen />} />
-              <Route path="/chat-bot" element={<ChatbotScreen />} />
+          {/* <Route element={<ProtectedRoute />}> */}
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/chat-bot" element={<ChatbotScreen />} />
 
-              <Route path="/register-form" element={<RegisterProccessForm />} />
-//                  <Route path="/" element={<HomeScreen />} />
-//             <Route path="/register-form" element={<RegisterProccessForm />} />
+            <Route path="/register-form" element={<RegisterProccessForm />} />
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/register-form" element={<RegisterProccessForm />} />
             <Route path="/check" element={<CheckPaymentStatusModal />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-            </Route>
-
           </Route>
+
+          {/* </Route> */}
         </Routes>
       </div>
     </>

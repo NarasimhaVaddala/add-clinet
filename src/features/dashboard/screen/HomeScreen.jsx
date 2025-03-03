@@ -40,9 +40,9 @@ function VideoContainer() {
 
 function WelcomeContainer({ images }) {
   return (
-    <div className="bg-black">
+    <div className="bg-black w-full">
       <div className="w-full bg-gradient-to-b from-white/30 via-black/70 to-black lg:h-[100vh] relative bottom-10 p-10 text-white container">
-        <h3 className="text-xl font-bold font-News lg:text-3xl my-1">
+        <h3 className="text-xl  font-bold font-News lg:text-3xl my-4">
           Welcome to
         </h3>
         <h3 className="text-3xl font-bold font-News lg:text-5xl my-1">
@@ -107,7 +107,7 @@ function LegacyContainer() {
 
 function PricesGalore() {
   return (
-    <div className="container mx-5 mt-5">
+    <div className="container mt-5">
       <div className="head-text flex justify-between items-center">
         <h1 className="lg:text-5xl text-3xl font-bold">Prizes Galore</h1>
         <button className="px-10 py-2 text-sm font-medium border border-black rounded-full hover:bg-gray-100 transition-colors">
@@ -183,7 +183,7 @@ const containers = [
 
 function MainContent() {
   return (
-    <div className="container mx-5 my-5">
+    <div className="container my-5">
       {containers.map((container, index) => (
         <div
           key={index}
@@ -222,7 +222,7 @@ function MainContent() {
 
 function HeroSection() {
   return (
-    <div className="hero-section mx-5 my-10">
+    <div className="hero-section my-10 px-4">
       <div className="text-center">
         <h1 className="text-4xl font-bold">About the Competition</h1>
         <p className="text-gray-600 mt-4 mx-auto max-w-2xl">
