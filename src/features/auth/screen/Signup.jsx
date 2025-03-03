@@ -50,6 +50,7 @@ const Signup = () => {
         return;
       }
       const apiRes = await signUpApi({ formData: values });
+
       if (
         apiRes.status ||
         (apiRes?.error === "User already exists with this mobile number" &&
@@ -64,6 +65,7 @@ const Signup = () => {
         localStorage.setItem("user", JSON.stringify(apiRes.user));
 
         dispatch(setProfile(apiRes.user));
+
       }
     },
   });
@@ -108,7 +110,9 @@ const Signup = () => {
       setNumberVerified(false);
       setOtpVerified(false);
       setFinalMobileNumberVerified(true);
+
       setVerifiedNumber(formik.values.mobile);
+
     }
   };
 
