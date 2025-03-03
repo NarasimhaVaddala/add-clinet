@@ -1,7 +1,14 @@
 import React from "react";
 import NewBtn from "../../../utils/NewBtn";
+import { useNavigate } from "react-router-dom";
 
 export default function About() {
+  const navigate = useNavigate();
+
+  const handleNavigateRegister = () => {
+    navigate("/register");
+  };
+
   const paragraphData = [
     "NUHVIN GLOBAL SERVICES is proudly announcing the Women Rider project, an initiative designed to transform the way women travel. With a focus on safety, reliability, and affordability, we aim to empower women by providing secure and convenient travel options. This project prioritizes the comfort and peace of mind of women travelers, while contributing to a larger vision of reshaping how women experience mobility in their daily lives. Through Women Rider, we are creating a world where every journey brings women a step closer to greater independence and empowerment.",
 
@@ -14,17 +21,20 @@ export default function About() {
 
   return (
     <>
-      <HeroSec />
-      <AboutSec paragraphData={paragraphData} />
-      <Participate />
-      <CreativePotential />
-      <FilmMakingHeights />
+      <HeroSec handleNavigateRegister={handleNavigateRegister} />
+      <AboutSec
+        paragraphData={paragraphData}
+        handleNavigateRegister={handleNavigateRegister}
+      />
+      <Participate handleNavigateRegister={handleNavigateRegister} />
+      <CreativePotential handleNavigateRegister={handleNavigateRegister} />
+      <FilmMakingHeights handleNavigateRegister={handleNavigateRegister} />
     </>
   );
 }
 
 // Hero Section
-function HeroSec() {
+function HeroSec({ handleNavigateRegister }) {
   return (
     <div className=" font-News bg-black text-white flex flex-col lg:flex-row w-full lg:h-[100vh] justify-evenly items-center gap-8 px-6 pt-5">
       {/* Content Section */}
@@ -38,7 +48,11 @@ function HeroSec() {
           for a chance to win amazing prizes and recognition.
         </p>
         <div className="flex justify-center lg:justify-start">
-          <NewBtn title="Submit Your Video" />
+          <NewBtn
+            title="Submit Your Video"
+            customStyl="w-full lg:w-auto"
+            onClick={handleNavigateRegister}
+          />
         </div>
       </div>
 
@@ -72,7 +86,7 @@ function AboutSec({ paragraphData }) {
 }
 
 // Participate Section
-function Participate() {
+function Participate({ handleNavigateRegister }) {
   return (
     <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-8 px-6 py-16 bg-black text-white">
       {/* Content Section (Left on large screens) */}
@@ -88,7 +102,7 @@ function Participate() {
           competition is the perfect launchpad for your artistic endeavors.
         </p>
         <div className="flex justify-center lg:justify-start">
-          <NewBtn title="Submit Your Video" />
+          <NewBtn title="Submit Your Video" onClick={handleNavigateRegister} />
         </div>
       </div>
       {/* Image Section (Appears on top in mobile, right on large screens) */}
@@ -103,7 +117,7 @@ function Participate() {
   );
 }
 
-function CreativePotential() {
+function CreativePotential({ handleNavigateRegister }) {
   return (
     <div className="flex flex-col lg:flex-row items-center justify-center mt-5 px-6">
       {/* Left Section: Content */}

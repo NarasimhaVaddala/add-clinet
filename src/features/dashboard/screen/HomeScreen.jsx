@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 import Counter from "../../../utils/Counter";
 import Carousel from "../../../utils/Carousel";
+import NewBtn from "../../../utils/NewBtn";
 
 // import { useHomeScreenHook } from "../hooks/HomeScreenHook";
 // import CheckPaymentStatusModal from "../Modals/CheckPaymentStatusModal";
@@ -17,31 +18,71 @@ const HomeScreen = () => {
     "https://plus.unsplash.com/premium_photo-1673288397421-e70040ea0f20?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
 
+  const navigate = useNavigate();
+
+  const handleNavigateRegistration = () => {
+    navigate("/register");
+  };
+
+  const handleNavigateAbout = () => {
+    navigate("/about");
+  };
+
   // const { userProfile, isDisplayModal } = useHomeScreenHook();
 
   return (
     <div className="w-full text-news">
       {/* {isDisplayModal && <CheckPaymentStatusModal width="50%" height="50%" />} */}
 
-      <VideoContainer />
+      <VideoContainer handleNavigateRegistration={handleNavigateRegistration} />
       <WelcomeContainer images={images} />
-      <LegacyContainer />
-      <PricesGalore />
-      <MainContent />
-      <HeroSection />
-      <SubmitVideo />
+      <LegacyContainer
+        handleNavigateRegistration={handleNavigateRegistration}
+      />
+      <PricesGalore
+        handleNavigateRegistration={handleNavigateRegistration}
+        handleNavigateAbout={handleNavigateAbout}
+      />
+      <MainContent handleNavigateRegistration={handleNavigateRegistration} />
+      <HeroSection handleNavigateRegistration={handleNavigateRegistration} />
+      <SubmitVideo handleNavigateRegistration={handleNavigateRegistration} />
     </div>
   );
 };
+function VideoContainer({ handleNavigateRegistration }) {
+  return (
+    <div className="w-full text-white p-4 relative" id="hero-container">
+      {/* Inner container with absolute positioning */}
+      <div className="absolute bottom-10 left-0 right-0 flex flex-col lg:flex-row justify-between items-center px-4 w-full">
+        {/* Left section: Heading and description */}
+        <div className="text-center lg:text-start">
+          <h1 className="text-2xl lg:text-5xl font-bold">
+            Showcase Your Talent. Win Big
+          </h1>
+          <p className="mt-2">
+            Submit your best video & compete for exciting prizes! Time is
+            running out
+          </p>
+        </div>
 
-function VideoContainer() {
-  return <div className="hero w-full" id="hero-container"></div>;
+        {/* Right section: Button */}
+        {/* <div className="mt-4 lg:mt-0 lg:ml-4 w-full"> */}
+        <NewBtn
+          onClick={handleNavigateRegistration}
+          title="Register Now"
+          customStyl="w-full lg:w-auto lg:max-w-none mt-4"
+        />
+        {/* </div> */}
+      </div>
+    </div>
+  );
 }
+function WelcomeContainer({ images, handleNavigateRegistration }) {
+  //relative bottom-10 if you want up
 
-function WelcomeContainer({ images }) {
   return (
     <div className="bg-black w-full">
-      <div className="w-full bg-gradient-to-b from-white/30 via-black/70 to-black lg:h-[100vh] relative bottom-10 p-10 text-white container">
+      <div className="w-full bg-gradient-to-b from-white/30 via-black/70 to-black lg:h-[100vh]  p-10 text-white container">
         <h3 className="text-xl  font-bold font-News lg:text-3xl my-4">
           Welcome to
         </h3>
@@ -70,7 +111,7 @@ function WelcomeContainer({ images }) {
   );
 }
 
-function LegacyContainer() {
+function LegacyContainer({ handleNavigateRegistration }) {
   return (
     <div className="bg-white container flex flex-col lg:flex-row  items-center justify-center w-full mt-4">
       <div data-aos="fade-up" className="lg:w-[30%]">
@@ -105,14 +146,24 @@ function LegacyContainer() {
   );
 }
 
-function PricesGalore() {
+function PricesGalore({ handleNavigateRegistration, handleNavigateAbout }) {
   return (
     <div className="container mt-5">
-      <div className="head-text flex justify-between items-center">
+      <div className="head-text flex justify-between items-center flex-col lg:flex-row">
         <h1 className="lg:text-5xl text-3xl font-bold">Prizes Galore</h1>
-        <button className="px-10 py-2 text-sm font-medium border border-black rounded-full hover:bg-gray-100 transition-colors">
-          Learn More
-        </button>
+
+        <div className="flex flex-col lg:flex-row gap-5 w-full lg:w-auto">
+          <NewBtn
+            onClick={handleNavigateRegistration}
+            title="Submit your video now"
+            customStyl="border-black w-full lg:w-auto mt-4 lg:mt-auto  bg-black"
+          />
+          <NewBtn
+            onClick={handleNavigateAbout}
+            title="Learn More"
+            customStyl="border-black w-full lg:w-auto mt-4 lg:mt-auto  bg-black"
+          />
+        </div>
       </div>
       <div
         className="icons-boxs grid grid-cols-1
@@ -181,9 +232,9 @@ const containers = [
   },
 ];
 
-function MainContent() {
+function MainContent({ handleNavigateRegistration }) {
   return (
-    <div className="container my-5">
+    <div className="my-5">
       {containers.map((container, index) => (
         <div
           key={index}
@@ -197,9 +248,9 @@ function MainContent() {
             <div className="container-text w-full md:w-1/2 p-5">
               <h2 className="text-2xl font-bold">{container.title}</h2>
               <p className="text-gray-600 mt-2">{container.description}</p>
-              <button className="mt-4 px-8 py-2 text-sm font-medium border border-black rounded-full hover:bg-gray-200 transition-colors">
+              {/* <button className="mt-4 px-8 py-2 text-sm font-medium border border-black rounded-full hover:bg-gray-200 transition-colors">
                 {container.buttonText}
-              </button>
+              </button> */}
             </div>
           )}
           <div className="image-container w-full md:w-1/2 p-5">
@@ -209,9 +260,9 @@ function MainContent() {
             <div className="container-text w-full md:w-1/2 p-5">
               <h2 className="text-2xl font-bold">{container.title}</h2>
               <p className="text-gray-600 mt-2">{container.description}</p>
-              <button className="mt-4 px-8 py-2 text-sm font-medium border border-black rounded-full hover:bg-gray-200 transition-colors">
+              {/* <button className="mt-4 px-8 py-2 text-sm font-medium border border-black rounded-full hover:bg-gray-200 transition-colors">
                 {container.buttonText}
-              </button>
+              </button> */}
             </div>
           )}
         </div>
@@ -220,7 +271,7 @@ function MainContent() {
   );
 }
 
-function HeroSection() {
+function HeroSection({ handleNavigateRegistration }) {
   return (
     <div className="hero-section my-10 px-4">
       <div className="text-center">
@@ -247,7 +298,7 @@ function HeroSection() {
   );
 }
 
-function SubmitVideo() {
+function SubmitVideo({ handleNavigateRegistration }) {
   return (
     <div className=" bg-pink-100 flex flex-wrap justify-center items-center p-10">
       <div className="text-center lg:text-start w-full md:w-1/2 p-5">
@@ -262,9 +313,15 @@ function SubmitVideo() {
           with a passionate community, and win incredible prizes that will
           elevate your filmmaking journey.
         </p>
-        <button className="mt-6 px-8 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-colors">
+        {/* <button className="mt-6 px-8 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-colors">
           Submit your video now
-        </button>
+        </button> */}
+
+        <NewBtn
+          onClick={handleNavigateRegistration}
+          title="Submit your video now"
+          customStyl="border-black w-full lg:w-auto mt-4 lg:mt-auto  bg-black"
+        />
       </div>
       <div className="submit-image w-full md:w-1/2 p-5">
         <img src="home-last.img.png" alt="" className="w-full rounded-lg" />

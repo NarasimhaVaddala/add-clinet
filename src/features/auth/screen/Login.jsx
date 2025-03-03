@@ -5,8 +5,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { sendOtp, verifyOtp } from "../services/signup.ser";
 import NewInput from "../components/NewInput";
+import { toast } from "react-toastify";
 
-const Login = () => {
+const Login = ({ setLoggedIn }) => {
   const navigate = useNavigate();
   const [otp, setOtp] = useState("");
   const [sendOptLoader, setSendOtpLoader] = useState(false);
@@ -41,7 +42,12 @@ const Login = () => {
 
     const apiStatus = await sendOtp({ mobile: mobileNumber });
     setSendOtpLoader(false);
-    if (apiStatus) {
+    if (!apiStatus.user) {
+      toast.error("User Not Found Please Signup");
+      setTimeout(() => {
+        navigate("/signup");
+      }, 2000);
+    } else if (apiStatus) {
       setNumberVerified(true);
     }
   };
@@ -59,12 +65,17 @@ const Login = () => {
       setNumberVerified(false);
       setOtpVerified(false);
       localStorage.setItem("token", apiStatus.token);
+
+      localStorage.setItem("user", JSON.stringify(apiStatus.user));
+
+      setLoggedIn(true);
       navigate("/");
+      // }
     }
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-[100vh] flex justify-center items-center">
       <div className="w-[90%] md:w-[80%] h-[85%] flex rounded-md overflow-hidden shadow-custom">
         <form
           // onSubmit={formik.handleSubmit}
@@ -96,7 +107,8 @@ const Login = () => {
           <span className="text-end text-[12px]">
             Don't have an account
             <Link to="/signup" className="text-blue-500 font-medium">
-              Sign In
+              {" "}
+              Sign Up
             </Link>
           </span>
         </form>

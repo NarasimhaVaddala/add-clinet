@@ -1,15 +1,13 @@
 import axios from "axios";
 import { errorMsgApi } from "./toast";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 export const API = axios.create({
   baseURL: "http://localhost:5000",
-
 });
 
 export const APIS = axios.create({
   baseURL: "http://localhost:5000",
-
 });
 
 export const imageUrl = "http://localhost:5000";
