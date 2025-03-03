@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRazorpay, RazorpayOrderOptions } from "react-razorpay";
 import { API } from "../../../core/url";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,8 +6,10 @@ import { paymentApi } from "../services/paymentServ";
 import { setProfile } from "../../auth/redux/profileSlice";
 import { successfully } from "../../../core/toast";
 import { openCloseModalFunc } from "../../../redux/modalFeatureSlice";
+import { useNavigate } from "react-router-dom";
 
 export const usePayment = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(1);
   const { error, isLoading, Razorpay } = useRazorpay();
@@ -44,8 +46,8 @@ export const usePayment = () => {
           );
         },
         prefill: {
-          email: userProfile.email, // Replace with user's email
-          contact: userProfile.mobile, // Replace with user's phone number
+          email: userProfile?.email, // Replace with user's email
+          contact: userProfile?.mobile, // Replace with user's phone number
         },
         theme: {
           color: "#ea4c89",
@@ -78,7 +80,9 @@ export const usePayment = () => {
 
         if (data) {
           dispatch(setProfile(data.user));
-          dispatch(openCloseModalFunc());
+          // dispatch(openCloseModalFunc());
+          localStorage.removeItem("user");
+          navigate("/register-form");
         }
       }
 
@@ -89,6 +93,24 @@ export const usePayment = () => {
       console.log(error);
     }
   }
+
+  const firstRender = useRef(true);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+
+    let use = JSON.parse(localStorage.getItem("user"));
+    console.log("local", use);
+
+    if (!userProfile?.paymentStatus || !use?.paymentStatus) {
+      console.log("before payment ", userProfile);
+
+      makePayment();
+    }
+  }, [userProfile]);
 
   return {
     verifyPayment,

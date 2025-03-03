@@ -7,14 +7,17 @@ import { sendOtp, signUpApi, verifyOtp } from "../services/signup.ser";
 import { errorMsgApi } from "../../../core/toast";
 import { Link, useNavigate } from "react-router-dom";
 import NewInput from "../components/NewInput";
+import { useDispatch } from "react-redux";
+import { setProfile } from "../redux/profileSlice";
 
 const Signup = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [sendOptLoader, setSendOtpLoader] = useState(false);
   const [verifyOtpLoader, setVerifyOtpLoader] = useState(false);
   const [otp, setOtp] = useState("");
+  const [verifiedNumer, setVerifiedNumber] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -40,9 +43,29 @@ const Signup = () => {
         errorMsgApi("Please verify the mobile number first.");
         return;
       }
+      console.log("formik.values.mobile", formik.values.mobile, verifiedNumer);
+
+      if (verifiedNumer !== formik.values.mobile) {
+        errorMsgApi("Mobile number must be same verified OTP.");
+        return;
+      }
       const apiRes = await signUpApi({ formData: values });
-      if (apiRes) {
-        navigate("/");
+
+      if (
+        apiRes.status ||
+        (apiRes?.error === "User already exists with this mobile number" &&
+          !apiRes.user?.paymentStatus)
+      ) {
+        saveUserData(apiRes);
+        navigate("/payment-screen", { replace: true });
+      }
+
+      function saveUserData(apiRes) {
+        localStorage.setItem("token", apiRes.token);
+        localStorage.setItem("user", JSON.stringify(apiRes.user));
+
+        dispatch(setProfile(apiRes.user));
+
       }
     },
   });
@@ -78,6 +101,7 @@ const Signup = () => {
       errorMsgApi("Please enter a valid OTP.");
       return;
     }
+
     setVerifyOtpLoader(true);
     const mobile = formik.values.mobile; // Get the entered number
     const apiStatus = await verifyOtp({ mobile, otp });
@@ -86,11 +110,14 @@ const Signup = () => {
       setNumberVerified(false);
       setOtpVerified(false);
       setFinalMobileNumberVerified(true);
+
+      setVerifiedNumber(formik.values.mobile);
+
     }
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-[100vh] flex justify-center items-center">
       <div className="w-[90%] md:w-[80%] h-[85%] flex rounded-md overflow-hidden shadow-custom">
         <form
           onSubmit={formik.handleSubmit}
@@ -117,6 +144,7 @@ const Signup = () => {
             isLoading={sendOptLoader}
             rightBtnFunction={handleSenOtp}
             isDisplayRightBtn={otpVerified}
+            disable={finalMobileNumberVerified}
           />
           {numberVerified && (
             <NewInput

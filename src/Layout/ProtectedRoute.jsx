@@ -25,6 +25,7 @@ const ProtectedRoute = () => {
 
   useEffect(() => {
     if (storedToken) {
+
       dispatch(fetchUserProfile());
       //   dispatch(setRoleFromStorage(userRole));
       //   dispatch(setTokenFromStorage(storedToken));
