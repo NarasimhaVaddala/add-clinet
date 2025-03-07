@@ -14,10 +14,10 @@ export default function ContactUs() {
         Have an enquiry? Let’s chat
       </h1>
 
-      <div className="w-full flex flex-col gap-4 mt-4 items-center justify-center">
+      <div className="w-[70%] flex flex-col gap-4 mt-4 items-center justify-center">
         {formValues.map((input, index) => (
           <Input
-            customInputStyl="w-[400px]"
+            customInputStyl="w-full"
             key={index}
             lable={input.label}
             type={input.type}
@@ -31,7 +31,7 @@ export default function ContactUs() {
           label={"Message"}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          customTextAreaStyle="w-[400px]"
+          customTextAreaStyle="w-full"
           isValid={errors.message} // Pass error message for textarea
         />
 

@@ -82,13 +82,15 @@ function ImageGallery() {
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
+              <Link
+                to="/about"
+                className="text-red-500 font-semibold ml-2 hover:underline text-xl"
+              >
+                See All{" "}
+                <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-1"></i>
+              </Link>
             </p>
           </motion.div>
-
-          <Link to="/about" className="w-full mt-4 flex gap-4 items-center">
-            See All
-            <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-2"></i>
-          </Link>
         </div>
       </div>
     </div>

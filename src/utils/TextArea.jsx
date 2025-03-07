@@ -10,10 +10,8 @@ const TextArea = ({
   customTextAreaStyle,
 }) => {
   return (
-    <div className="flex flex-col gap-0">
-      <div
-        className={`relative w-[250px] md:w-[360px] flex flex-col gap-4 ${customTextAreaStyle}`}
-      >
+    <div className={`flex flex-col gap-0 ${customTextAreaStyle}`}>
+      <div className={`relative flex flex-col gap-4 `}>
         {/* Textarea Field */}
         <textarea
           rows="4"

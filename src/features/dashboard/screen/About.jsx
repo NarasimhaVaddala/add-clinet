@@ -10,12 +10,15 @@ export default function About() {
   };
 
   const paragraphData = [
-    "On a MISSION to create a meaningful impact with Zen Media!",
+    "At Zen Media, storytelling is more than just an art—it’s a transformative force that connects, inspires, and leaves a lasting impact. We believe that every idea carries the power to spark emotions, every vision has the potential to shape perspectives, and every story deserves to be told with authenticity and passion.",
+
     "At Zen Media, our mission is to provide transformative content that empowers and enlightens our community. We are committed to sharing insightful and thoughtful discussions on a range of topics that foster personal growth, creativity, and mindfulness. Through our platform, we explore wellness, intentional living, and the pursuit of balance in a world that often moves too quickly. By engaging with Zen Media, our audience gains access to valuable knowledge and practices that promote inner peace, clarity, and purpose in daily life.",
 
-    "We believe that true growth happens when we actively listen, reflect, and take action in alignment with our values. To deepen the impact of our content, I will feature guests from diverse backgrounds, bringing fresh perspectives and expertise on subjects that are relevant to your journey.",
+    "Driven by creativity and fueled by innovation, we go beyond conventional storytelling. We don’t just capture moments—we craft immersive experiences that resonate, challenge, and inspire. Whether through films, documentaries, digital media, or advertising, our mission is to create content that not only entertains but also evokes deep emotions and meaningful conversations.",
 
-    "Zen Media is committed to being your go-to source of inspiration, offering wisdom, practical advice, and motivational stories to guide you towards a fulfilling and balanced life. Our goal is to help you create lasting change, build resilience, and live with intention. Through this platform, we hope to ignite your passion and provide you with the tools to thrive—mindfully, creatively, and purposefully.",
+    "We are more than content creators—we are storytellers, visionaries, and artists committed to redefining the way narratives are told. Every project we undertake is a pursuit of excellence, where every frame, every word, and every sound is meticulously curated to leave an unforgettable mark.",
+
+    "At Zen Media, we stand for originality, integrity, and the relentless pursuit of perfection. Our work is not just about what people see and hear; it’s about what they feel, remember, and carry forward. Because great stories don’t just exist—they ignite, empower, and conquer.",
   ];
 
   return (
@@ -25,6 +28,7 @@ export default function About() {
         paragraphData={paragraphData}
         handleNavigateRegister={handleNavigateRegister}
       />
+      <MissionVision />
       <Participate handleNavigateRegister={handleNavigateRegister} />
       <CreativePotential handleNavigateRegister={handleNavigateRegister} />
       <FilmMakingHeights handleNavigateRegister={handleNavigateRegister} />
@@ -38,17 +42,11 @@ function HeroSec({ handleNavigateRegister }) {
     <div className=" font-News bg-black text-white flex flex-col lg:flex-row w-full lg:h-[100vh] justify-evenly items-center gap-8 px-6 pt-5">
       {/* Content Section */}
       <div className="lg:w-[40%] flex flex-col gap-5 text-center lg:text-start">
-        <h2 className="text-3xl lg:text-5xl font-bold">
-          Welcome to our Video Competition!
-        </h2>
-        <p className="text-xl lg:text-2xl">
-          Unleash your creativity and showcase your talent in our exciting video
-          competition! Compete against talented creators from around the world
-          for a chance to win amazing prizes and recognition.
-        </p>
+        <h2 className="text-3xl lg:text-5xl font-bold">Zen Media</h2>
+        <p className="text-xl lg:text-2xl">Create. Inspire. Conquer.</p>
         <div className="flex justify-center lg:justify-start">
           <NewBtn
-            title="Submit Your Video"
+            title="Subscribe to our Channel"
             customStyl="w-full lg:w-auto"
             onClick={handleNavigateRegister}
           />
@@ -70,12 +68,12 @@ function HeroSec({ handleNavigateRegister }) {
 // About Section
 function AboutSec({ paragraphData }) {
   return (
-    <div className="bg-white text-black py-16">
+    <div className="bg-white text-black py-16 lg:w-[80%] mx-auto">
       <h1 className="text-2xl lg:text-5xl font-bold text-center">About Us</h1>
       {paragraphData.map((paragraph, index) => (
         <p
           key={index}
-          className="mt-4 text-lg lg:text-xl text-justify lg:text-center px-6 lg:px-20"
+          className="mt-4 text-lg lg:text-xl text-justify  px-6 lg:px-20"
         >
           {paragraph}
         </p>
@@ -229,6 +227,46 @@ function SmallBox({ image, text, bg, textColor }) {
       >
         {text}
       </p>
+    </div>
+  );
+}
+
+function MissionVision() {
+  return (
+    <div className="bg-black lg:h-[80vh] w-full flex items-center justify-center p-4">
+      <div className="flex flex-col md:flex-row w-full max-w-6xl gap-8">
+        {/* Left Section */}
+        <div className="flex-1 bg-[rgba(224,46,136,0.8)] rounded-2xl p-4 md:p-8">
+          <h1 className="text-3xl text-white font-bold mb-4 md:mb-6">
+            Text Large Heading
+          </h1>
+
+          <div className="bg-white/90 text-black flex-1 rounded-2xl p-4 md:p-6 mt-4">
+            <ListItem />
+            <ListItem />
+            <ListItem />
+            <ListItem />
+          </div>
+        </div>
+
+        {/* Right Section */}
+        <div className="flex-1 relative rounded-2xl overflow-hidden">
+          <img
+            src="https://dpiff.in/wp-content/uploads/2024/11/Rectangle-96.png"
+            alt="Mission Visual"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ListItem() {
+  return (
+    <div className="flex items-center gap-2 py-2">
+      <div className="w-2 h-2 bg-[#000] rounded-full" />
+      <span className="text-gray-700">List item content goes here</span>
     </div>
   );
 }
