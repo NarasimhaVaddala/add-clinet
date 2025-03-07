@@ -3,14 +3,14 @@ import { errorMsgApi } from "./toast";
 // import { useSelector } from "react-redux";
 
 export const API = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://videoserver.nuhvin.com",
 });
 
 export const APIS = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://videoserver.nuhvin.com",
 });
 
-export const imageUrl = "http://localhost:5000";
+export const imageUrl = "https://videoserver.nuhvin.com";
 
 const useGetUserToken = () => {
   // const { token } = useSelector((state) => state.loginSlice);

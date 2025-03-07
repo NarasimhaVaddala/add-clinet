@@ -10,13 +10,12 @@ export default function About() {
   };
 
   const paragraphData = [
-    "NUHVIN GLOBAL SERVICES is proudly announcing the Women Rider project, an initiative designed to transform the way women travel. With a focus on safety, reliability, and affordability, we aim to empower women by providing secure and convenient travel options. This project prioritizes the comfort and peace of mind of women travelers, while contributing to a larger vision of reshaping how women experience mobility in their daily lives. Through Women Rider, we are creating a world where every journey brings women a step closer to greater independence and empowerment.",
+    "On a MISSION to create a meaningful impact with Zen Media!",
+    "At Zen Media, our mission is to provide transformative content that empowers and enlightens our community. We are committed to sharing insightful and thoughtful discussions on a range of topics that foster personal growth, creativity, and mindfulness. Through our platform, we explore wellness, intentional living, and the pursuit of balance in a world that often moves too quickly. By engaging with Zen Media, our audience gains access to valuable knowledge and practices that promote inner peace, clarity, and purpose in daily life.",
 
-    "Our presence in the country is set to further revolutionize the concept of women’s travel. Through the Women Rider app, we are committed to offering safe, reliable, and affordable rides, ensuring a hassle-free travel experience that places safety and convenience at the forefront. By delivering these solutions, we strive to enhance women’s mobility while fostering confidence in every trip they take.",
+    "We believe that true growth happens when we actively listen, reflect, and take action in alignment with our values. To deepen the impact of our content, I will feature guests from diverse backgrounds, bringing fresh perspectives and expertise on subjects that are relevant to your journey.",
 
-    "In addition to transforming women’s travel, we are also passionate about supporting and celebrating creativity through short films and short series. By managing the production of the projects, we fuel the dreams of talented individuals and encourage women to embrace their adventurous spirit. Whether on the road or in the world of storytelling, we are committed to turning every journey into an empowering adventure that celebrates the strength, courage, and drive of women.",
-
-    "Together, we are not just changing how women travel but also how they express their stories and passions. Through our initiatives, we aim to inspire women everywhere to pursue their ambitions and celebrate the power within them.",
+    "Zen Media is committed to being your go-to source of inspiration, offering wisdom, practical advice, and motivational stories to guide you towards a fulfilling and balanced life. Our goal is to help you create lasting change, build resilience, and live with intention. Through this platform, we hope to ignite your passion and provide you with the tools to thrive—mindfully, creatively, and purposefully.",
   ];
 
   return (
@@ -95,11 +94,14 @@ function Participate({ handleNavigateRegister }) {
           Discover the Benefits of Participating
         </h1>
         <p className="text-lg lg:text-xl ">
-          Our video competition offers a unique platform for aspiring
-          filmmakers, videographers, and storytellers to showcase their skills
-          and creativity. With attractive prizes, exposure to industry experts,
-          and the opportunity to be part of a vibrant community, this
-          competition is the perfect launchpad for your artistic endeavors.
+          Participating in a competition provides valuable benefits, such as
+          improving your skills in creativity, teamwork, and
+          competition-specific knowledge. It also offers networking
+          opportunities to connect with fellow competitors. Additionally, you
+          have the chance to earn awards or prizes for your efforts. Competing
+          boosts your confidence as you push yourself outside your comfort zone,
+          and it fosters personal growth by helping you learn to overcome
+          challenges and handle both success and failure.
         </p>
         <div className="flex justify-center lg:justify-start">
           <NewBtn title="Submit Your Video" onClick={handleNavigateRegister} />
@@ -123,25 +125,25 @@ function CreativePotential({ handleNavigateRegister }) {
       {/* Left Section: Content */}
       <div className="w-full lg:w-[48%] flex flex-col gap-6">
         <h3 className="text-3xl lg:text-5xl font-bold">
-          Unlock Your Creative Potential
+          Unleash Your Creative Vision
         </h3>
         <p className="text-xl text-gray-600">
-          Participating in our video competition is an exciting journey that not
-          only allows you to showcase your talent but also provides you with
-          invaluable opportunities for growth and recognition.
+          Entering our video competition is more than just a chance to display
+          your skills—it's an opportunity to grow, gain recognition, and push
+          the boundaries of your creativity.
         </p>
 
         {/* Small Boxes */}
         <div className="flex flex-col lg:flex-row gap-6">
           <SmallBox
             image="/arrow.png"
-            text="Our panel of esteemed judges will carefully evaluate each submission, looking for exceptional storytelling, technical mastery, and the ability to captivate the audience."
+            text="Our expert judging panel will assess each submission based on unique storytelling, technical expertise, and the ability to engage and captivate the audience."
             bg="white"
             textColor="black" // Text color for this instance
           />
           <SmallBox
             image="/ladyicon.png"
-            text="Our panel of esteemed judges will carefully evaluate each submission, looking for exceptional storytelling, technical mastery, and the ability to captivate the audience."
+            text="The judges will focus on how effectively your video communicates the message, the quality of your execution, and how memorable your creation is to the viewers."
             bg="gray-100"
             textColor="black" // Text color for this instance
           />
@@ -170,9 +172,13 @@ function FilmMakingHeights() {
             Unlock Your Creative Potential
           </h3>
           <p className="text-xl">
-            Participating in our video competition is an exciting journey that
-            not only allows you to showcase your talent but also provides you
-            with invaluable opportunities for growth and recognition.
+            Unlocking your creative potential in an ad competition means
+            embracing fresh ideas and stepping outside conventional thinking.
+            View the challenge as an opportunity to innovate, not just complete
+            a task. Creativity thrives when you're free to take risks, make
+            mistakes, and learn from them. This mindset helps you connect with
+            your audience in new ways, leading to unique and effective
+            advertising concepts.
           </p>
         </div>
 
@@ -180,13 +186,13 @@ function FilmMakingHeights() {
         <div className="flex flex-col lg:flex-row gap-4">
           <SmallBox
             image="/arrow.png"
-            text="Our panel of esteemed judges will carefully evaluate each submission, looking for exceptional storytelling, technical mastery, and the ability to captivate the audience."
+            text="Nurturing curiosity helps unlock creativity in an ad competition by exploring trends and drawing inspiration from diverse sources. A curious mindset leads to fresh ideas that resonate with your audience and increase your chances of standing out."
             bg="gray-800"
             textColor="white" // Text color for this instance
           />
           <SmallBox
             image="/ladyicon.png"
-            text="Our panel of esteemed judges will carefully evaluate each submission, looking for exceptional storytelling, technical mastery, and the ability to captivate the audience."
+            text="A creative routine helps produce impactful ads. Set time to brainstorm, sketch, and analyze campaigns. Practice refines creativity, leading to effective ideas. With focus, you can unlock your potential and stand out."
             bg="gray-900"
             textColor="white" // Text color for this instance
           />

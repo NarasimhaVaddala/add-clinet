@@ -11,6 +11,8 @@ export const fetchUserProfile = createAsyncThunk(
   "profile/fetchUserProfile",
   async (_, { rejectWithValue }) => {
     try {
+      console.log("-----------");
+
       const response = await API.get("/auth/profile");
 
       return response.data;

@@ -22,7 +22,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
         to="/"
         className="w-[100px] h-full  flex justify-center items-center"
       >
-        <img src="/logo.png" alt="" className="bg-white" />
+        <img src="/Logo.png" alt="" />
       </Link>
       <div className="hidden md:flex gap-5 items-center">
         <Link to="/about" className="text-white text-lg font-medium">

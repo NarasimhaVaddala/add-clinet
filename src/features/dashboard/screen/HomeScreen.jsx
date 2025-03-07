@@ -2,11 +2,16 @@ import { Link, useNavigate, useNavigation } from "react-router-dom";
 import Counter from "../../../utils/Counter";
 import Carousel from "../../../utils/Carousel";
 import NewBtn from "../../../utils/NewBtn";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserProfile } from "../../auth/redux/profileSlice";
 
 // import { useHomeScreenHook } from "../hooks/HomeScreenHook";
 // import CheckPaymentStatusModal from "../Modals/CheckPaymentStatusModal";
 
 const HomeScreen = () => {
+  const dispatch = useDispatch();
+
   const images = [
     "https://images.unsplash.com/photo-1740680209886-c461a9c692f3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1740121933286-4340a63c4f97?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D",
@@ -28,6 +33,19 @@ const HomeScreen = () => {
     navigate("/about");
   };
 
+  const fethcProfile = () => {
+    const storedToken = localStorage.getItem("token") || null;
+    console.log("storedToken", storedToken);
+
+    if (storedToken) {
+      dispatch(fetchUserProfile());
+    }
+  };
+
+  useEffect(() => {
+    fethcProfile();
+  }, [dispatch]);
+
   // const { userProfile, isDisplayModal } = useHomeScreenHook();
 
   return (
@@ -39,10 +57,11 @@ const HomeScreen = () => {
       <LegacyContainer
         handleNavigateRegistration={handleNavigateRegistration}
       />
-      <PricesGalore
+      <ImageGallery />
+      {/* <PricesGalore
         handleNavigateRegistration={handleNavigateRegistration}
         handleNavigateAbout={handleNavigateAbout}
-      />
+      /> */}
       <MainContent handleNavigateRegistration={handleNavigateRegistration} />
       <HeroSection handleNavigateRegistration={handleNavigateRegistration} />
       <SubmitVideo handleNavigateRegistration={handleNavigateRegistration} />
@@ -87,11 +106,12 @@ function WelcomeContainer({ images, handleNavigateRegistration }) {
           Welcome to
         </h3>
         <h3 className="text-3xl font-bold font-News lg:text-5xl my-1">
-          India's Most Prestigious <br />
-          Dadasaheb Phalke International Film Festival
+          most exciting Women Rider Ad Competition <br />
+          celebrating fearless female riders showcasing their passion,
+          skill, and spirit!
         </h3>
 
-        <div className="flex items-center justify-between mt-10 group">
+        {/* <div className="flex items-center justify-between mt-10 group">
           <h3 className="text-3xl font-bold font-News lg:text-5xl">
             Award Winning Films
           </h3>
@@ -100,7 +120,7 @@ function WelcomeContainer({ images, handleNavigateRegistration }) {
             See All
             <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-2"></i>
           </Link>
-        </div>
+        </div> */}
 
         {/* Responsive Carousel */}
         <div className="w-full mb-10">
@@ -113,34 +133,67 @@ function WelcomeContainer({ images, handleNavigateRegistration }) {
 
 function LegacyContainer({ handleNavigateRegistration }) {
   return (
-    <div className="bg-white container flex flex-col lg:flex-row  items-center justify-center w-full mt-4">
-      <div data-aos="fade-up" className="lg:w-[30%]">
-        <img src="/Container.png" alt="" />
+    <div className="bg-white container flex flex-col lg:flex-row  items-center justify-evenly w-full mt-4 gap-4">
+      <div
+        data-aos="fade-up"
+        className="w-full lg:w-[30%] bg-black flex p-4 rounded-lg justify-center text-white flex-col"
+      >
+        <h2 className="text-center text-4xl font-bold text-[#EA4C89]">
+          Prizes
+        </h2>
+
+        <div>
+          <h2 className="font-bold text-3xl">1st Prize</h2>
+          <div className="flex items-center gap-2">
+            <h2 className="font-bold text-xl text-[#EA4C89]">₹ 20,000 +</h2>
+            <p className="text-xl">We will produce one web series</p>
+          </div>
+        </div>
+        <div>
+          <h2 className="font-bold text-3xl">2nd Prize</h2>
+          <div className="flex items-center gap-2">
+            <h2 className="font-bold text-xl text-[#EA4C89]">₹ 10,000 +</h2>
+            <p className="text-xl">We will produce one short series</p>
+          </div>
+        </div>
+        <div>
+          <h2 className="font-bold text-3xl">3rd Prize</h2>
+          <div className="flex items-center gap-2">
+            {/* <h2 className="font-bold text-xl text-[#EA4C89]">₹ 0 +</h2> */}
+            <p className="text-xl">We will produce one short film</p>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col gap-5 lg:w-[40%]">
         <h3 className="text-3xl lg:text-5xl font-News font-bold">
-          Honoring a legacy, Celebrating the future
+          Concept for Ad Competition
         </h3>
         <p className="lg:text-xl font-News">
-          Each year, DPIFF brings untold stories and visionary projects into the
-          spotlight, connecting them with audiences hungry for new perspectives.
-          It is more than just a festival—it’s a celebration of cinema’s power
-          to inspire, transform, and shape the future.
+          The Women Rider app is designed to empower women with a safer, more
+          independent travel experience. Tailored exclusively for women, this
+          app ensures privacy, convenience, and peace of mind by providing a
+          secure platform for ridesharing.
         </p>
         <p className="lg:text-xl font-News">
-          Named after a stalwart known as the father of Indian cinema, Dadasaheb
-          Phalke International Film Festival (DPIFF), was founded in 2012.
-          Carrying forward the illustrious legacy of Late Shri Dhundiraj Govind
-          Phalke, today it stands as India’s only independent international film
-          festival.
+          Safety is our top priority, with features like an SOS button,
+          ride-sharing options, verified passenger and driver profiles, and a
+          secure "Wor Pin" for each ride, which ensures added protection for
+          every trip. Women Rider offers not only a mode of transportation but a
+          community where women can travel confidently, knowing that their
+          security is paramount.
         </p>
-
+        <p className="lg:text-xl font-News">
+          With these features, the Women Rider app redefines the travel
+          experience by creating a supportive, safe, and empowering environment
+          where women can move freely and independently.
+        </p>
+        {/* 
         <div className="flex lg:gap-10 justify-between lg:justify-normal">
           <Counter title={"Short film Entries"} upto={10000} duration={4000} />
           <Counter title={"Countries"} upto={150} duration={1000} />
           <Counter title={"Festivals"} upto={120} duration={1000} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -174,7 +227,7 @@ function PricesGalore({ handleNavigateRegistration, handleNavigateAbout }) {
             icon: "fa-brands fa-telegram",
             title: "Elevate Your Craft",
             description:
-              "Immerse yourself in our dynamic video competition and unlock a world of opportunities. Compete against the best, showcase your talent, and win amazing prizes that will take your filmmaking journey to new heights.",
+              "Immerse yourself in our dynamic AD competition and unlock a world of opportunities. Compete against the best, showcase your talent, and win amazing prizes that will take your filmmaking journey to new heights.",
           },
           {
             icon: "fa-brands fa-telegram",
@@ -186,7 +239,7 @@ function PricesGalore({ handleNavigateRegistration, handleNavigateAbout }) {
             icon: "fa-brands fa-telegram",
             title: "Get Inspired",
             description:
-              "Explore the diverse array of video competition categories, each designed to challenge and showcase your unique creative vision.",
+              "Explore the diverse array of AD competition categories, each designed to challenge and showcase your unique creative vision.",
           },
         ].map((item, index) => (
           <div
@@ -207,25 +260,24 @@ function PricesGalore({ handleNavigateRegistration, handleNavigateAbout }) {
 
 const containers = [
   {
-    title: "Winners Announced",
+    title: "Winners Announcement",
     description:
-      "Congratulations to our video competition winners! Your exceptional talent and storytelling have earned you well-deserved recognition and amazing prizes.",
+      "The winners of the competition will be announced on March 20th. Stay tuned as we reveal the talented individuals who will walk away with exciting prizes, including cash and production support. We are thrilled to celebrate the creativity and passion of all the participants and can’t wait to honor the deserving winners!",
     buttonText: "See Winners",
     image: "home-left-img-1.png",
     reverse: false,
   },
   {
-    title: "Capture Your Passion",
+    title: "Unleash Your Passion",
     description:
-      "Join the Challenge Discover the thrill of our video competition and the rewards that await. Whether you're a seasoned filmmaker or a rising talent, this is your chance to sh..",
-    buttonText: "Learn More",
+      "Capture your passion and transform it into a masterpiece. Let every frame reflect the depth of your creativity and dedication. This is your opportunity to showcase your unique perspective and share your love for what you do. Whether it’s through storytelling, visuals, or emotions, make every moment count. Let your passion drive you to new heights and inspire others along the way. Now is the time to turn your dreams into reality and make your mark!",
     image: "home-left-img-2.png",
     reverse: true,
   },
   {
-    title: "Explore Categories",
+    title: "Disover the Categories",
     description:
-      "Submit Entry Unleash your cinematic vision and compete against the best in our video competition. From drama to comedy, documentary to animation, there's a category for every..",
+      "Explore the Categories and find the perfect platform to showcase your talent. Whether you're a filmmaker, photographer, or content creator, each category offers unique opportunities to highlight your skills. Dive into the diverse categories, choose your passion, and take your creativity to the next level. It’s your chance to shine and make an impact in your field!",
     buttonText: "Enter Now",
     image: "home-left-img-3.png",
     reverse: false,
@@ -277,8 +329,9 @@ function HeroSection({ handleNavigateRegistration }) {
       <div className="text-center">
         <h1 className="text-4xl font-bold">About the Competition</h1>
         <p className="text-gray-600 mt-4 mx-auto max-w-2xl">
-          Explore our dynamic video competition, where filmmakers from around
-          the world come together to push the boundaries of storytelling.
+          The Women Rider Video Competition honors the power and passion of
+          female riders. Share your riding journey and showcase your skills for
+          a chance to be recognized!
         </p>
       </div>
 
@@ -302,16 +355,18 @@ function SubmitVideo({ handleNavigateRegistration }) {
   return (
     <div className=" bg-pink-100 flex flex-wrap justify-center items-center p-10">
       <div className="text-center lg:text-start w-full md:w-1/2 p-5">
-        <p className="text-sm font-medium text-gray-600">Get Started</p>
+        <p className="text-lg font-semibold text-gray-600">Get Started</p>
         <h1 className="text-3xl font-bold mt-2">
-          Unlock Your <br /> Creative Potential
+          Embrace Your Creative Journey
         </h1>
         <p className="text-gray-600 mt-4">
-          Immerse yourself in our captivating video competition and let your
-          cinematic vision soar. From narrative films to experimental shorts,
-          this is your opportunity to share your unique perspective, connect
-          with a passionate community, and win incredible prizes that will
-          elevate your filmmaking journey.
+          Unlock your creative potential and let your imagination soar. This is
+          the moment to break free from limitations and explore new ideas,
+          perspectives, and possibilities. Embrace the process of growth and
+          discovery, and let your passion drive you to create something
+          extraordinary. With dedication and focus, there are no boundaries to
+          what you can achieve—unlock your full potential and let your
+          creativity shine!
         </p>
         {/* <button className="mt-6 px-8 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-colors">
           Submit your video now
@@ -325,6 +380,64 @@ function SubmitVideo({ handleNavigateRegistration }) {
       </div>
       <div className="submit-image w-full md:w-1/2 p-5">
         <img src="home-last.img.png" alt="" className="w-full rounded-lg" />
+      </div>
+    </div>
+  );
+}
+
+function ImageGallery() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center py-8">
+      {/* Existing Image Gallery Section */}
+      <h1 className="text-5xl text-center font-bold mb-8">
+        Cherishing the heart and craft of cinema
+      </h1>
+      <div className="flex flex-col md:flex-row gap-8 w-full max-w-6xl px-4">
+        <div className="flex flex-col justify-between gap-8 w-full md:w-[30%]">
+          <img
+            src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
+            alt="Cinema Image 1"
+            className="w-full h-auto object-cover rounded-lg shadow-lg"
+          />
+          <img
+            src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
+            alt="Cinema Image 2"
+            className="w-full h-auto object-cover rounded-lg shadow-lg"
+          />
+        </div>
+        <div className="w-full md:w-[70%]">
+          <img
+            src="https://dpiff.in/wp-content/uploads/2024/11/cherish3.jpg"
+            alt="Cinema Image 3"
+            className="w-full h-auto object-cover rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+
+      {/* New Section: Image on Left and Paragraph on Right */}
+      <div className="flex flex-col md:flex-row gap-8 w-full max-w-6xl px-4 mt-12">
+        <div className="w-full md:w-[50%]">
+          <img
+            src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
+            alt="Cinema Image 4"
+            className="w-full h-auto object-cover rounded-lg shadow-lg"
+          />
+        </div>
+        <div className="w-full md:w-[50%] flex flex-col items-center">
+          <p className="text-3xl font-semibold text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur.
+          </p>
+
+          <Link to="/about" className="w-full mt-4 flex gap-4 items-center">
+            See All
+            <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-2"></i>
+          </Link>
+        </div>
       </div>
     </div>
   );

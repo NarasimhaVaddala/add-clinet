@@ -23,17 +23,17 @@ export const usePayment = () => {
 
     try {
       const response = await API.post("/payment/create-order", {
-        amount: 1,
+        amount: 149,
         currency: "INR",
       });
       const { order_id } = response.data;
 
       const options = {
         key: "rzp_test_zCMFNwSBlZt1gx",
-        amount: 1,
+        amount: 149,
         currency: "INR",
-        name: "Payment Towards Art Competetion",
-        description: `Add ₹${1} to wallet`,
+        name: "Payment Towards AD Competetion",
+        // description: `Add ₹${1} to wallet`,
         order_id: order_id,
         handler: async (response) => {
           let { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
@@ -94,7 +94,7 @@ export const usePayment = () => {
     }
   }
 
-  const firstRender = useRef(true);
+  // const firstRender = useRef(true);
 
   // useEffect(() => {
   //   if (firstRender.current) {
