@@ -11,32 +11,70 @@ const Footer = () => {
         <div className="flex flex-col gap-4 w-full lg:w-[20%] items-center lg:items-start order-1">
           <div className="w-[80px] h-[80px] bg-red-300 rounded-full"></div>
           <div className="flex flex-col gap-2 text-center lg:text-start">
-            <Link className="text-white font-medium">ngsinfo@nuhvin.com</Link>
-            <Link className="text-white font-medium">93922 96850</Link>
+            <Link
+              to="mailto:ngsinfo@nuhvin.com"
+              className="text-white font-medium"
+            >
+              ngsinfo@nuhvin.com
+            </Link>
+            <Link className="text-white font-medium">+91 93922 96850</Link>
           </div>
         </div>
 
         {/* Links Section */}
         <div className="w-full lg:w-[27%] flex flex-col lg:flex-row gap-6 order-2">
           <div className="flex flex-col gap-3 text-center lg:text-start">
-            <Link className="text-white font-medium">About the festival</Link>
-            <Link className="text-white font-medium">About</Link>
-            <Link className="text-white font-medium">Our Story</Link>
-            <Link className="text-white font-medium">Career</Link>
+            <Link to="/about" className="text-white font-medium">
+              About the contest
+            </Link>
+            <Link to="/about" className="text-white font-medium">
+              About
+            </Link>
+            <Link
+              to="https://womenrider.com/about"
+              className="text-white font-medium"
+            >
+              Our Story
+            </Link>
+            <Link
+              to="https://www.nuhvin.com/career"
+              target="_blank"
+              className="text-white font-medium"
+            >
+              Career
+            </Link>
           </div>
           <div className="flex flex-col gap-3 text-center lg:text-start ">
-            <Link className="text-white font-medium">Our Vision</Link>
-            <Link className="text-white font-medium">Our Mission</Link>
-            <Link className="text-white font-medium">Our CSR</Link>
+            <Link
+              to="https://www.nuhvin.com/vision"
+              target="_blank"
+              className="text-white font-medium"
+            >
+              Our Vision
+            </Link>
+            <Link
+              to="https://www.nuhvin.com/mission"
+              target="_blank"
+              className="text-white font-medium"
+            >
+              Our Mission
+            </Link>
+            {/* <Link className="text-white font-medium">Our CSR</Link> */}
           </div>
         </div>
 
         {/* Additional Links Section */}
         <div className="text-center lg:text-start flex flex-col gap-4 w-full lg:w-[20%] pl-0 lg:pl-5 order-4 lg:order-3">
-          <Link className="text-white font-medium">Submit Short Film</Link>
-          <Link className="text-white font-medium">Release Short Film</Link>
-          <Link className="text-white font-medium">Blog</Link>
-          <Link className="text-white font-medium">Contact Us</Link>
+          <Link to="/register" className="text-white font-medium">
+            Submit Short Film
+          </Link>
+          <Link to="/register" className="text-white font-medium">
+            Release Short Film
+          </Link>
+          {/* <Link className="text-white font-medium">Blog</Link> */}
+          <Link to="/contact" className="text-white font-medium">
+            Contact Us
+          </Link>
         </div>
 
         {/* Newsletter Section */}

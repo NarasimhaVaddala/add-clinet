@@ -112,7 +112,9 @@ const Login = ({ setLoggedIn }) => {
             </Link>
           </span>
         </form>
-        <div className="w-1/2 bg-[#90e49d] hidden md:block"></div>
+        <div className="w-1/2 hidden md:block">
+          <img src="./transformer.png" className="object-cover rounded-xl" />
+        </div>
       </div>
     </div>
   );

@@ -19,13 +19,13 @@ const FileUploadUi = ({ label, accept, name, formik }) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 w-[250px] md:w-[360px] h-[140px] rounded-md border border-gray-300 overflow-hidden">
+    <div className="flex flex-col gap-2 w-full h-[140px] rounded-md border border-gray-300 overflow-hidden">
       <p className="text-white font-medium flex justify-center items-center bg-gray-300 h-[40px]">
         {label}
       </p>
 
       <div
-        className=" overflow-hidden w-full h-[90%] flex justify-center items-center cursor-pointer hover:border-blue-400 transition"
+        className=" overflow-hidden w-full h-[90%] flex justify-center items-center cursor-pointer hover:border-blue-400 transition p-2"
         onClick={handleClick}
       >
         {/* Preview: Show Image or Video if selected */}

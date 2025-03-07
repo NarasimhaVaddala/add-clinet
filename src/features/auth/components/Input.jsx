@@ -13,10 +13,8 @@ const Input = ({
   customInputStyl,
 }) => {
   return (
-    <div className="flex flex-col gap-0">
-      <div
-        className={`relative w-[250px] md:w-[360px] flex flex-col gap-4 ${customInputStyl}`}
-      >
+    <div className="flex flex-col gap-0 w-full">
+      <div className={`relative w-full flex flex-col gap-4 ${customInputStyl}`}>
         {/* Input Field */}
         <input
           type="text"

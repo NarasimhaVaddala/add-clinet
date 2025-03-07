@@ -5,7 +5,7 @@ import Login from "./features/auth/screen/Login";
 import HomeScreen from "./features/dashboard/screen/HomeScreen";
 import Layout from "./Layout/Layout";
 import ProtectedRoute from "./Layout/ProtectedRoute";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import RegisterProccessForm from "./features/dashboard/screen/RegisterProccessForm";
 
 import CheckPaymentStatusModal from "./features/dashboard/Modals/CheckPaymentStatusModal";
@@ -16,6 +16,8 @@ import ChatbotScreen from "./features/Chatbot/ChatbotScreen";
 import PaymentScreen from "./features/dashboard/screen/PaymentScreen";
 import RegisterMatter from "./features/dashboard/screen/RegisterMatter";
 import { useEffect, useState } from "react";
+import ScrollToTop from "./utils/ScrollToTop";
+import AlreadyRegistered from "./features/dashboard/screen/AlreadyRegistered";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -38,7 +40,8 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col w-full ">
+      <div className="flex flex-col w-full font-News">
+        <ScrollToTop />
         <ToastContainer
           position="top-right"
           autoClose={5000} // 5 seconds
@@ -59,15 +62,16 @@ function App() {
             path="/signup"
             element={<Signup loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           />
-          <Route element={<ProtectedRoute />}>
-            <Route
-              element={<Layout loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
-            >
-              <Route path="/register-form" element={<RegisterProccessForm />} />
-              <Route path="/check" element={<CheckPaymentStatusModal />} />
-              <Route path="/payment-screen" element={<PaymentScreen />} />
-            </Route>
+          {/* <Route element={<ProtectedRoute />}> */}
+          <Route
+            element={<Layout loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+          >
+            <Route path="/register-form" element={<RegisterProccessForm />} />
+            <Route path="/check" element={<CheckPaymentStatusModal />} />
+            <Route path="/payment-screen" element={<PaymentScreen />} />
+            <Route path="/registered" element={<AlreadyRegistered />} />
           </Route>
+          {/* </Route> */}
           {/* <Route element={<ProtectedRoute />}> */}
           <Route
             element={<Layout loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
