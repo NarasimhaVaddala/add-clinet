@@ -1,5 +1,8 @@
 import React from "react";
 import Card from "../Components/Card";
+import SectionHeading from "../../../../../utils/SectionHeading";
+
+import SectionLayout from "../../../../../Layout/SectionLayout";
 
 export default function WhoCanParticipate() {
   const data = [
@@ -18,15 +21,13 @@ export default function WhoCanParticipate() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-8 text-center">
-        Who can participate
-      </h1>
+    <SectionLayout>
+      <SectionHeading txt="Who Can Participate" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {data.map((item, index) => (
           <Card key={index} title={item.title} text={item.text} />
         ))}
       </div>
-    </div>
+    </SectionLayout>
   );
 }

@@ -1,6 +1,8 @@
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useScroll, useTransform, useSpring, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useRef, useEffect } from "react";
+import SectionHeading from "../../../utils/SectionHeading";
+import SectionLayout from "../../../Layout/SectionLayout";
 
 function ImageGallery() {
   const ref = useRef(null);
@@ -33,15 +35,14 @@ function ImageGallery() {
   }, [textColor]);
 
   return (
-    <div
-      ref={ref}
-      className="min-h-screen flex flex-col items-center justify-center py-8"
-    >
+    // <div
+    //   ref={ref}
+    //   className="min-h-screen flex flex-col items-center justify-center py-8"
+    // >
+    <SectionLayout>
       {/* Existing Image Gallery Section */}
-      <h1 className="text-5xl text-center font-bold mb-8">
-        Cherishing the heart and craft of cinema
-      </h1>
-      <div className="flex flex-col md:flex-row gap-8 w-full max-w-6xl px-4">
+      <SectionHeading txt="Cherishing the heart and craft of cinema" />
+      <div className="flex flex-col md:flex-row gap-8 w-full">
         <div className="flex flex-col justify-between gap-8 w-full md:w-[30%]">
           <img
             src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
@@ -64,7 +65,7 @@ function ImageGallery() {
       </div>
 
       {/* New Section: Image on Left and Paragraph on Right */}
-      <div className="flex flex-col md:flex-row gap-8 w-full max-w-6xl px-4 mt-12">
+      <div className="flex flex-col md:flex-row gap-8 w-full mt-12">
         <div className="w-full md:w-[50%]">
           <img
             src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
@@ -75,7 +76,7 @@ function ImageGallery() {
         <div className="w-full md:w-[50%] flex flex-col items-center">
           {/* Animated text inside motion div */}
           <motion.div style={{ color: textColor }}>
-            <p className="text-3xl font-semibold">
+            <p className="text-xl lg:text-3xl font-semibold text-justify">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -93,7 +94,7 @@ function ImageGallery() {
           </motion.div>
         </div>
       </div>
-    </div>
+    </SectionLayout>
   );
 }
 

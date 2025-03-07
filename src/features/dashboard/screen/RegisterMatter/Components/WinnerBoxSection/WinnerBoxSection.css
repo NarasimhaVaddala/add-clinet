@@ -34,3 +34,9 @@
   top: 100%;
   left: 200%;
 }
+
+@media (width < 768px) {
+  .card {
+    width: 100%;
+  }
+}

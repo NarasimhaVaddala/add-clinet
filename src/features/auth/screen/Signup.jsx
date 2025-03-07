@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import NewInput from "../components/NewInput";
 import { useDispatch } from "react-redux";
 import { setProfile } from "../redux/profileSlice";
+import SectionHeading from "../../../utils/SectionHeading";
 
 const Signup = ({ setLoggedIn }) => {
   const navigate = useNavigate();
@@ -120,11 +121,9 @@ const Signup = ({ setLoggedIn }) => {
       <div className="w-[90%] md:w-[80%] h-[85%] flex rounded-md overflow-hidden shadow-custom">
         <form
           onSubmit={formik.handleSubmit}
-          className=" w-full md:w-1/2 bg-white flex flex-col justify-center items-center overflow-y-scroll gap-6 p-8"
+          className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center overflow-y-scroll gap-6 p-8"
         >
-          <p className="text-start w-full pl-11 text-lg font-semibold">
-            Sign Up
-          </p>
+          <SectionHeading txt="Sign Up" />
           <NewInput
             lable="Name *"
             value={formik.values.name}
@@ -176,7 +175,12 @@ const Signup = ({ setLoggedIn }) => {
               Sign In
             </Link>
           </span>
-          <Button type="submit" text="Submit" isLoading={isLoading} />
+          <Button
+            width="100%"
+            type="submit"
+            text="Submit"
+            isLoading={isLoading}
+          />
           {/* </div> */}
         </form>
         <div className="w-1/2 hidden md:block">

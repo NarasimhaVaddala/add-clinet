@@ -1,4 +1,6 @@
 import React from "react";
+import SectionHeading from "../../../../../utils/SectionHeading";
+import SectionLayout from "../../../../../Layout/SectionLayout";
 
 export default function HowItWorks() {
   const data = [
@@ -25,20 +27,20 @@ export default function HowItWorks() {
   ];
 
   return (
-    <div className=" mx-auto px-4 py-12">
-      <h1 className="text-5xl font-bold mb-8 text-center">How it works</h1>
-      <div className="grid grid-cols-1  gap-6">
+    <SectionLayout>
+      <SectionHeading txt="How It Works" />
+      <div className="grid grid-cols-1 gap-6">
         {data.map((item, index) => (
           <ListItem key={index} title={item.title} text={item.text} />
         ))}
       </div>
-    </div>
+    </SectionLayout>
   );
 }
 
 function ListItem({ title, text }) {
   return (
-    <div className="flex gap-4 p-4 bg-white rounded-lg ">
+    <div className="flex gap-4 bg-white rounded-lg ">
       <div className="flex-shrink-0 bg-gray-300 h-16 w-16 rounded-lg flex items-center justify-center">
         <i className="fa-solid fa-check text-black text-2xl"></i>
       </div>

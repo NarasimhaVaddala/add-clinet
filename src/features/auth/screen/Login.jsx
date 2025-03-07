@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { sendOtp, verifyOtp } from "../services/signup.ser";
 import NewInput from "../components/NewInput";
 import { toast } from "react-toastify";
+import SectionHeading from "../../../utils/SectionHeading";
 
 const Login = ({ setLoggedIn }) => {
   const navigate = useNavigate();
@@ -81,7 +82,7 @@ const Login = ({ setLoggedIn }) => {
           // onSubmit={formik.handleSubmit}
           className=" w-full  md:w-1/2 bg-white flex flex-col justify-center items-center overflow-y-scroll gap-6 p-8"
         >
-          <p className=" w-full text-center text-lg font-semibold">Login </p>
+          <SectionHeading txt="Login" />
           <NewInput
             lable="Number *"
             value={formik.values.mobile}
