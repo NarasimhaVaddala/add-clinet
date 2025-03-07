@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { usePayment } from "../hooks/usePayment";
-import VerticalCard from "../../../utils/VerticalCard";
+import { usePayment } from "../../hooks/usePayment";
+import VerticalCard from "../../../../utils/VerticalCard";
 import { nav, text } from "framer-motion/client";
-import NewBtn from "../../../utils/NewBtn";
+import NewBtn from "../../../../utils/NewBtn";
 import { toast } from "react-toastify";
+import HeroSection from "./Sections/HeroSection";
+import WhyParticipate from "./Sections/WhyParticipate";
+import CompetionDetails from "./Sections/CompetionDetails";
+import WhoCanParticipate from "./Sections/WhoCanParticipate";
+import HowItWorks from "./Sections/HowItWorks";
+import SubmissionGuidelines from "./Sections/SubmissionGuidelines";
 
 export default function RegisterMatter() {
   const { userProfile } = useSelector((state) => state.profileSlice);
@@ -46,36 +52,13 @@ export default function RegisterMatter() {
   return (
     <div className="flex flex-col min-h-screen">
       <HeroSection handlePay={handlePay} />
-      <SecondSection />
-      <ThirdSection />
+      <WhyParticipate />
+      <WhoCanParticipate />
+      <HowItWorks />
+      <SubmissionGuidelines />
+      {/* <CompetionDetails /> */}
       {/* <button onClick={handlePay}>Register</button> */}
     </div>
-  );
-}
-
-function HeroSection({ handlePay }) {
-  return (
-    <section
-      id="hero-container-register"
-      className="relative bg-cover bg-center h-[50vh] text-white"
-    >
-      <div className="absolute bottom-4 px-4 py-4">
-        <h2 className="text-2xl lg:text-5xl font-bold">
-          Video Competition 2025
-        </h2>
-        <p className="lg:text-xl mb-4">
-          Congratulations! You're one step closer to showcasing your Film making
-          skills. Please read the competition guidelines carefully before
-          registering.
-        </p>
-
-        <NewBtn
-          title="Submit Here"
-          customStyl="w-full lg:w-auto"
-          onClick={handlePay}
-        />
-      </div>
-    </section>
   );
 }
 
