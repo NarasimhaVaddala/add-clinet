@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../../auth/redux/profileSlice";
 import ImageGallery from "../components/ImageGallery";
+import CardBlack from "../../../utils/CardBlack";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -47,9 +48,7 @@ const HomeScreen = () => {
         handleNavigateRegistration={handleNavigateRegistration}
       />
       <ImageGallery />
-
       <WinnerBoxSection />
-
       <MainContent handleNavigateRegistration={handleNavigateRegistration} />
       <HeroSection handleNavigateRegistration={handleNavigateRegistration} />
       <SubmitVideo handleNavigateRegistration={handleNavigateRegistration} />
@@ -432,7 +431,24 @@ function SubmitVideo({ handleNavigateRegistration }) {
 // }
 
 function WinnerBoxSection() {
-  return <div className="flex flex-col items-center justify-center"></div>;
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="text-5xl text-center font-bold">
+        Standards Of Excellence
+      </h1>
+
+      <p>
+        All submissions must meet the following criteria to be considered for
+        selection:
+      </p>
+
+      <view className="flex w-[90%] mt-10 justify-between">
+        <CardBlack />
+        <CardBlack />
+        <CardBlack />
+      </view>
+    </div>
+  );
 }
 
 export default HomeScreen;
