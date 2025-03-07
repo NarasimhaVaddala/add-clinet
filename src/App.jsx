@@ -14,7 +14,7 @@ import About from "./features/dashboard/screen/About";
 
 import ChatbotScreen from "./features/Chatbot/ChatbotScreen";
 import PaymentScreen from "./features/dashboard/screen/PaymentScreen";
-import RegisterMatter from "./features/dashboard/screen/RegisterMatter";
+import RegisterMatter from "./features/dashboard/screen/RegisterMatter/RegisterMatter";
 import { useEffect, useState } from "react";
 import ScrollToTop from "./utils/ScrollToTop";
 import AlreadyRegistered from "./features/dashboard/screen/AlreadyRegistered";
