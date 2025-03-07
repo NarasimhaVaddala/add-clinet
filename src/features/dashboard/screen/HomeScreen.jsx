@@ -2,12 +2,10 @@ import { Link, useNavigate, useNavigation } from "react-router-dom";
 import Counter from "../../../utils/Counter";
 import Carousel from "../../../utils/Carousel";
 import NewBtn from "../../../utils/NewBtn";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../../auth/redux/profileSlice";
-
-// import { useHomeScreenHook } from "../hooks/HomeScreenHook";
-// import CheckPaymentStatusModal from "../Modals/CheckPaymentStatusModal";
+import ImageGallery from "../components/ImageGallery";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -29,13 +27,8 @@ const HomeScreen = () => {
     navigate("/register");
   };
 
-  const handleNavigateAbout = () => {
-    navigate("/about");
-  };
-
   const fethcProfile = () => {
     const storedToken = localStorage.getItem("token") || null;
-    console.log("storedToken", storedToken);
 
     if (storedToken) {
       dispatch(fetchUserProfile());
@@ -46,22 +39,17 @@ const HomeScreen = () => {
     fethcProfile();
   }, [dispatch]);
 
-  // const { userProfile, isDisplayModal } = useHomeScreenHook();
-
   return (
     <div className="w-full text-news">
-      {/* {isDisplayModal && <CheckPaymentStatusModal width="50%" height="50%" />} */}
-
       <VideoContainer handleNavigateRegistration={handleNavigateRegistration} />
       <WelcomeContainer images={images} />
       <LegacyContainer
         handleNavigateRegistration={handleNavigateRegistration}
       />
       <ImageGallery />
-      {/* <PricesGalore
-        handleNavigateRegistration={handleNavigateRegistration}
-        handleNavigateAbout={handleNavigateAbout}
-      /> */}
+
+      <WinnerBoxSection />
+
       <MainContent handleNavigateRegistration={handleNavigateRegistration} />
       <HeroSection handleNavigateRegistration={handleNavigateRegistration} />
       <SubmitVideo handleNavigateRegistration={handleNavigateRegistration} />
@@ -101,7 +89,7 @@ function WelcomeContainer({ images, handleNavigateRegistration }) {
 
   return (
     <div className="bg-black w-full">
-      <div className="w-full bg-gradient-to-b from-white/30 via-black/70 to-black lg:h-[100vh]  p-10 text-white container">
+      <div className="w-full bg-gradient-to-b from-white/30 via-black/70 to-black   p-10 text-white container">
         <h3 className="text-xl  font-bold font-News lg:text-3xl my-4">
           Welcome to
         </h3>
@@ -259,14 +247,14 @@ function PricesGalore({ handleNavigateRegistration, handleNavigateAbout }) {
 }
 
 const containers = [
-  {
-    title: "Winners Announcement",
-    description:
-      "The winners of the competition will be announced on March 20th. Stay tuned as we reveal the talented individuals who will walk away with exciting prizes, including cash and production support. We are thrilled to celebrate the creativity and passion of all the participants and can’t wait to honor the deserving winners!",
-    buttonText: "See Winners",
-    image: "home-left-img-1.png",
-    reverse: false,
-  },
+  // {
+  //   title: "Winners Announcement",
+  //   description:
+  //     "The winners of the competition will be announced on March 20th. Stay tuned as we reveal the talented individuals who will walk away with exciting prizes, including cash and production support. We are thrilled to celebrate the creativity and passion of all the participants and can’t wait to honor the deserving winners!",
+  //   buttonText: "See Winners",
+  //   image: "home-left-img-1.png",
+  //   reverse: false,
+  // },
   {
     title: "Unleash Your Passion",
     description:
@@ -385,62 +373,66 @@ function SubmitVideo({ handleNavigateRegistration }) {
   );
 }
 
-function ImageGallery() {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-8">
-      {/* Existing Image Gallery Section */}
-      <h1 className="text-5xl text-center font-bold mb-8">
-        Cherishing the heart and craft of cinema
-      </h1>
-      <div className="flex flex-col md:flex-row gap-8 w-full max-w-6xl px-4">
-        <div className="flex flex-col justify-between gap-8 w-full md:w-[30%]">
-          <img
-            src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
-            alt="Cinema Image 1"
-            className="w-full h-auto object-cover rounded-lg shadow-lg"
-          />
-          <img
-            src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
-            alt="Cinema Image 2"
-            className="w-full h-auto object-cover rounded-lg shadow-lg"
-          />
-        </div>
-        <div className="w-full md:w-[70%]">
-          <img
-            src="https://dpiff.in/wp-content/uploads/2024/11/cherish3.jpg"
-            alt="Cinema Image 3"
-            className="w-full h-auto object-cover rounded-lg shadow-lg"
-          />
-        </div>
-      </div>
+// function ImageGallery() {
+//   return (
+//     <div className="min-h-screen flex flex-col items-center justify-center py-8">
+//       {/* Existing Image Gallery Section */}
+//       <h1 className="text-5xl text-center font-bold mb-8">
+//         Cherishing the heart and craft of cinema
+//       </h1>
+//       <div className="flex flex-col md:flex-row gap-8 w-full max-w-6xl px-4">
+//         <div className="flex flex-col justify-between gap-8 w-full md:w-[30%]">
+//           <img
+//             src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
+//             alt="Cinema Image 1"
+//             className="w-full h-auto object-cover rounded-lg shadow-lg"
+//           />
+//           <img
+//             src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
+//             alt="Cinema Image 2"
+//             className="w-full h-auto object-cover rounded-lg shadow-lg"
+//           />
+//         </div>
+//         <div className="w-full md:w-[70%]">
+//           <img
+//             src="https://dpiff.in/wp-content/uploads/2024/11/cherish3.jpg"
+//             alt="Cinema Image 3"
+//             className="w-full h-auto object-cover rounded-lg shadow-lg"
+//           />
+//         </div>
+//       </div>
 
-      {/* New Section: Image on Left and Paragraph on Right */}
-      <div className="flex flex-col md:flex-row gap-8 w-full max-w-6xl px-4 mt-12">
-        <div className="w-full md:w-[50%]">
-          <img
-            src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
-            alt="Cinema Image 4"
-            className="w-full h-auto object-cover rounded-lg shadow-lg"
-          />
-        </div>
-        <div className="w-full md:w-[50%] flex flex-col items-center">
-          <p className="text-3xl font-semibold text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </p>
+//       {/* New Section: Image on Left and Paragraph on Right */}
+//       <div className="flex flex-col md:flex-row gap-8 w-full max-w-6xl px-4 mt-12">
+//         <div className="w-full md:w-[50%]">
+//           <img
+//             src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
+//             alt="Cinema Image 4"
+//             className="w-full h-auto object-cover rounded-lg shadow-lg"
+//           />
+//         </div>
+//         <div className="w-full md:w-[50%] flex flex-col items-center">
+//           <p className="text-3xl font-semibold text-gray-700">
+//             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+//             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+//             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+//             aliquip ex ea commodo consequat. Duis aute irure dolor in
+//             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+//             pariatur.
+//           </p>
 
-          <Link to="/about" className="w-full mt-4 flex gap-4 items-center">
-            See All
-            <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-2"></i>
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
+//           <Link to="/about" className="w-full mt-4 flex gap-4 items-center">
+//             See All
+//             <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-2"></i>
+//           </Link>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+function WinnerBoxSection() {
+  return <div className="flex flex-col items-center justify-center"></div>;
 }
 
 export default HomeScreen;
