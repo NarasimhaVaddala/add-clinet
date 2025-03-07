@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../../auth/redux/profileSlice";
 import ImageGallery from "../components/ImageGallery";
 import CardBlack from "../../../utils/CardBlack";
+import WinnerBoxSection from "../components/WinnerBoxSection/WinnerBoxSection";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -430,35 +431,35 @@ function SubmitVideo({ handleNavigateRegistration }) {
 //   );
 // }
 
-function WinnerBoxSection() {
-  return (
-    <div className="flex flex-col items-center justify-center p-4">
-      <h1 className="text-5xl text-center font-bold">
-        Standards Of Excellence
-      </h1>
+// function WinnerBoxSection() {
+//   return (
+//     <div className="flex flex-col items-center justify-center p-4">
+//       <h1 className="text-5xl text-center font-bold">
+//         Standards Of Excellence
+//       </h1>
 
-      <p className="text-center lg:text-start">
-        All submissions must meet the following criteria to be considered for
-        selection:
-      </p>
+//       <p className="text-center lg:text-start">
+//         All submissions must meet the following criteria to be considered for
+//         selection:
+//       </p>
 
-      <view className="flex gap-5 w-[90%] flex-col lg:flex-row mt-10 justify-between">
-        <CardBlack
-          title="Winner 1"
-          text="Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit"
-        />
-        <CardBlack
-          title="Winner 2"
-          text="Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit"
-        />
-        <CardBlack
-          title="Winner 3"
-          text="Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit"
-        />
-      </view>
-    </div>
-  );
-}
+//       <view className="flex gap-5 w-[90%] flex-col lg:flex-row mt-10 justify-between">
+//         <CardBlack
+//           title="Winner 1"
+//           text="Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit"
+//         />
+//         <CardBlack
+//           title="Winner 2"
+//           text="Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit"
+//         />
+//         <CardBlack
+//           title="Winner 3"
+//           text="Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit Lorem Ipsum Dummy Bullshit"
+//         />
+//       </view>
+//     </div>
+//   );
+// }
 
 function PriceBox() {
   retyr;
