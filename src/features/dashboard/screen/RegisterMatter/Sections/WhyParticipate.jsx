@@ -1,5 +1,8 @@
 import React from "react";
 import Card from "../Components/Card";
+import SectionHeading from "../../../../../utils/SectionHeading";
+
+import SectionLayout from "../../../../../Layout/SectionLayout";
 
 export default function WhyParticipate() {
   const data = [
@@ -30,13 +33,13 @@ export default function WhyParticipate() {
   ];
 
   return (
-    <div className="max-w-[80%] mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-8 text-center">Why Participate</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <SectionLayout>
+      <SectionHeading txt="Why Participate" />
+      <div className="grid lg:grid-cols-3 gap-6 w-full">
         {data.map((item, index) => (
           <Card key={index} title={item.title} text={item.text} />
         ))}
       </div>
-    </div>
+    </SectionLayout>
   );
 }

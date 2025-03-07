@@ -12,6 +12,8 @@ import CompetionDetails from "./Sections/CompetionDetails";
 import WhoCanParticipate from "./Sections/WhoCanParticipate";
 import HowItWorks from "./Sections/HowItWorks";
 import SubmissionGuidelines from "./Sections/SubmissionGuidelines";
+import CardBlack from "../../../../utils/CardBlack";
+import WinnerBoxSection from "./Components/WinnerBoxSection/WinnerBoxSection";
 
 export default function RegisterMatter() {
   const { userProfile } = useSelector((state) => state.profileSlice);
@@ -53,6 +55,7 @@ export default function RegisterMatter() {
     <div className="flex flex-col min-h-screen">
       <HeroSection handlePay={handlePay} />
       <WhyParticipate />
+      <WinnerBoxSection />
       <WhoCanParticipate />
       <HowItWorks />
       <SubmissionGuidelines />

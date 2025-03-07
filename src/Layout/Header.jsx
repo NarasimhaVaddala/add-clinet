@@ -14,15 +14,14 @@ const Header = ({ loggedIn, setLoggedIn }) => {
     navigate("/login");
   };
 
-  console.log(loggedIn);
-
   return (
     <div className="w-full h-[80px] flex justify-between items-center bg-black px-4 fixed z-40">
       <Link
         to="/"
+        // onClick={console.log(this)}
         className="w-[100px] h-full  flex justify-center items-center"
       >
-        <img src="/Logo.png" alt="" />
+        <img src="/logo.png" alt="" />
       </Link>
       <div className="hidden md:flex gap-5 items-center">
         <Link to="/about" className="text-white text-lg font-medium">

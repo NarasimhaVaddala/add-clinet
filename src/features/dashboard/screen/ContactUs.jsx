@@ -3,18 +3,18 @@ import Input from "../../auth/components/Input";
 import TextArea from "../../../utils/TextArea";
 import { BeatLoader } from "react-spinners";
 import { useContactForm } from "../hooks/ContactFormHook";
+import SectionHeading from "../../../utils/SectionHeading";
+import SectionLayout from "../../../Layout/SectionLayout";
 
 export default function ContactUs() {
   const { isLoading, message, formValues, errors, handleSubmit, setMessage } =
     useContactForm();
 
   return (
-    <div className="container mt-10 font-News flex items-center justify-center flex-col">
-      <h1 className="text-3xl text-center lg:text-start lg:text-5xl font-bold">
-        Have an enquiry? Let’s chat
-      </h1>
+    <SectionLayout>
+      <SectionHeading txt="Have an enquiry? Let’s chat" style={"text-center"} />
 
-      <div className="w-[70%] flex flex-col gap-4 mt-4 items-center justify-center">
+      <div className="flex flex-col gap-4 mt-4 items-center justify-center">
         {formValues.map((input, index) => (
           <Input
             customInputStyl="w-full"
@@ -38,11 +38,11 @@ export default function ContactUs() {
         <button
           type="submit"
           onClick={handleSubmit} // Attach handleSubmit to button
-          className=" md:w-[360px] bg-[#EA4C89] text-white font-semibold py-2 mt-4 rounded-lg hover:bg-[#d93c7a] transition duration-300 ease-in-out mb-7 focus:outline-none focus:ring-2 focus:ring-[#EA4C89] focus:ring-offset-2 w-[400px]"
+          className="bg-[#EA4C89] text-white font-semibold py-2 mt-4 rounded-lg hover:bg-[#d93c7a] transition duration-300 ease-in-out mb-7 focus:outline-none focus:ring-2 focus:ring-[#EA4C89] focus:ring-offset-2 w-full"
         >
           {isLoading ? <BeatLoader color="#fff" size={10} /> : "Submit Form"}
         </button>
       </div>
-    </div>
+    </SectionLayout>
   );
 }

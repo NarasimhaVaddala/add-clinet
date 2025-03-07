@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import { API } from "../../../core/url";
 import { toast } from "react-toastify";
+import SectionHeading from "../../../utils/SectionHeading";
 const MAX_IMAGES = 10;
 const MIN_IMAGES = 4;
 
@@ -84,7 +85,7 @@ const RegisterProccessForm = () => {
         });
 
         setTimeout(() => {
-          navigate("/");
+          navigate("/registered");
         }, 1500);
 
         setIsLoading(false);
@@ -147,9 +148,7 @@ const RegisterProccessForm = () => {
   return (
     <div className="w-full h-full flex justify-center items-center py-6 overflow-y-scroll">
       <div className="w-[70%] h-full  px-5 py-4 rounded-md pt-7">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-          🎬 Submit Your Video
-        </h2>
+        <SectionHeading txt="🎬 Submit Your Video" />
         <form
           className="w-full flex flex-wrap gap-6 justify-between items-center"
           onSubmit={formik.handleSubmit}

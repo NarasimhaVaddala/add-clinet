@@ -11,10 +11,11 @@ const NewInput = ({
   isLoading,
   isDisplayRightBtn,
   disable = false,
+  style,
 }) => {
   return (
-    <div className="flex flex-col gap-0">
-      <div className="relative w-[250px] md:w-[360px] flex flex-col gap-4">
+    <div className={`flex flex-col gap-0 w-full ${style}`}>
+      <div className="relative w-full flex flex-col gap-4">
         <input
           type="text"
           className="peer w-full p-2 border border-gray-300 outline-none rounded-lg text-lg transition-all duration-300 ease-in-out focus:border-[#EA4c89] valid:border-[#EA4c89] relative z-10 bg-transparent"

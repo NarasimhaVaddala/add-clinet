@@ -2,7 +2,7 @@ import { ToastContainer } from "react-toastify";
 import "./App.css";
 import Signup from "./features/auth/screen/Signup";
 import Login from "./features/auth/screen/Login";
-import HomeScreen from "./features/dashboard/screen/HomeScreen";
+import HomeScreen from "./features/dashboard/screen/Home/HomeScreen";
 import Layout from "./Layout/Layout";
 import ProtectedRoute from "./Layout/ProtectedRoute";
 import { Route, Routes } from "react-router-dom";
@@ -10,7 +10,7 @@ import RegisterProccessForm from "./features/dashboard/screen/RegisterProccessFo
 
 import CheckPaymentStatusModal from "./features/dashboard/Modals/CheckPaymentStatusModal";
 import Contact from "./features/dashboard/screen/ContactUs";
-import About from "./features/dashboard/screen/About";
+import About from "./features/dashboard/screen/About/About";
 
 import ChatbotScreen from "./features/Chatbot/ChatbotScreen";
 import PaymentScreen from "./features/dashboard/screen/PaymentScreen";
