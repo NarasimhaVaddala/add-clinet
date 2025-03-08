@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../auth/components/Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -22,6 +22,8 @@ const RegisterProccessForm = () => {
     "imageThree",
     "imageFour",
   ]);
+
+  useEffect(() => {}, []);
 
   const validationSchema = Yup.object({
     directorName: Yup.string().required("Director Name is required"),

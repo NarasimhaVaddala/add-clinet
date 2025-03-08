@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
-// import Counter from "../../../utils/Counter";
-import Carousel from "../../../../utils/Carousel";
-import NewBtn from "../../../../utils/NewBtn";
+
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchUserProfile } from "../../../auth/redux/profileSlice";

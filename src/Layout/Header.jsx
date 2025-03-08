@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Header = ({ loggedIn, setLoggedIn }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -15,7 +17,9 @@ const Header = ({ loggedIn, setLoggedIn }) => {
   };
 
   return (
-    <div className="w-full h-[80px] flex justify-between items-center bg-black px-4 fixed z-40">
+    <div
+      className={`w-full h-[80px] flex justify-between items-center bg-black px-4 fixed z-40`}
+    >
       <Link
         to="/"
         // onClick={console.log(this)}
@@ -24,19 +28,39 @@ const Header = ({ loggedIn, setLoggedIn }) => {
         <img src="/logo.png" alt="" />
       </Link>
       <div className="hidden md:flex gap-5 items-center">
-        <Link to="/about" className="text-white text-lg font-medium">
+        <Link
+          to="/about"
+          className={`text-lg font-medium ${
+            location.pathname === "/about" ? "text-[#EA4C89]" : "text-white"
+          }`}
+        >
           About Us
         </Link>
         {/* <Link to='/gallery' className='text-white text-lg font-medium'>Gallery</Link> */}
-        <Link to="/register" className="text-white text-lg font-medium">
+        <Link
+          to="/register"
+          className={`text-lg font-medium ${
+            location.pathname === "/register" ? "text-[#EA4C89]" : "text-white"
+          }`}
+        >
           Register Process
         </Link>
         {/* <Link to='/join' className='text-white text-lg font-medium'>Join Us</Link> */}
-        <Link to="/contact" className="text-white text-lg font-medium">
+        <Link
+          to="/contact"
+          className={`text-lg font-medium ${
+            location.pathname === "/contact" ? "text-[#EA4C89]" : "text-white"
+          }`}
+        >
           Contact Us
         </Link>
         {!loggedIn && (
-          <Link to="/login" className="text-white text-lg font-medium">
+          <Link
+            to="/login"
+            className={`text-lg font-medium ${
+              location.pathname === "/login" ? "text-[#EA4C89]" : "text-white"
+            }`}
+          >
             Login
           </Link>
         )}
@@ -57,7 +81,9 @@ const Header = ({ loggedIn, setLoggedIn }) => {
         <div className="absolute z-50 top-20 left-0 w-full bg-black flex flex-col items-center gap-5 py-4 md:hidden">
           <Link
             to="/about"
-            className="text-white text-lg font-medium"
+            className={`text-lg font-medium ${
+              location.pathname === "/about" ? "text-[#EA4C89]" : "text-white"
+            }`}
             onClick={() => setMenuOpen(false)}
           >
             About Us
@@ -71,7 +97,11 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             </Link> */}
           <Link
             to="/register"
-            className="text-white text-lg font-medium"
+            className={`text-lg font-medium ${
+              location.pathname === "/register"
+                ? "text-[#EA4C89]"
+                : "text-white"
+            }`}
             onClick={() => setMenuOpen(false)}
           >
             Register Process
@@ -85,7 +115,9 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             </Link> */}
           <Link
             to="/contact"
-            className="text-white text-lg font-medium"
+            className={`text-lg font-medium ${
+              location.pathname === "/contact" ? "text-[#EA4C89]" : "text-white"
+            }`}
             onClick={() => setMenuOpen(false)}
           >
             Contact Us
@@ -93,7 +125,9 @@ const Header = ({ loggedIn, setLoggedIn }) => {
           {!loggedIn && (
             <Link
               to="/login"
-              className="text-white text-lg font-medium"
+              className={`text-lg font-medium ${
+                location.pathname === "/login" ? "text-[#EA4C89]" : "text-white"
+              }`}
               onClick={() => setMenuOpen(false)}
             >
               Login
