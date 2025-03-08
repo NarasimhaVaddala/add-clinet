@@ -1,6 +1,7 @@
 import Carousel from "../../../../../utils/Carousel";
+import NewBtn from "../../../../../utils/NewBtn";
 
-export default function WelcomeContainer() {
+export default function WelcomeContainer({ handleNavigateRegistration }) {
   //relative bottom-10 if you want up
 
   const images = [
@@ -15,16 +16,64 @@ export default function WelcomeContainer() {
   ];
 
   return (
-    <div className="bg-black w-full">
-      <div className="w-full bg-gradient-to-b from-white/30 via-black/70 to-black   p-10 text-white container">
+    <div className="bg-black w-full" style={{ width: "100vw " }}>
+      <div
+        className="bg-gradient-to-b  from-white/30 via-black/70 to-black p-10 text-white "
+        style={{ width: "100vw" }}
+      >
         <h3 className="text-xl  font-bold font-News lg:text-3xl my-4">
-          Welcome to
+          What Next <i class="fa-solid fa-arrow-right text-xl "></i>
         </h3>
         <h3 className="text-3xl font-bold font-News lg:text-5xl my-1">
-          most exciting Women Rider Ad Competition <br />
+          Now, most exciting Women Rider Ad Competition. <br />
+        </h3>
+
+        <p className="text-3xl">
           celebrating fearless female riders showcasing their passion, skill,and
           spirit!
-        </h3>
+        </p>
+
+        {/* <NewBtn
+          onClick={handleNavigateRegistration}
+          title="Register Now"
+          customStyl="w-full lg:w-auto lg:max-w-none mt-4 mx-auto"
+        /> */}
+
+        <div className="w-full mx-auto my-8">
+          <button
+            class="codepen-button w-[200px]"
+            onClick={handleNavigateRegistration}
+          >
+            <span>Learn More</span>
+          </button>
+        </div>
+        <div className="bg-white p-4 rounded-lg mt-4 font-semibold space-y-2 lg:space-y-auto">
+          <p className="text-2xl lg:text-3xl text-[#EA4C89] font-bold">
+            Concept : "Empowered Women, Empowered World" - Women Rider
+          </p>
+          <p className="text-black">Duration : Min 30sec to Max 2min</p>
+          <p className="text-black">Registration : 10th March to 24th March</p>
+          <p className="text-black">
+            Video Submission : 10th March to 30th March
+          </p>
+          <p className="text-black">Voting : 6th April to 11th April</p>
+          <p className="text-black">Winner Announcement : 12th April</p>
+
+          <div className="text-black gap-1 text-normal mt-2">
+            <p className="my-2">
+              Looking for more details about Women Rider ? Find everything you
+              need on official website
+            </p>
+
+            <NewBtn
+              title={"Visit Website"}
+              customStyl={"bg-blue-500 text-sm py-2 px-2"}
+              onClick={() => {
+                window.location.href = "https://womenrider.com";
+              }}
+            />
+          </div>
+        </div>
 
         <div className="w-full mb-10">
           <Carousel images={images} />

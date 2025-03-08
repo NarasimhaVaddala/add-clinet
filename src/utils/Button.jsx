@@ -7,7 +7,7 @@ const Button = ({ type, text, isLoading, width = "250px", onClick }) => {
       style={{ width }}
       type={type}
       onClick={onClick}
-      className="w-[250px] md:w-[360px] min-h-[45px] bg-[#EA4c89] text-white rounded-md"
+      className="w-[250px] md:w-[360px] min-h-[45px] bg-[#EA4c89] hover:bg-[#ea4c89ae] text-white rounded-md"
     >
       {isLoading ? <BeatLoader color="#fff" size={10} /> : text}
     </button>

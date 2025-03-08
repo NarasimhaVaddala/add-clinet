@@ -35,7 +35,9 @@ const HomeScreen = () => {
   return (
     <div className="w-full">
       <VideoContainer handleNavigateRegistration={handleNavigateRegistration} />
-      <WelcomeContainer />
+      <WelcomeContainer
+        handleNavigateRegistration={handleNavigateRegistration}
+      />
       <LegacyContainer
         handleNavigateRegistration={handleNavigateRegistration}
       />

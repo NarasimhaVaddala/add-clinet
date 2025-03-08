@@ -14,7 +14,7 @@ const WinnerBoxSection = () => {
 
   return (
     <SectionLayout>
-      <SectionHeading txt="Benifits of Winner" />
+      {/* <SectionHeading txt="Benifits of Winner" /> */}
       {/* <p className="text-lg font-normal">
         All submissions must meet the following criteria to be
       </p>
@@ -25,15 +25,30 @@ const WinnerBoxSection = () => {
         text="Submit Your Video"
       /> */}
 
-      <div className="w-full flex flex-col lg:flex-row gap-4 items-center justify-between">
+      <div className="w-full flex flex-col lg:flex-row gap-4 items-center justify-between text-white text-center">
         <div className="card">
-          <h2 className="text-xl text-white">Winner 1</h2>
+          <h2 className="text-md text-center font-bold mb-3">First Prize</h2>
+
+          <p className="text-3xl font-bold">₹ 15,000</p>
+          <p className="text-md font-extralight">(Fifteen Thousand Rupees)</p>
+          <p className="text-md font-bold">+</p>
+          <p className="text-md font-bold">we will produce web series</p>
         </div>
         <div className="card">
-          <h2 className="text-xl text-white">Winner 2</h2>
+          <h2 className="text-md text-center font-bold mb-3">Second Prize</h2>
+
+          <p className="text-3xl font-bold">₹ 10,000</p>
+          <p className="text-md font-extralight">(Ten Thousand Rupees)</p>
+          <p className="text-md font-bold">+</p>
+          <p className="text-md font-bold">we will produce short series</p>
         </div>
         <div className="card">
-          <h2 className="text-xl text-white">Winner 3</h2>
+          <h2 className="text-md text-center font-bold mb-3">Third Prize</h2>
+
+          <p className="text-3xl font-bold">₹ 5,000</p>
+          <p className="text-md font-extralight">(Five Thousand Rupees)</p>
+          <p className="text-md font-bold">+</p>
+          <p className="text-md font-bold">we will produce short film</p>
         </div>
       </div>
     </SectionLayout>

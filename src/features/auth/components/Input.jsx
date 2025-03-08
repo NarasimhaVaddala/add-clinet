@@ -11,6 +11,7 @@ const Input = ({
   isLoading,
   isDisplayRightBtn,
   customInputStyl,
+  required,
 }) => {
   return (
     <div className="flex flex-col gap-0 w-full">
@@ -21,6 +22,7 @@ const Input = ({
           className="peer w-full p-2 border border-gray-300 outline-none rounded-lg text-lg transition-all duration-300 ease-in-out focus:border-[#EA4C89] valid:border-[#EA4C89] relative z-10 bg-transparent"
           value={value}
           onChange={onChange}
+          required={required}
         />
         {/* Label */}
         <span
