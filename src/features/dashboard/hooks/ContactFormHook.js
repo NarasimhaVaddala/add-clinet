@@ -25,15 +25,15 @@ export const useContactForm = () => {
       newErrors.email = "Invalid email address";
     }
 
-    if (!mobile.trim()) {
-      newErrors.mobile = "Mobile number is required";
-    } else if (!/^\d{10}$/.test(mobile)) {
-      newErrors.mobile = "Mobile number must be 10 digits";
-    }
+    // if (!mobile.trim()) {
+    //   newErrors.mobile = "Mobile number is required";
+    // } else if (!/^\d{10}$/.test(mobile)) {
+    //   newErrors.mobile = "Mobile number must be 10 digits";
+    // }
 
-    if (!subject.trim()) {
-      newErrors.subject = "Subject is required";
-    }
+    // if (!subject.trim()) {
+    //   newErrors.subject = "Subject is required";
+    // }
 
     if (!message.trim()) {
       newErrors.message = "Message is required";
@@ -56,7 +56,7 @@ export const useContactForm = () => {
             name,
             email,
             mobile,
-            subject,
+            // subject,
             message,
           },
           {
@@ -94,35 +94,30 @@ export const useContactForm = () => {
   const formValues = [
     {
       field: "name",
-      label: "Name",
+      label: "Name *",
       type: "text",
       value: name,
       onChange: setName,
       error: errors.name,
+      required: true,
     },
     {
       field: "email",
-      label: "Email",
+      label: "Email *",
       type: "email",
       value: email,
       onChange: setEmail,
       error: errors.email,
+      required: true,
     },
     {
       field: "mobile",
-      label: "Mobile",
+      label: "Mobile (optional)",
       type: "tel",
       value: mobile,
       onChange: setMobile,
       error: errors.mobile,
-    },
-    {
-      field: "subject",
-      label: "Subject",
-      type: "text",
-      value: subject,
-      onChange: setSubject,
-      error: errors.subject,
+      required: false,
     },
   ];
 

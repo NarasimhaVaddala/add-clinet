@@ -14,9 +14,10 @@ export default function ContactUs() {
     <SectionLayout>
       <SectionHeading txt="Have an enquiry? Let’s chat" style={"text-center"} />
 
-      <div className="flex flex-col gap-4 mt-4 items-center justify-center">
+      <div className="flex flex-col gap-4 mt-4 items-center justify-center w-[70%] mx-auto shadow-lg p-6 rounded-lg">
         {formValues.map((input, index) => (
           <Input
+            required={input.required}
             customInputStyl="w-full"
             key={index}
             lable={input.label}
@@ -28,12 +29,15 @@ export default function ContactUs() {
         ))}
 
         <TextArea
-          label={"Message"}
+          label={"Message *"}
+          max={300}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           customTextAreaStyle="w-full"
           isValid={errors.message} // Pass error message for textarea
         />
+
+        <p className="text-end w-full">{message.length}/300 charecters</p>
 
         <button
           type="submit"

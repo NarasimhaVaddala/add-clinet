@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Header = ({ loggedIn, setLoggedIn }) => {
@@ -20,49 +20,49 @@ const Header = ({ loggedIn, setLoggedIn }) => {
     <div
       className={`w-full h-[80px] flex justify-between items-center bg-black px-4 fixed z-40`}
     >
-      <Link
+      <NavLink
         to="/"
         // onClick={console.log(this)}
         className="w-[100px] h-full  flex justify-center items-center"
       >
         <img src="/logo.png" alt="" />
-      </Link>
+      </NavLink>
       <div className="hidden md:flex gap-5 items-center">
-        <Link
+        <NavLink
           to="/about"
           className={`text-lg font-medium ${
             location.pathname === "/about" ? "text-[#EA4C89]" : "text-white"
           }`}
         >
           About Us
-        </Link>
-        {/* <Link to='/gallery' className='text-white text-lg font-medium'>Gallery</Link> */}
-        <Link
+        </NavLink>
+        {/* <NavLink to='/gallery' className='text-white text-lg font-medium'>Gallery</NavLink> */}
+        <NavLink
           to="/register"
           className={`text-lg font-medium ${
             location.pathname === "/register" ? "text-[#EA4C89]" : "text-white"
           }`}
         >
           Register Process
-        </Link>
-        {/* <Link to='/join' className='text-white text-lg font-medium'>Join Us</Link> */}
-        <Link
+        </NavLink>
+        {/* <NavLink to='/join' className='text-white text-lg font-medium'>Join Us</NavLink> */}
+        <NavLink
           to="/contact"
           className={`text-lg font-medium ${
             location.pathname === "/contact" ? "text-[#EA4C89]" : "text-white"
           }`}
         >
           Contact Us
-        </Link>
+        </NavLink>
         {!loggedIn && (
-          <Link
+          <NavLink
             to="/login"
             className={`text-lg font-medium ${
               location.pathname === "/login" ? "text-[#EA4C89]" : "text-white"
             }`}
           >
             Login
-          </Link>
+          </NavLink>
         )}
         {loggedIn && (
           <button onClick={logout} className="text-white text-lg font-medium">
@@ -79,7 +79,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
 
       {menuOpen && (
         <div className="absolute z-50 top-20 left-0 w-full bg-black flex flex-col items-center gap-5 py-4 md:hidden">
-          <Link
+          <NavLink
             to="/about"
             className={`text-lg font-medium ${
               location.pathname === "/about" ? "text-[#EA4C89]" : "text-white"
@@ -87,15 +87,15 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             onClick={() => setMenuOpen(false)}
           >
             About Us
-          </Link>
-          {/* <Link
+          </NavLink>
+          {/* <NavLink
               to="/gallery"
               className="text-white text-lg font-medium"
               onClick={() => setMenuOpen(false)}
             >
               Gallery
-            </Link> */}
-          <Link
+            </NavLink> */}
+          <NavLink
             to="/register"
             className={`text-lg font-medium ${
               location.pathname === "/register"
@@ -105,15 +105,15 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             onClick={() => setMenuOpen(false)}
           >
             Register Process
-          </Link>
-          {/* <Link
+          </NavLink>
+          {/* <NavLink
               to="/join"
               className="text-white text-lg font-medium"
               onClick={() => setMenuOpen(false)}
             >
               Join Us
-            </Link> */}
-          <Link
+            </NavLink> */}
+          <NavLink
             to="/contact"
             className={`text-lg font-medium ${
               location.pathname === "/contact" ? "text-[#EA4C89]" : "text-white"
@@ -121,9 +121,9 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             onClick={() => setMenuOpen(false)}
           >
             Contact Us
-          </Link>
+          </NavLink>
           {!loggedIn && (
-            <Link
+            <NavLink
               to="/login"
               className={`text-lg font-medium ${
                 location.pathname === "/login" ? "text-[#EA4C89]" : "text-white"
@@ -131,7 +131,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
               onClick={() => setMenuOpen(false)}
             >
               Login
-            </Link>
+            </NavLink>
           )}
           {loggedIn && (
             <button

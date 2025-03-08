@@ -1,15 +1,15 @@
-import { useLayoutEffect } from "react"; // Change this
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const ScrollToTop = () => {
+const ScrollToTopOnRouteChange = () => {
   const { pathname } = useLocation();
 
-  useLayoutEffect(() => {
-    // Change this
-    window.scrollTo(0, 0);
+  useEffect(() => {
+    console.log("Scrolling to top on route change:", pathname);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
 
   return null;
 };
 
-export default ScrollToTop;
+export default ScrollToTopOnRouteChange;

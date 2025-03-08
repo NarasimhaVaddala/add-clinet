@@ -6,23 +6,23 @@ export default function HowItWorks() {
   const data = [
     {
       title: "Sign up",
-      text: "Choose your category and register. You can signup as an individual or team (up to 5 members)",
+      text: "Register online to enter the competition by providing your details. Once registered, you’re all set to participate.",
     },
     {
-      title: "Craft your ad",
-      text: "Create your ad, you'll have 2 months to craft your masterpiece and submit it by deadline.",
+      title: "Craft your Ad",
+      text: "Create an original and creative advertisement that aligns with the competition theme.",
     },
     {
       title: "Submit your ad",
-      text: "Wait for the results, Winners will be announced 2 weeks after the contest ends",
+      text: "Upload your completed advertisement(video) for evaluation by the judges.",
     },
     {
       title: "Vote",
-      text: "Submit on or before 30 March 2025",
+      text: "Engage in the voting process, or encourage others to vote for your entry.",
     },
     {
       title: "Win",
-      text: "Winners will be announced on 12th April 2025",
+      text: "If selected, claim your prize",
     },
   ];
 
@@ -41,7 +41,7 @@ export default function HowItWorks() {
 function ListItem({ title, text }) {
   return (
     <div className="flex gap-4 bg-white rounded-lg ">
-      <div className="flex-shrink-0 bg-gray-300 h-16 w-16 rounded-lg flex items-center justify-center">
+      <div className="hover:scale-110 transition-all flex-shrink-0 bg-gray-300 h-16 w-16 rounded-lg flex items-center justify-center">
         <i className="fa-solid fa-check text-black text-2xl"></i>
       </div>
       <div className="flex flex-col">

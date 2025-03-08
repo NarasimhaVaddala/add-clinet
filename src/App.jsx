@@ -5,7 +5,7 @@ import Login from "./features/auth/screen/Login";
 import HomeScreen from "./features/dashboard/screen/Home/HomeScreen";
 import Layout from "./Layout/Layout";
 import ProtectedRoute from "./Layout/ProtectedRoute";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import RegisterProccessForm from "./features/dashboard/screen/RegisterProccessForm";
 
 import CheckPaymentStatusModal from "./features/dashboard/Modals/CheckPaymentStatusModal";
@@ -16,10 +16,17 @@ import ChatbotScreen from "./features/Chatbot/ChatbotScreen";
 import PaymentScreen from "./features/dashboard/screen/PaymentScreen";
 import RegisterMatter from "./features/dashboard/screen/RegisterMatter/RegisterMatter";
 import { useEffect, useState } from "react";
-import ScrollToTop from "./utils/ScrollToTop";
 import AlreadyRegistered from "./features/dashboard/screen/AlreadyRegistered";
+import ScrollToTopOnRouteChange from "./utils/ScrollToTop";
 
 function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    console.log("Scrolling to top on route change:", pathname);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+
   const [loggedIn, setLoggedIn] = useState(false);
 
   // const location = useLocation();
@@ -41,7 +48,7 @@ function App() {
   return (
     <>
       <div className="flex flex-col w-full font-News">
-        <ScrollToTop />
+        <ScrollToTopOnRouteChange />
         <ToastContainer
           position="top-right"
           autoClose={5000} // 5 seconds

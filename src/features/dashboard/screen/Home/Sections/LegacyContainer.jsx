@@ -39,8 +39,8 @@ export default function LegacyContainer() {
           </div>
         </div> */}
 
-        <div className="w-fit">
-          <img src="price.png" />
+        <div className="">
+          <img src="thanos.png" />
         </div>
 
         <div className="flex flex-col w-fit">

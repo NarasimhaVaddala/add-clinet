@@ -8,6 +8,7 @@ const TextArea = ({
   isValid,
   isLoading,
   customTextAreaStyle,
+  max,
 }) => {
   return (
     <div className={`flex flex-col gap-0 ${customTextAreaStyle}`}>
@@ -18,6 +19,7 @@ const TextArea = ({
           className="peer w-full p-2 border border-gray-300 outline-none rounded-lg text-lg transition-all duration-300 ease-in-out focus:border-[#EA4C89] valid:border-[#EA4C89] resize-none relative z-10 bg-transparent"
           value={value}
           onChange={onChange}
+          maxLength={max}
         />
         {/* Label */}
         <span

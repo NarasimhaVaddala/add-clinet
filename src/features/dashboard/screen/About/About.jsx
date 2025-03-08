@@ -46,7 +46,7 @@ export default function About() {
     },
     {
       img: "",
-      title: "Zen Vision",
+      title: "Zen Mission",
       mainText:
         "At Zen Media, we are committed to producing compelling narratives that blend creativity, authenticity, and innovation.",
       listData: [
@@ -87,7 +87,7 @@ export default function About() {
           index={index} // Pass the index
         />
       ))}
-      <Participate handleNavigateRegister={handleNavigateRegister} />
+      {/* <Participate handleNavigateRegister={handleNavigateRegister} /> */}
       <CreativePotential handleNavigateRegister={handleNavigateRegister} />
       <FilmMakingHeights handleNavigateRegister={handleNavigateRegister} />
     </>
