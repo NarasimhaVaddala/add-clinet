@@ -14,7 +14,7 @@ export default function ContactUs() {
     <SectionLayout>
       <SectionHeading txt="Have an enquiry? Let’s chat" style={"text-center"} />
 
-      <div className="flex flex-col gap-4 mt-4 items-center justify-center w-[70%] mx-auto shadow-lg p-6 rounded-lg">
+      <div className="flex flex-col gap-4 mt-4 items-center justify-center w-full md:w-[70%] mx-auto shadow-lg p-6 rounded-lg">
         {formValues.map((input, index) => (
           <Input
             required={input.required}

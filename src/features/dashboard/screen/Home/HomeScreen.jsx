@@ -10,6 +10,8 @@ import LegacyContainer from "./Sections/LegacyContainer";
 import VisionSection from "./Sections/VisionSection";
 import AboutCompetion from "./Sections/AboutCompetion";
 import SubmitVideo from "./Sections/SubmitGallery";
+import ExploreThePlatform from "./Sections/ExploreThePlatform";
+import Partner from "./Sections/Partner";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -38,14 +40,16 @@ const HomeScreen = () => {
       <WelcomeContainer
         handleNavigateRegistration={handleNavigateRegistration}
       />
-      <LegacyContainer
+      {/* <LegacyContainer
         handleNavigateRegistration={handleNavigateRegistration}
-      />
+      /> */}
+      <ExploreThePlatform />
       <ImageGallery />
       {/* <WinnerBoxSection /> */}
-      <VisionSection />
-      <AboutCompetion />
-      <SubmitVideo handleNavigateRegistration={handleNavigateRegistration} />
+      {/* <VisionSection /> */}
+      {/* <AboutCompetion /> */}
+      {/* <SubmitVideo handleNavigateRegistration={handleNavigateRegistration} /> */}
+      <Partner />
     </div>
   );
 };

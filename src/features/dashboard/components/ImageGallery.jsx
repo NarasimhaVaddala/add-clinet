@@ -1,46 +1,56 @@
-import { useScroll, useTransform, useSpring, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import SectionHeading from "../../../utils/SectionHeading";
 import SectionLayout from "../../../Layout/SectionLayout";
+import "./TextAnimation.css";
 
 function ImageGallery() {
   const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  const [scrollDir, setScrollDir] = useState("down");
 
-  // Track scroll progress for the section
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"], // Start effect when section enters, end when it exits
-  });
-
-  // Smooth animation to avoid jerky transitions
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 20,
-    mass: 1,
-  });
-
-  console.log("smoothProgress", smoothProgress);
-
-  // Transform color from gray to black
-  const textColor = useTransform(smoothProgress, [0, 1], ["#4b5563", "#000"]);
-
-  // Log the actual color values as they change
   useEffect(() => {
-    const unsubscribe = textColor.on("change", (latest) => {
-      console.log("Updated text color:", latest);
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold: 0.2 }
+    );
 
-    return () => unsubscribe(); // Cleanup effect
-  }, [textColor]);
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        setScrollDir("down");
+      } else {
+        setScrollDir("up");
+      }
+      lastScrollY = window.scrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const text = `At Zen Media, storytelling is more than just an art—it’s a 
+                transformative force that connects, inspires, and leaves a 
+                lasting impact. We believe that every idea carries the power 
+                to spark emotions, every vision has the potential to shape 
+                perspectives, and every story deserves to be told with 
+                authenticity and passion.`;
 
   return (
-    // <div
-    //   ref={ref}
-    //   className="min-h-screen flex flex-col items-center justify-center py-8"
-    // >
     <SectionLayout>
-      {/* Existing Image Gallery Section */}
       <SectionHeading txt="Cherishing the heart and craft of cinema" />
       <div className="flex flex-col md:flex-row gap-8 w-full">
         <div className="flex flex-col justify-between gap-8 w-full md:w-[30%]">
@@ -64,8 +74,8 @@ function ImageGallery() {
         </div>
       </div>
 
-      {/* New Section: Image on Left and Paragraph on Right */}
-      <div className="flex flex-col md:flex-row gap-8 w-full mt-12">
+      {/* New Section: Image on Left and Animated Text on Right */}
+      <div ref={ref} className="flex flex-col md:flex-row gap-8 w-full mt-12">
         <div className="w-full md:w-[50%]">
           <img
             src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
@@ -74,24 +84,28 @@ function ImageGallery() {
           />
         </div>
         <div className="w-full md:w-[50%] flex flex-col items-center">
-          {/* Animated text inside motion div */}
-          <motion.div style={{ color: textColor }}>
-            <p className="text-xl lg:text-3xl font-semibold text-justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur.
-              <Link
-                to="/about"
-                className="text-red-500 font-semibold ml-2 hover:underline text-xl"
+          <div className="text-container">
+            {text.split(" ").map((word, index) => (
+              <span
+                key={index}
+                className={`word ${inView ? "animate-text" : ""}`}
+                style={{
+                  animationDelay: `${index * 0.1}s`,
+                  color: scrollDir === "down" ? "black" : "gray",
+                  transition: "color 0.5s ease-in-out",
+                }}
               >
-                See All{" "}
-                <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-1"></i>
-              </Link>
-            </p>
-          </motion.div>
+                {word}
+              </span>
+            ))}
+          </div>
+          <Link
+            to="/about"
+            className="text-red-500 font-semibold mt-4 hover:underline text-xl"
+          >
+            See All{" "}
+            <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-1"></i>
+          </Link>
         </div>
       </div>
     </SectionLayout>

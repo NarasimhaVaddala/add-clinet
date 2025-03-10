@@ -1,0 +1,29 @@
+.text-container {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: justify;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px; /* Spacing between words */
+}
+
+.word {
+  color: #4b5563; /* Initial gray */
+  opacity: 0.3; /* Start with low visibility */
+  transition: color 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.animate-text {
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    color: #4b5563;
+    opacity: 0.3;
+  }
+  to {
+    color: #000;
+    opacity: 1;
+  }
+}

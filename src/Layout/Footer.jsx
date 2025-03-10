@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="w-full px-5 py-7 rounded-t-[30px] bg-black mt-4 pt-12 flex flex-col gap-4">
       {/* Main Footer Content */}
-      <div className="w-full flex flex-col lg:flex-row gap-6 justify-between items-start">
+      <div className="w-full flex flex-col lg:flex-row gap-6 justify-between items-center">
         {/* Logo and Contact Section */}
         <div className="flex flex-col gap-4 w-full lg:w-[20%] items-center lg:items-start order-1">
           <div className="w-[80px] h-[80px] bg-red-300 rounded-full"></div>
@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
 
         {/* Links Section */}
-        <div className="w-full lg:w-[27%] flex flex-col lg:flex-row gap-6 order-2">
+        <div className="w-full lg:w-[27%] flex flex-col lg:flex-row gap-8 order-2">
           <div className="flex flex-col gap-3 text-center lg:text-start">
             <Link to="/about" className="text-white font-medium">
               About the contest
@@ -30,11 +30,8 @@ const Footer = () => {
             <Link to="/about" className="text-white font-medium">
               About
             </Link>
-            <Link
-              to="https://womenrider.com/about"
-              className="text-white font-medium"
-            >
-              Our Story
+            <Link to="/register" className="text-white font-medium">
+              Register Process
             </Link>
             <Link
               to="https://www.nuhvin.com/career"
@@ -64,26 +61,25 @@ const Footer = () => {
         </div>
 
         {/* Additional Links Section */}
-        <div className="text-center lg:text-start flex flex-col gap-4 w-full lg:w-[20%] pl-0 lg:pl-5 order-4 lg:order-3">
+        {/* <div className="text-center lg:text-start flex flex-col gap-4 w-full lg:w-[20%] pl-0 lg:pl-5 order-4 lg:order-3">
           <Link to="/register" className="text-white font-medium">
             Submit Short Film
           </Link>
           <Link to="/register" className="text-white font-medium">
             Release Short Film
           </Link>
-          {/* <Link className="text-white font-medium">Blog</Link> */}
           <Link to="/contact" className="text-white font-medium">
             Contact Us
           </Link>
-        </div>
+        </div> */}
 
         {/* Newsletter Section */}
-        <div className="w-full lg:w-[30%] flex flex-col lg:flex-row gap-4 items-center lg:items-start order-3 lg:order-4">
+        <div className="lg:w-[30%] flex flex-col lg:flex-row gap-4 items-center lg:items-start order-3 lg:order-4">
           <div className="flex flex-col gap-4 w-full lg:w-[70%]">
             <span className="text-white font-medium">
               Subscribe to our newsletter
             </span>
-            <div className="w-full h-[45px] bg-red-200 rounded-2xl overflow-hidden flex">
+            <div className="w-[300px] h-[45px] bg-red-200 rounded-2xl overflow-hidden flex">
               <input
                 type="text"
                 className="w-[82%] h-full px-2 bg-white outline-none border-none"

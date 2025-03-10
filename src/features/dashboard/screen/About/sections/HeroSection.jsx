@@ -21,7 +21,7 @@ export default function HeroSec({ handleNavigateRegister }) {
       {/* Image Section */}
       <div className="lg:w-[40%] flex justify-center">
         <img
-          src="/thanos.png"
+          src="/logo.png"
           alt="Video Competition"
           className="w-full lg:w-[80%] object-cover rounded-lg shadow-lg"
         />

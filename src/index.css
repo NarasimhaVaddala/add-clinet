@@ -34,6 +34,7 @@ li {
   z-index: 2;
 }
 
+/* Existing image background */
 #hero-container::before,
 #hero-container-register::before {
   content: "";
@@ -42,27 +43,40 @@ li {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/home-hero.png");
+  background-image: url("/home-hero-new.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: -1;
-  /* opacity: ; */
-  /* filter: blur(2px); */
+  z-index: -2;
 }
 
+/* New gradient overlay */
+#hero-container::after,
+#hero-container-register::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    /* Transparent at the top */ rgba(0, 0, 0, 0.6) 70%,
+    /* Starts darkening at 70% height */ rgba(0, 0, 0, 0.8) 100%
+      /* Full darkness at the bottom */
+  );
+  z-index: -1; /* Above the image (::before) but below content */
+}
+
+/* Specific image for register container */
 #hero-container-register::before {
   background-image: url("/bathtublady.png");
-  background-size: cover;
-  background-color: none;
 }
 
-@media (width < 768px) {
+@media (max-width: 768px) {
   #hero-container {
     max-height: 300px;
-    /* background: linear-gradient(to top right, #edb1ba, white); */
   }
 }
 
