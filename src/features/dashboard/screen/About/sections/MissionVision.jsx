@@ -3,7 +3,10 @@ import ListItem from "../components/ListItem";
 
 export default function MissionVision({ title, mainText, list, index }) {
   return (
-    <div className="bg-black w-full flex items-center justify-center p-4">
+    <div
+      id="mission"
+      className="bg-black w-full flex items-center justify-center p-4"
+    >
       <div className="flex flex-col md:flex-row w-full lg:w-[90%] gap-8">
         {/* Alternate order based on index */}
         {index % 2 === 0 ? (

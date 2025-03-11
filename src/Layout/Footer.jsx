@@ -9,7 +9,9 @@ const Footer = () => {
       <div className="w-full flex flex-col lg:flex-row gap-6 justify-between items-center">
         {/* Logo and Contact Section */}
         <div className="flex flex-col gap-4 w-full lg:w-[20%] items-center lg:items-start order-1">
-          <div className="w-[80px] h-[80px] bg-red-300 rounded-full"></div>
+          <div className="w-[80px] h-[80px] bg-none rounded-full">
+            <img src="/logo.png" alt="" />
+          </div>
           <div className="flex flex-col gap-2 text-center lg:text-start">
             <Link
               to="mailto:ngsinfo@nuhvin.com"
@@ -24,7 +26,7 @@ const Footer = () => {
         {/* Links Section */}
         <div className="w-full lg:w-[27%] flex flex-col lg:flex-row gap-8 order-2">
           <div className="flex flex-col gap-3 text-center lg:text-start">
-            <Link to="/about" className="text-white font-medium">
+            <Link to="/register" className="text-white font-medium">
               About the contest
             </Link>
             <Link to="/about" className="text-white font-medium">
@@ -43,15 +45,15 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-3 text-center lg:text-start ">
             <Link
-              to="https://www.nuhvin.com/vision"
-              target="_blank"
+              to="/about/#mission"
+              // target="_blank"
               className="text-white font-medium"
             >
               Our Vision
             </Link>
             <Link
-              to="https://www.nuhvin.com/mission"
-              target="_blank"
+              to="/about/#mission"
+              // target="_blank"
               className="text-white font-medium"
             >
               Our Mission
@@ -99,25 +101,32 @@ const Footer = () => {
       {/* Copyright and Social Media Section */}
       <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
         <span className="text-white font-medium text-center lg:text-left order-1">
-          Copyright © 2025 DPIFF. All rights reserved.
+          Copyright © 2025 Zen Media. All rights reserved.
         </span>
         <div className="flex gap-4 items-center justify-center order-2">
           {/* Facebook Icon */}
-          <Link href="#" className="text-white hover:text-red-400">
+          {/* <Link href="#" className="text-white hover:text-red-400">
             <i className="fab fa-facebook fa-2x"></i>
-          </Link>
+          </Link> */}
           {/* Instagram Icon */}
-          <Link href="#" className="text-white hover:text-red-400">
+          <a
+            href="https://www.instagram.com/zen_media_official/"
+            target="_blank"
+            className="text-white hover:text-red-400"
+          >
             <i className="fab fa-instagram fa-2x"></i>
-          </Link>
+          </a>
           {/* Twitter Icon */}
-          <Link href="#" className="text-white hover:text-red-400">
+          {/* <Link href="#" className="text-white hover:text-red-400">
             <i className="fab fa-twitter fa-2x"></i>
-          </Link>
+          </Link> */}
           {/* LinkedIn Icon */}
-          <Link href="#" className="text-white hover:text-red-400">
-            <i className="fab fa-linkedin fa-2x"></i>
-          </Link>
+          <a
+            href="https://www.youtube.com/@zenmedia-hub"
+            className="text-white hover:text-red-400"
+          >
+            <i className="fab fa-youtube fa-2x"></i>
+          </a>
         </div>
       </div>
     </div>
