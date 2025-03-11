@@ -14,11 +14,7 @@ export default function RemeberUsCars({ handlePay }) {
       </div>
 
       <div className="absolute right-0 -bottom-10">
-        <img
-          src="https://dpiff.in/wp-content/uploads/2024/11/book-img.png"
-          alt=""
-          className="h-[300px] "
-        />
+        <img src="/cutcut.png" alt="" className="h-[300px] " />
       </div>
     </div>
     // </SectionLayout>

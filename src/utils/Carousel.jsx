@@ -35,9 +35,9 @@ const Carousel = ({ images }) => {
         {images.map((image, index) => (
           <SwiperSlide key={index}>
             <img
-              src={image}
+              src={`/carousel/${image}`}
               alt={`Slide ${index + 1}`}
-              className="image-slide"
+              className="image-slide object-cover"
             />
           </SwiperSlide>
         ))}

@@ -55,19 +55,19 @@ function ImageGallery() {
       <div className="flex flex-col md:flex-row gap-8 w-full">
         <div className="flex flex-col justify-between gap-8 w-full md:w-[30%]">
           <img
-            src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
+            src="/home-cherish-1.png"
             alt="Cinema Image 1"
             className="w-full h-auto object-cover rounded-lg shadow-lg"
           />
           <img
-            src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
+            src="/home-cherish-5.png"
             alt="Cinema Image 2"
             className="w-full h-auto object-cover rounded-lg shadow-lg"
           />
         </div>
         <div className="w-full md:w-[70%]">
           <img
-            src="https://dpiff.in/wp-content/uploads/2024/11/cherish3.jpg"
+            src="/home-cherish-2.png"
             alt="Cinema Image 3"
             className="w-full h-auto object-cover rounded-lg shadow-lg"
           />
@@ -78,7 +78,7 @@ function ImageGallery() {
       <div ref={ref} className="flex flex-col md:flex-row gap-8 w-full mt-12">
         <div className="w-full md:w-[50%]">
           <img
-            src="https://dpiff.in/wp-content/uploads/2024/11/cheris1.jpg"
+            src="/home-cherish-3.png"
             alt="Cinema Image 4"
             className="w-full h-auto object-cover rounded-lg shadow-lg"
           />

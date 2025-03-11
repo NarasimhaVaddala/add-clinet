@@ -24,7 +24,8 @@ export default function MissionVision({ title, mainText, list, index }) {
             {/* Right Section */}
             <div className="flex-1 rounded-2xl overflow-hidden">
               <img
-                src="https://dpiff.in/wp-content/uploads/2024/11/Rectangle-96.png"
+                // src="https://dpiff.in/wp-content/uploads/2024/11/Rectangle-96.png"
+                src="/home-cherish-4.png"
                 alt="Mission Visual"
                 className="w-full h-full object-cover"
               />
@@ -35,7 +36,8 @@ export default function MissionVision({ title, mainText, list, index }) {
             {/* Reversed Order */}
             <div className="flex-1 rounded-2xl overflow-hidden">
               <img
-                src="https://dpiff.in/wp-content/uploads/2024/11/Rectangle-96.png"
+                // src="https://dpiff.in/wp-content/uploads/2024/11/Rectangle-96.png"
+                src="/home-cherish-6.png"
                 alt="Mission Visual"
                 className="w-full h-full object-cover"
               />
