@@ -169,12 +169,7 @@ const Signup = ({ setLoggedIn }) => {
             isValid={formik.errors.address}
           />
           {/* <div className="w-full  md:pl-11 mt-[-10px] gap-1"> */}
-          <span className="text-end text-[12px]">
-            have an account{" "}
-            <Link to="/login" className="text-blue-500 font-medium">
-              Sign In
-            </Link>
-          </span>
+
           <Button
             width="100%"
             type="submit"
@@ -182,6 +177,13 @@ const Signup = ({ setLoggedIn }) => {
             isLoading={isLoading}
           />
           {/* </div> */}
+
+          <span className="text-end text-[12px]">
+            Already have an account ?{" "}
+            <Link to="/login" className="text-blue-500 font-medium">
+              Sign In
+            </Link>
+          </span>
         </form>
         <div className="w-1/2 hidden md:block">
           <img src="./transformer.png" className="object-cover rounded-xl" />

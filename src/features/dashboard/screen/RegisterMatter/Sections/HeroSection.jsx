@@ -16,7 +16,7 @@ export default function HeroSection({ handlePay }) {
         </p>
 
         <NewBtn
-          title="Submit Here"
+          title="Register Now"
           customStyl="w-full lg:w-auto"
           onClick={handlePay}
         />

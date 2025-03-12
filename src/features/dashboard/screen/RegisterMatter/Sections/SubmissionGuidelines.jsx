@@ -17,7 +17,21 @@ export default function SubmissionGuidelines() {
     },
     {
       title: "Registration Guidelines",
-      texts: [],
+      texts: [
+        'Create a New Account: If you do not have an account  click on the "Register Process" option to begin the registration.',
+
+        "Enter Personal Information: Fill in the following details: Full Name, Phone Number (You will receive an OTP to verify your number), Email Id, Address.",
+
+        "Submit Your Information: After entering all the required details, click on Submit.",
+
+        "Complete Registration Fee Payment: After submission, you will be prompted to pay a non-refundable registration fee of ₹499.",
+
+        "Payment options available: UPI ID, Net Banking, Debit/Credit Cards, Wallets.",
+
+        "Submit Video: Once payment is completed, upload your video and fill out all the necessary fields.",
+
+        "Final Submission: After uploading the video and ensuring all fields are completed, click on Submit to complete the registration process.",
+      ],
     },
     {
       title: "Policies and Rules",

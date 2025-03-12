@@ -23,14 +23,14 @@ export const usePayment = () => {
 
     try {
       const response = await API.post("/payment/create-order", {
-        amount: 149,
+        amount: 499,
         currency: "INR",
       });
       const { order_id } = response.data;
 
       const options = {
         key: "rzp_test_zCMFNwSBlZt1gx",
-        amount: 149,
+        amount: 499,
         currency: "INR",
         name: "Payment Towards AD Competetion",
         // description: `Add ₹${1} to wallet`,
