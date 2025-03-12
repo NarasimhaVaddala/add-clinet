@@ -1,6 +1,9 @@
 import NewBtn from "../../../../../utils/NewBtn";
 
 export function VideoContainer({ handleNavigateRegistration }) {
+  const handleNavYoutube = () => {
+    window.location.href = "https://www.youtube.com/@zenmedia-hub";
+  };
   return (
     <div className="w-full text-white p-4 relative" id="hero-container">
       {/* Inner container with absolute positioning */}
@@ -19,7 +22,7 @@ export function VideoContainer({ handleNavigateRegistration }) {
         {/* Right section: Button */}
         {/* <div className="mt-4 lg:mt-0 lg:ml-4 w-full"> */}
         <NewBtn
-          onClick={handleNavigateRegistration}
+          onClick={handleNavYoutube}
           title="Register Now"
           customStyl="w-full lg:w-auto lg:max-w-none mt-4"
         />

@@ -29,7 +29,7 @@ export default function RegisterMatter() {
     const token = await localStorage.getItem("token");
 
     if (!token) {
-      return navigate("/login");
+      return navigate("/signup");
     }
 
     if (
@@ -62,7 +62,11 @@ export default function RegisterMatter() {
       <WhoCanParticipate />
       <HowItWorks />
       <SubmissionGuidelines />
-      <RemeberUsCars handlePay={handlePay} />
+      <RemeberUsCars
+        handlePay={handlePay}
+        title="Remember us by"
+        text="Keep every memory alive with our digital collection – one click to eternalize the moments"
+      />
       {/* <CompetionDetails /> */}
       {/* <button onClick={handlePay}>Register</button> */}
     </div>

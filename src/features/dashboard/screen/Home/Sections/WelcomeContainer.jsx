@@ -55,10 +55,12 @@ export default function WelcomeContainer({ handleNavigateRegistration }) {
           customStyl="w-full lg:w-auto lg:max-w-none mt-4 mx-auto"
         /> */}
 
-        <div className="w-full mx-auto my-8 flex flex-col lg:flex-row gap-6 items-center justify-between">
+        <div className="w-full mx-auto my-8 flex flex-col gap-8 items-center justify-center lg:flex-row ">
+          {/* <span>kjh</span> */}
+          {/* <span>vg</span> */}
           <button
             className="codepen-button lg:w-[200px] w-full"
-            onClick={() => navigate("/about")}
+            onClick={() => navigate("/register")}
           >
             <span>Learn More</span>
           </button>
@@ -74,6 +76,7 @@ export default function WelcomeContainer({ handleNavigateRegistration }) {
             Concept : "Empowered Women, Empowered World" - Women Rider
           </p>
           <p className="text-black">Duration : Min 30sec to Max 2min</p>
+          <p className="text-black">Pay Registration Fee : 499/-</p>
           <p className="text-black">Registration : 10th March to 24th March</p>
           <p className="text-black">
             Video Submission : 10th March to 30th March

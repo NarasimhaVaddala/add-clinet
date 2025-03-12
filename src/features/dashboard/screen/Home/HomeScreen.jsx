@@ -18,7 +18,13 @@ const HomeScreen = () => {
 
   const navigate = useNavigate();
 
-  const handleNavigateRegistration = () => {
+  const handleNavigateRegistration = async () => {
+    const token = await localStorage.getItem("token");
+
+    if (!token) {
+      return navigate("/signup");
+    }
+
     navigate("/register");
   };
 

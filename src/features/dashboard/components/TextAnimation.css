@@ -1,29 +1,82 @@
-.text-container {
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: justify;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px; /* Spacing between words */
+/* TextAnimation.css */
+.reveal-type {
+  opacity: 1;
+  font-size: clamp(
+    1.125rem,
+    3vw,
+    2rem
+  ); /* Smaller than before, more responsive */
+  line-height: 1.4;
+  word-spacing: normal;
+  letter-spacing: normal;
+  width: 100%;
 }
 
+/* For character-by-character animation */
+.char {
+  display: inline-block;
+  transition: color 0.3s ease;
+  will-change: color; /* Optimize for GPU */
+}
+
+/* Word container */
 .word {
-  color: #4b5563; /* Initial gray */
-  opacity: 0.3; /* Start with low visibility */
-  transition: color 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  display: inline-block;
+}
+
+/* Space between words */
+.char-space {
+  display: inline-block;
+  width: 0.25em; /* Adjust this value to control space width */
+}
+
+/* Additional styles for the text container */
+.text-container {
+  position: relative;
+  padding: 0.5rem;
+  overflow: hidden;
+  width: 100%;
+  min-height: calc(var(--vh, 1vh) * 100); /* Dynamic viewport height */
+}
+
+/* Media queries for better responsiveness */
+@media (max-width: 640px) {
+  .reveal-type {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .reveal-type {
+    font-size: 1.25rem; /* 20px */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .reveal-type {
+    font-size: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 1025px) {
+  .reveal-type {
+    font-size: 1.875rem; /* 30px */
+  }
+}
+
+/* For fallback animation if GSAP doesn't work */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-text {
-  animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    color: #4b5563;
-    opacity: 0.3;
-  }
-  to {
-    color: #000;
-    opacity: 1;
-  }
+  animation: fadeIn 0.5s forwards;
 }

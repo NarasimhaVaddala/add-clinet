@@ -7,6 +7,7 @@ import MissionVision from "./sections/MissionVision";
 import Participate from "./sections/Participate";
 import CreativePotential from "./sections/CreativePotential";
 import FilmMakingHeights from "./sections/FilmMaking";
+import RemeberUsCars from "../RegisterMatter/Sections/RemeberUsCars";
 
 export default function About() {
   const navigate = useNavigate();
@@ -90,6 +91,12 @@ export default function About() {
       {/* <Participate handleNavigateRegister={handleNavigateRegister} /> */}
       <CreativePotential handleNavigateRegister={handleNavigateRegister} />
       <FilmMakingHeights handleNavigateRegister={handleNavigateRegister} />
+      <RemeberUsCars
+        handlePay={() => navigate("/register")}
+        containerStyle={"mt-4"}
+        title="Ad Competetion"
+        text="Concept : Empowered Women, Empowered World - Women Rider"
+      />
     </>
   );
 }
