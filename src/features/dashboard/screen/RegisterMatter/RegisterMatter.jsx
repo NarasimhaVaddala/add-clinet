@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { usePayment } from "../../hooks/usePayment";
 import VerticalCard from "../../../../utils/VerticalCard";
@@ -16,12 +16,22 @@ import CardBlack from "../../../../utils/CardBlack";
 import WinnerBoxSection from "./Components/WinnerBoxSection/WinnerBoxSection";
 import RemeberUsCars from "./Sections/RemeberUsCars";
 import AdvertiseYourself from "./Sections/AdvertiseYourself";
+import { fetchUserProfile } from "../../../auth/redux/profileSlice";
 
 export default function RegisterMatter() {
   const { userProfile } = useSelector((state) => state.profileSlice);
   const navigate = useNavigate();
-  // const [paid, setPaid] = useState(userProfile?.paymentStatus);
-  const { makePayment } = usePayment();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!userProfile) {
+      if (!localStorage.getItem("token")) {
+        return navigate("/login");
+      } else {
+        dispatch(fetchUserProfile());
+      }
+    }
+  }, []);
 
   console.log("--------------", userProfile);
 
@@ -41,15 +51,12 @@ export default function RegisterMatter() {
       userProfile?.imageFour ||
       userProfile?.editorName ||
       userProfile?.directorName ||
-      userProfile?.cinematographyName
+      userProfile?.cinematographyName ||
+      userProfile?.fullName
     ) {
       return navigate("/registered");
-    }
-
-    if (userProfile?.paymentStatus) {
-      return navigate("/register-form");
     } else {
-      makePayment();
+      return navigate("/register-form");
     }
   };
 

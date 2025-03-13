@@ -11,21 +11,38 @@ import { API } from "../../../core/url";
 import { toast } from "react-toastify";
 import SectionHeading from "../../../utils/SectionHeading";
 import Select from "../../../utils/Select";
+import { fetchUserProfile } from "../../auth/redux/profileSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { usePayment } from "../hooks/usePayment";
+import PaymentConfirmModal from "./RegisterMatter/Components/PaymentConfirmModal"; // Import the payment modal
 
 const MAX_IMAGES = 10;
 const MIN_IMAGES = 4;
 
 const RegisterProccessForm = () => {
+  const dispatch = useDispatch();
+  const { userProfile } = useSelector((state) => state.profileSlice);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for payment modal visibility
   const [selectedValue, setSelectedValue] = useState("Team");
-
   const [imageFields, setImageFields] = useState([
     "imageOne",
     "imageTwo",
     "imageThree",
     "imageFour",
   ]);
+  const { makePayment } = usePayment();
+
+  useEffect(() => {
+    if (!userProfile) {
+      if (!localStorage.getItem("token")) {
+        return navigate("/login");
+      } else {
+        dispatch(fetchUserProfile());
+      }
+    }
+  }, []);
 
   // Dynamically generate validation schema based on selectedValue
   const getValidationSchema = () => {
@@ -36,7 +53,6 @@ const RegisterProccessForm = () => {
       imageThree: Yup.mixed().required("Image Three is required"),
       imageFour: Yup.mixed().required("Image Four is required"),
     };
-
     if (selectedValue === "Team") {
       return Yup.object({
         ...baseSchema,
@@ -55,6 +71,20 @@ const RegisterProccessForm = () => {
     }
   };
 
+  const handleSubmit = async (values) => {
+    setIsLoading(true);
+
+    // Check if payment is completed
+    if (!userProfile?.paymentStatus) {
+      setIsModalOpen(true); // Open the payment modal
+      setIsLoading(false);
+      return;
+    }
+
+    // If payment is already completed, proceed with form submission
+    await submitForm(values);
+  };
+
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -70,59 +100,69 @@ const RegisterProccessForm = () => {
       imageFour: null,
     },
     validationSchema: getValidationSchema(), // Initial validation schema
-    onSubmit: async (values) => {
-      console.log("Form Values:", values); // Debugging log
-
-      setIsLoading(true);
-      const formData = new FormData();
-      formData.append("directorName", values.directorName);
-      formData.append("cinematographyName", values.cinematographyName);
-      formData.append("editorName", values.editorName);
-      formData.append("producerName", values.producerName);
-      formData.append("fullName", values.fullName);
-
-      if (values.video instanceof File) {
-        formData.append("video", values.video);
-      } else {
-        console.error("❌ Video file is not correctly set:", values.video);
-      }
-
-      imageFields?.forEach((field) => {
-        if (values[field] instanceof File) {
-          formData.append(field, values[field]);
-        } else {
-          console.warn(`⚠️ ${field} is not a valid file`, values[field]);
-        }
-      });
-
-      try {
-        const res = await API.patch("/upload", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data", // Overriding Content-Type
-          },
-        });
-        toast.success("Your Application Submitted Successfully", {
-          autoClose: 1500,
-        });
-
-        setTimeout(() => {
-          navigate("/registered");
-        }, 1500);
-
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        return false;
-      }
-      const data = await uploadImageApis(formData);
-      setIsLoading(false);
-      if (data) {
-        navigate("/");
-      }
-    },
+    onSubmit: handleSubmit, // Use custom handleSubmit function
   });
 
-  // Update validation schema when selectedValue changes
+  const submitForm = async (values) => {
+    const formData = new FormData();
+    formData.append("directorName", values.directorName);
+    formData.append("cinematographyName", values.cinematographyName);
+    formData.append("editorName", values.editorName);
+    formData.append("producerName", values.producerName);
+    formData.append("fullName", values.fullName);
+
+    if (values.video instanceof File) {
+      formData.append("video", values.video);
+    } else {
+      console.error("❌ Video file is not correctly set:", values.video);
+    }
+
+    imageFields.forEach((field) => {
+      if (values[field] instanceof File) {
+        formData.append(field, values[field]);
+      } else {
+        console.warn(`⚠️ ${field} is not a valid file`, values[field]);
+      }
+    });
+
+    try {
+      const res = await API.patch("/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      toast.success("Your Application Submitted Successfully", {
+        autoClose: 1500,
+      });
+      setTimeout(() => {
+        navigate("/registered");
+      }, 1500);
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while submitting the form.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handlePaymentSuccess = async () => {
+    setIsModalOpen(false); // Close the modal
+    setIsLoading(true);
+
+    try {
+      // Wait for the payment to complete
+      await makePayment();
+      // Submit the form after successful payment
+      await submitForm(formik.values);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error during payment:", error);
+      toast.error("Payment failed. Please try again.");
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   useEffect(() => {
     formik.setValues(formik.values); // Trigger re-validation
     formik.validateForm(); // Manually trigger validation
@@ -152,7 +192,6 @@ const RegisterProccessForm = () => {
     if (imageFields.length > MIN_IMAGES) {
       const newFields = [...imageFields];
       const removedField = newFields.splice(index, 1)[0];
-
       setImageFields(newFields);
       formik.setFieldValue(removedField, null);
     }
@@ -184,7 +223,6 @@ const RegisterProccessForm = () => {
             isDisplayRightBtn={true}
             rightBtnFunction={() => alert(`Selected: ${selectedValue}`)}
           />
-
           {selectedValue === "Team" && (
             <>
               <Input
@@ -213,7 +251,6 @@ const RegisterProccessForm = () => {
               />
             </>
           )}
-
           {selectedValue !== "Team" && (
             <Input
               lable="Full Name *"
@@ -222,14 +259,12 @@ const RegisterProccessForm = () => {
               isValid={formik.errors.fullName}
             />
           )}
-
           <FileUploadUi
             label="Video"
             accept="video/mp4, video/quicktime, video/x-matroska, video/x-msvideo, video/webm, video/x-ms-wmv"
             name="video"
             formik={formik}
           />
-
           {imageFields.map((field, index) => (
             <div key={field} className="relative w-full lg:w-auto">
               <FileUploadUi
@@ -249,7 +284,6 @@ const RegisterProccessForm = () => {
               )}
             </div>
           ))}
-
           {imageFields.length < MAX_IMAGES && (
             <button
               type="button"
@@ -260,14 +294,22 @@ const RegisterProccessForm = () => {
               <span className="text-sm text-gray-500">Add Image</span>
             </button>
           )}
-
           <button
             type="submit"
             className="w-full bg-[#EA4C89] text-white font-semibold py-2 mt-4 rounded-lg hover:bg-[#d93c7a] transition duration-300 ease-in-out mb-7 focus:outline-none focus:ring-2 focus:ring-[#EA4C89] focus:ring-offset-2"
           >
-            {isLoading ? <BeatLoader color="#fff" size={10} /> : "Submit Form"}
+            {/* {isLoading ? <BeatLoader color="#fff" size={10} /> : "Submit Form"} */}
+            Submit Form
           </button>
         </form>
+
+        {/* Payment Confirmation Modal */}
+        {isModalOpen && (
+          <PaymentConfirmModal
+            close={() => setIsModalOpen(false)}
+            payment={handlePaymentSuccess}
+          />
+        )}
       </div>
     </div>
   );

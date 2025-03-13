@@ -22,44 +22,63 @@ export const usePayment = () => {
     }
 
     try {
+      // Create the order
       const response = await API.post("/payment/create-order", {
         amount: 499,
         currency: "INR",
       });
       const { order_id } = response.data;
 
-      const options = {
-        key: "rzp_test_zCMFNwSBlZt1gx",
+      // Return a promise that resolves when the payment is verified
+      return new Promise((resolve, reject) => {
+        const options = {
+          key: "rzp_test_zCMFNwSBlZt1gx",
+          amount: 499,
+          currency: "INR",
+          name: "Payment Towards AD Competetion",
+          order_id: order_id,
+          handler: async (response) => {
+            const {
+              razorpay_order_id,
+              razorpay_payment_id,
+              razorpay_signature,
+            } = response;
 
-        amount: 499,
-        currency: "INR",
-        name: "Payment Towards AD Competetion",
-        // description: `Add ₹${1} to wallet`,
-        order_id: order_id,
-        handler: async (response) => {
-          let { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
-            response;
+            try {
+              // Verify the payment
+              const verificationResponse = await verifyPayment(
+                razorpay_order_id,
+                razorpay_payment_id,
+                razorpay_signature
+              );
 
-          await verifyPayment(
-            razorpay_order_id,
-            razorpay_payment_id,
-            razorpay_signature
-          );
-        },
-        prefill: {
-          email: userProfile?.email, // Replace with user's email
-          contact: userProfile?.mobile, // Replace with user's phone number
-        },
-        theme: {
-          color: "#ea4c89",
-        },
-      };
+              // If verification is successful, resolve the promise
+              if (verificationResponse === "Payment Verified") {
+                resolve();
+              } else {
+                reject(new Error("Payment Verification Failed"));
+              }
+            } catch (error) {
+              console.error("Error during payment verification:", error);
+              reject(error);
+            }
+          },
+          prefill: {
+            email: userProfile?.email, // Replace with user's email
+            contact: userProfile?.mobile, // Replace with user's phone number
+          },
+          theme: {
+            color: "#ea4c89",
+          },
+        };
 
-      const razorpayInstance = new Razorpay(options);
-      razorpayInstance.open();
+        const razorpayInstance = new Razorpay(options);
+        razorpayInstance.open();
+      });
     } catch (error) {
       console.error("Error creating order:", error);
       alert("An error occurred while creating the order.");
+      throw error; // Propagate the error to the caller
     }
   };
 
@@ -81,38 +100,22 @@ export const usePayment = () => {
 
         if (data) {
           dispatch(setProfile(data.user));
-          // dispatch(openCloseModalFunc());
           localStorage.removeItem("user");
           navigate("/register-form");
         }
+
+        return "Payment Verified"; // Indicate success
       }
 
-      if (response.data.status == "Payment Verification Failed") {
+      if (response.data.status === "Payment Verification Failed") {
         alert("PAYMENT FAILED");
+        throw new Error("Payment Verification Failed");
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error during payment verification:", error);
+      throw error; // Propagate the error to the caller
     }
   }
-
-  // const firstRender = useRef(true);
-
-  // useEffect(() => {
-  //   if (firstRender.current) {
-  //     firstRender.current = false;
-  //     return;
-  //   }
-
-  //   let use = JSON.parse(localStorage.getItem("user"));
-  //   console.log("local", use);
-
-  //   if (!userProfile?.paymentStatus || !use?.paymentStatus) {
-  //     console.log("before payment ", userProfile);
-  //     makePayment();
-  //   } else {
-  //     navigate("/register-form");
-  //   }
-  // }, [userProfile]);
 
   return {
     verifyPayment,
