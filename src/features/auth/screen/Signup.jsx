@@ -121,7 +121,14 @@ const Signup = ({ setLoggedIn }) => {
   return (
     <div className="w-full flex justify-center items-center flex-col">
       {/* Signup Form */}
+
       <div className="w-[90%] md:w-[80%] lg:h-[100vh] h-auto flex flex-col md:flex-row items-center rounded-md overflow-hidden shadow-custom">
+        <button
+          className="z-50 absolute top-6 md:left-36 left-8 text-xs  flex gap-2 items-center"
+          onClick={() => navigate("/")}
+        >
+          <i class="fa-solid fa-arrow-left"></i> <span>Back to Home</span>
+        </button>
         <form
           onSubmit={formik.handleSubmit}
           className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center gap-6 p-8"

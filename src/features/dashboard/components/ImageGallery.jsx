@@ -34,7 +34,7 @@ function ImageGallery() {
         {
           color: "#000000", // Final text color
           fontWeight: "bold", // End with bold font weight
-          duration: 0.4,
+          duration: 0.5,
           stagger: 0.005, // Slightly lower value to not make it too slow for long text
           scrollTrigger: {
             trigger: ref.current,
@@ -52,7 +52,7 @@ function ImageGallery() {
       ([entry]) => {
         setInView(entry.isIntersecting);
       },
-      { threshold: 0.2 }
+      { threshold: 0.4 }
     );
 
     if (ref.current) {
@@ -149,14 +149,14 @@ function ImageGallery() {
                 </span>
               ))}
             </p>
+            <Link
+              to="/about"
+              className="text-red-500 font-semibold mt-6 hover:underline text-xl self-center"
+            >
+              See All{" "}
+              <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-1"></i>
+            </Link>
           </div>
-          {/* <Link
-            to="/about"
-            className="text-red-500 font-semibold mt-6 hover:underline text-xl self-center"
-          >
-            See All{" "}
-            <i className="fa-solid fa-arrow-right text-red-500 transition-transform duration-300 ease-in-out group-hover:translate-x-1"></i>
-          </Link> */}
         </div>
       </div>
     </SectionLayout>

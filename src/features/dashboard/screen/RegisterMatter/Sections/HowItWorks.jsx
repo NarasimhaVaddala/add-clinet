@@ -16,10 +16,7 @@ export default function HowItWorks() {
       title: "Submit your ad",
       text: "Upload your completed advertisement(video) for evaluation by the judges.",
     },
-    {
-      title: "Vote",
-      text: "Engage in the voting process, or encourage others to vote for your entry.",
-    },
+
     {
       title: "Win",
       text: "If selected, claim your prize",

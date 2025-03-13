@@ -59,11 +59,9 @@ const HomeScreen = () => {
       <WelcomeContainer
         handleNavigateRegistration={handleNavigateRegistration}
       />
-      {/* <LegacyContainer
-        handleNavigateRegistration={handleNavigateRegistration}
-      /> */}
       <ExploreThePlatform />
       <ImageGallery />
+      {/* <LegacyContainer handleNavigateRegistration={handleNavigateRegistration} /> */}
       {/* <WinnerBoxSection /> */}
       {/* <VisionSection /> */}
       {/* <AboutCompetion /> */}

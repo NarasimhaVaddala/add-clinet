@@ -89,7 +89,7 @@ export default function About() {
         />
       ))}
       {/* <Participate handleNavigateRegister={handleNavigateRegister} /> */}
-      <CreativePotential handleNavigateRegister={handleNavigateRegister} />
+      {/* <CreativePotential handleNavigateRegister={handleNavigateRegister} /> */}
       <FilmMakingHeights handleNavigateRegister={handleNavigateRegister} />
       <RemeberUsCars
         handlePay={() => navigate("/register")}

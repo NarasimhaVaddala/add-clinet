@@ -78,10 +78,16 @@ const Login = ({ setLoggedIn }) => {
 
   return (
     <div className="w-full flex justify-center items-center flex-col">
-      <div className="w-[90%] md:w-[80%] lg:h-[100vh] h-auto flex flex-col md:flex-row items-center rounded-md overflow-hidden shadow-custom">
+      <div className="relative w-[90%] md:w-[80%] lg:h-[100vh] h-auto flex flex-col md:flex-row items-center rounded-md overflow-hidden shadow-custom">
+        <button
+          className="z-50 absolute top-6 left-4 flex gap-2 items-center text-xs"
+          onClick={() => navigate("/")}
+        >
+          <i class="fa-solid fa-arrow-left"></i> <span>Back to Home</span>
+        </button>
         <form
           // onSubmit={formik.handleSubmit}
-          className=" w-full  md:w-1/2 bg-white flex flex-col justify-center items-center overflow-y-scroll gap-6 p-8"
+          className="relative w-full  md:w-1/2 bg-white flex flex-col justify-center items-center overflow-y-scroll gap-6 p-8"
         >
           <SectionHeading txt="Login" />
           <NewInput
