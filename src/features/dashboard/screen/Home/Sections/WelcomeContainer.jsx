@@ -85,6 +85,7 @@ export default function WelcomeContainer({ handleNavigateRegistration }) {
           <p className="text-black">Winner Announcement : 12th April</p>
 
           <p className="text-black">
+
             Prize 1 : 15,000 + We will produce web series
           </p>
           <p className="text-black">
@@ -92,6 +93,7 @@ export default function WelcomeContainer({ handleNavigateRegistration }) {
           </p>
           <p className="text-black">
             Prize 3 : 5,000 + We will produce short film
+
           </p>
 
           <div className="text-black gap-1 text-normal mt-2">
