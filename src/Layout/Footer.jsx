@@ -42,14 +42,14 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-3 text-center lg:text-start ">
             <Link
-              to="/about/#mission"
+              to="/about"
               // target="_blank"
               className="text-white font-medium"
             >
               Our Vision
             </Link>
             <Link
-              to="/about/#mission"
+              to="/about"
               // target="_blank"
               className="text-white font-medium"
             >
@@ -61,7 +61,6 @@ const Footer = () => {
 
         {/* Newsletter Section */}
         <div className="lg:w-[30%] flex flex-col lg:flex-row gap-4 items-center lg:items-start order-3 lg:order-4">
-
           <div className="flex flex-col gap-4 w-full lg:w-[70%]">
             <Link to="/contact" className="text-white font-medium">
               Contact Us
@@ -86,7 +85,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
 

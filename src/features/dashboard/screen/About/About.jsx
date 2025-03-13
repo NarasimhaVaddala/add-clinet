@@ -75,9 +75,13 @@ export default function About() {
     },
   ];
 
+  const handleNavYoutube = () => {
+    window.open("https://www.youtube.com/@zenmedia-hub", "_blank");
+  };
+
   return (
     <>
-      <HeroSec handleNavigateRegister={handleNavigateRegister} />
+      <HeroSec handleNavigateRegister={handleNavYoutube} />
       <AboutSec handleNavigateRegister={handleNavigateRegister} />
       {MissionVisionData.map((e, index) => (
         <MissionVision
