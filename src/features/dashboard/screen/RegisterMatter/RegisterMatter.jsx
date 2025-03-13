@@ -29,7 +29,7 @@ export default function RegisterMatter() {
     const token = await localStorage.getItem("token");
 
     if (!token) {
-      return navigate("/login");
+      return navigate("/signup");
     }
 
     if (
@@ -62,7 +62,11 @@ export default function RegisterMatter() {
       <WhoCanParticipate />
       <HowItWorks />
       <SubmissionGuidelines />
-      <RemeberUsCars handlePay={handlePay} />
+      <RemeberUsCars
+        handlePay={handlePay}
+        title="Together We Ride, Together We Rise"
+        text="Women riders unite, supporting each other as they break down walls and build up empowerment."
+      />
       {/* <CompetionDetails /> */}
       {/* <button onClick={handlePay}>Register</button> */}
     </div>

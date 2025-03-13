@@ -30,6 +30,7 @@ export const usePayment = () => {
 
       const options = {
         key: "rzp_test_zCMFNwSBlZt1gx",
+
         amount: 499,
         currency: "INR",
         name: "Payment Towards AD Competetion",

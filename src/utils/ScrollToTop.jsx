@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const ScrollToTopOnRouteChange = () => {
+const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    console.log("Scrolling to top on route change:", pathname);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Scroll to the top of the page whenever the route changes
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [pathname]);
 
-  return null;
+  return null; // This component doesn't render anything
 };
 
-export default ScrollToTopOnRouteChange;
+export default ScrollToTop;

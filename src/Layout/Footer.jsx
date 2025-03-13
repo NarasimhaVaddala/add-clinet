@@ -9,26 +9,23 @@ const Footer = () => {
       <div className="w-full flex flex-col lg:flex-row gap-8 justify-between items-start">
         {/* Logo and Contact Section */}
         <div className="flex flex-col gap-4 w-full lg:w-[20%] items-center lg:items-start order-1">
-          <div className="w-[80px] h-[80px] bg-none rounded-full">
+          <div className="w-[100px] h-[100px] bg-none rounded-full">
             <img src="/logo.png" alt="" />
           </div>
           <div className="flex flex-col gap-2 text-center lg:text-start">
             <Link
-              to="mailto:ngsinfo@nuhvin.com"
+              to="mailto:zenmedia@nuhvin.com"
               className="text-white font-medium"
             >
-              ngsinfo@nuhvin.com
+              zenmedia@nuhvin.com
             </Link>
-            <Link className="text-white font-medium">+91 93922 96850</Link>
+            {/* <Link className="text-white font-medium">+91 93922 96850</Link> */}
           </div>
         </div>
 
         {/* Links Section */}
         <div className="w-full lg:w-[27%] flex flex-col lg:flex-row gap-16 order-2">
           <div className="flex flex-col gap-3 text-center lg:text-start">
-            <Link to="/register" className="text-white font-medium">
-              About the contest
-            </Link>
             <Link to="/about" className="text-white font-medium">
               About
             </Link>
@@ -62,24 +59,34 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Additional Links Section */}
-        {/* <div className="text-center lg:text-start flex flex-col gap-4 w-full lg:w-[20%] pl-0 lg:pl-5 order-4 lg:order-3">
-          <Link to="/register" className="text-white font-medium">
-            Submit Short Film
-          </Link>
-          <Link to="/register" className="text-white font-medium">
-            Release Short Film
-          </Link>
-          <Link to="/contact" className="text-white font-medium">
-            Contact Us
-          </Link>
-        </div> */}
-
         {/* Newsletter Section */}
         <div className="lg:w-[30%] flex flex-col lg:flex-row gap-4 items-center lg:items-start order-3 lg:order-4">
-          <Link className="text-white font-bold" to="/contact">
-            Contact Us
-          </Link>
+
+          <div className="flex flex-col gap-4 w-full lg:w-[70%]">
+            <Link to="/contact" className="text-white font-medium">
+              Contact Us
+            </Link>
+            <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
+              <div className="flex gap-4 items-center justify-center order-2">
+                <a
+                  href="https://www.instagram.com/zen_media_official/"
+                  target="_blank"
+                  className="text-white hover:text-red-400"
+                >
+                  <i className="fab fa-instagram fa-2x"></i>
+                </a>
+
+                <a
+                  href="https://www.youtube.com/@zenmedia-hub"
+                  className="text-white hover:text-red-400"
+                  target="_blank"
+                >
+                  <i className="fab fa-youtube fa-2x"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -87,35 +94,11 @@ const Footer = () => {
       <hr className="w-full bg-red-400 h-[1px]" />
 
       {/* Copyright and Social Media Section */}
-      <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
+
+      <div className="w-full text-center">
         <span className="text-white font-medium text-center lg:text-left order-1">
-          Copyright © 2025 Zen Media. All rights reserved.
+          Copyright © 2025 ZenMedia. All rights reserved.
         </span>
-        <div className="flex gap-4 items-center justify-center order-2">
-          {/* Facebook Icon */}
-          {/* <Link href="#" className="text-white hover:text-red-400">
-            <i className="fab fa-facebook fa-2x"></i>
-          </Link> */}
-          {/* Instagram Icon */}
-          <a
-            href="https://www.instagram.com/zen_media_official/"
-            target="_blank"
-            className="text-white hover:text-red-400"
-          >
-            <i className="fab fa-instagram fa-2x"></i>
-          </a>
-          {/* Twitter Icon */}
-          {/* <Link href="#" className="text-white hover:text-red-400">
-            <i className="fab fa-twitter fa-2x"></i>
-          </Link> */}
-          {/* LinkedIn Icon */}
-          <a
-            href="https://www.youtube.com/@zenmedia-hub"
-            className="text-white hover:text-red-400"
-          >
-            <i className="fab fa-youtube fa-2x"></i>
-          </a>
-        </div>
       </div>
     </div>
   );

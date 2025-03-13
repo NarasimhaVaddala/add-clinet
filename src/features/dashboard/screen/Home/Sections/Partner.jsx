@@ -4,7 +4,7 @@ import SectionHeading from "../../../../../utils/SectionHeading";
 
 export default function Partner() {
   return (
-    <SectionLayout>
+    <SectionLayout style={"lg:-mt-16 -mt-56"}>
       <SectionHeading txt={"Our Partners"} style={"text-center"} />
       <p className="text-center leading-6">
         we craft stories that inspire, engage, and leave a lasting impact. Our
