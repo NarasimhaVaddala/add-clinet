@@ -81,6 +81,16 @@ export default function WelcomeContainer({ handleNavigateRegistration }) {
           <p className="text-black">Voting : 6th April to 11th April</p>
           <p className="text-black">Winner Announcement : 12th April</p>
 
+          <p className="text-black">
+            Prize 1 : 15,000 + we will produce web series
+          </p>
+          <p className="text-black">
+            Prize 2 : 10,000 + we will produce short series
+          </p>
+          <p className="text-black">
+            Prize 3 : 5,000 + we will produce short film
+          </p>
+
           <div className="text-black gap-1 text-normal mt-2">
             <p className="my-2">
               Looking for more details about Women Rider ? Find everything you

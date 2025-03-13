@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="w-full px-5 py-7 rounded-t-[30px] bg-black mt-4 pt-12 flex flex-col gap-4">
       {/* Main Footer Content */}
-      <div className="w-full flex flex-col lg:flex-row gap-6 justify-between items-center">
+      <div className="w-full flex flex-col lg:flex-row gap-8 justify-between items-start">
         {/* Logo and Contact Section */}
         <div className="flex flex-col gap-4 w-full lg:w-[20%] items-center lg:items-start order-1">
           <div className="w-[80px] h-[80px] bg-none rounded-full">
@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
 
         {/* Links Section */}
-        <div className="w-full lg:w-[27%] flex flex-col lg:flex-row gap-8 order-2">
+        <div className="w-full lg:w-[27%] flex flex-col lg:flex-row gap-16 order-2">
           <div className="flex flex-col gap-3 text-center lg:text-start">
             <Link to="/register" className="text-white font-medium">
               About the contest
@@ -77,21 +77,9 @@ const Footer = () => {
 
         {/* Newsletter Section */}
         <div className="lg:w-[30%] flex flex-col lg:flex-row gap-4 items-center lg:items-start order-3 lg:order-4">
-          <div className="flex flex-col gap-4 w-full lg:w-[70%]">
-            <span className="text-white font-medium">
-              Subscribe to our newsletter
-            </span>
-            <div className="w-[300px] h-[45px] bg-red-200 rounded-2xl overflow-hidden flex">
-              <input
-                type="text"
-                className="w-[82%] h-full px-2 bg-white outline-none border-none"
-                placeholder="Enter Your Email"
-              />
-              <span className="w-[18%] h-full bg-red-400 flex justify-center items-center">
-                <MoveRight color="White" size={20} />
-              </span>
-            </div>
-          </div>
+          <Link className="text-white font-bold" to="/contact">
+            Contact Us
+          </Link>
         </div>
       </div>
 

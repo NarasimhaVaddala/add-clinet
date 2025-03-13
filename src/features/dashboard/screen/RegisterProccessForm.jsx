@@ -10,12 +10,16 @@ import { BeatLoader } from "react-spinners";
 import { API } from "../../../core/url";
 import { toast } from "react-toastify";
 import SectionHeading from "../../../utils/SectionHeading";
+import Select from "../../../utils/Select";
+
 const MAX_IMAGES = 10;
 const MIN_IMAGES = 4;
 
 const RegisterProccessForm = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("Team");
+
   const [imageFields, setImageFields] = useState([
     "imageOne",
     "imageTwo",
@@ -23,35 +27,49 @@ const RegisterProccessForm = () => {
     "imageFour",
   ]);
 
-  useEffect(() => {}, []);
+  // Dynamically generate validation schema based on selectedValue
+  const getValidationSchema = () => {
+    const baseSchema = {
+      video: Yup.mixed().required("Video is required"),
+      imageOne: Yup.mixed().required("Image One is required"),
+      imageTwo: Yup.mixed().required("Image Two is required"),
+      imageThree: Yup.mixed().required("Image Three is required"),
+      imageFour: Yup.mixed().required("Image Four is required"),
+    };
 
-  const validationSchema = Yup.object({
-    directorName: Yup.string().required("Director Name is required"),
-    cinematographyName: Yup.string().required(
-      "Cinematography Name is required"
-    ),
-    editorName: Yup.string().required("Editor Name is required"),
-    producerName: Yup.string().required("Producer Name is required"),
-    video: Yup.mixed().required("Video is required"),
-    imageOne: Yup.mixed().required("images are required"),
-    imageTwo: Yup.mixed().required("images are required"),
-    imageThree: Yup.mixed().required("images are required"),
-    imageFour: Yup.mixed().required("images are required"),
-  });
+    if (selectedValue === "Team") {
+      return Yup.object({
+        ...baseSchema,
+        directorName: Yup.string().required("Director Name is required"),
+        cinematographyName: Yup.string().required(
+          "Cinematography Name is required"
+        ),
+        editorName: Yup.string().required("Editor Name is required"),
+        producerName: Yup.string().required("Producer Name is required"),
+      });
+    } else {
+      return Yup.object({
+        ...baseSchema,
+        fullName: Yup.string().required("Full Name is required"),
+      });
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
+      fullName: "",
       directorName: "",
       cinematographyName: "",
       editorName: "",
       producerName: "",
+      team: "",
       video: null,
       imageOne: null,
       imageTwo: null,
       imageThree: null,
       imageFour: null,
     },
-    validationSchema,
+    validationSchema: getValidationSchema(), // Initial validation schema
     onSubmit: async (values) => {
       console.log("Form Values:", values); // Debugging log
 
@@ -61,6 +79,7 @@ const RegisterProccessForm = () => {
       formData.append("cinematographyName", values.cinematographyName);
       formData.append("editorName", values.editorName);
       formData.append("producerName", values.producerName);
+      formData.append("fullName", values.fullName);
 
       if (values.video instanceof File) {
         formData.append("video", values.video);
@@ -100,22 +119,14 @@ const RegisterProccessForm = () => {
       if (data) {
         navigate("/");
       }
-
-      //   try {
-      //     const response = await fetch("YOUR_BACKEND_URL/upload", {
-      //       method: "POST",
-      //       body: formData,
-      //     });
-
-      //     if (!response.ok) throw new Error("Upload failed!");
-
-      //     alert("Form submitted successfully!");
-      //   } catch (error) {
-      //     console.error("Error uploading files:", error);
-      //     alert("File upload failed. Please try again.");
-      //   }
     },
   });
+
+  // Update validation schema when selectedValue changes
+  useEffect(() => {
+    formik.setValues(formik.values); // Trigger re-validation
+    formik.validateForm(); // Manually trigger validation
+  }, [selectedValue]);
 
   const addNewImageField = () => {
     if (imageFields.length < MAX_IMAGES) {
@@ -147,38 +158,70 @@ const RegisterProccessForm = () => {
     }
   };
 
+  const options = [
+    { value: "Team", label: "Team" },
+    { value: "Individual", label: "Individual" },
+  ];
+
+  const handleSelectChange = (e) => {
+    setSelectedValue(e.target.value);
+  };
+
   return (
     <div className="w-full h-full flex justify-center items-center py-6 overflow-y-scroll">
-      <div className="w-[70%] h-full  px-5 py-4 rounded-md pt-7">
+      <div className="w-[70%] h-full px-5 py-4 rounded-md pt-7">
         <SectionHeading txt="🎬 Submit Your Video" />
         <form
           className="w-full flex flex-wrap gap-6 justify-between items-center"
           onSubmit={formik.handleSubmit}
         >
-          <Input
-            lable="Director Name *"
-            value={formik.values.directorName}
-            onChange={formik.handleChange("directorName")}
-            isValid={formik.errors.directorName}
+          <Select
+            label="Team or Individual"
+            value={selectedValue}
+            onChange={handleSelectChange}
+            options={options}
+            isValid={selectedValue ? "" : "Please select an option"}
+            isDisplayRightBtn={true}
+            rightBtnFunction={() => alert(`Selected: ${selectedValue}`)}
           />
-          <Input
-            lable="Cinematograper Name *"
-            value={formik.values.cinematographyName}
-            onChange={formik.handleChange("cinematographyName")}
-            isValid={formik.errors.cinematographyName}
-          />
-          <Input
-            lable="Editor Name *"
-            value={formik.values.editorName}
-            onChange={formik.handleChange("editorName")}
-            isValid={formik.errors.editorName}
-          />
-          <Input
-            lable="Producer Name *"
-            value={formik.values.producerName}
-            onChange={formik.handleChange("producerName")}
-            isValid={formik.errors.producerName}
-          />
+
+          {selectedValue === "Team" && (
+            <>
+              <Input
+                lable="Director Name *"
+                value={formik.values.directorName}
+                onChange={formik.handleChange("directorName")}
+                isValid={formik.errors.directorName}
+              />
+              <Input
+                lable="Cinematograper Name *"
+                value={formik.values.cinematographyName}
+                onChange={formik.handleChange("cinematographyName")}
+                isValid={formik.errors.cinematographyName}
+              />
+              <Input
+                lable="Editor Name *"
+                value={formik.values.editorName}
+                onChange={formik.handleChange("editorName")}
+                isValid={formik.errors.editorName}
+              />
+              <Input
+                lable="Producer Name *"
+                value={formik.values.producerName}
+                onChange={formik.handleChange("producerName")}
+                isValid={formik.errors.producerName}
+              />
+            </>
+          )}
+
+          {selectedValue !== "Team" && (
+            <Input
+              lable="Full Name *"
+              value={formik.values.fullName}
+              onChange={formik.handleChange("fullName")}
+              isValid={formik.errors.fullName}
+            />
+          )}
 
           <FileUploadUi
             label="Video"
