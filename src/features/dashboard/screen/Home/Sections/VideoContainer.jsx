@@ -2,8 +2,9 @@ import NewBtn from "../../../../../utils/NewBtn";
 
 export function VideoContainer({ handleNavigateRegistration }) {
   const handleNavYoutube = () => {
-    window.location.href = "https://www.youtube.com/@zenmedia-hub";
+    window.open("https://www.youtube.com/@zenmedia-hub", "_blank");
   };
+
   return (
     <div className="w-full text-white p-4 relative" id="hero-container">
       {/* Inner container with absolute positioning */}

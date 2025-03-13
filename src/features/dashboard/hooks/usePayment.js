@@ -29,7 +29,7 @@ export const usePayment = () => {
       const { order_id } = response.data;
 
       const options = {
-        key: "rzp_test_zCMFNwSBlZt1gx",
+        key: "rzp_live_zbmR4QaoePLouz",
         amount: 499,
         currency: "INR",
         name: "Payment Towards AD Competetion",

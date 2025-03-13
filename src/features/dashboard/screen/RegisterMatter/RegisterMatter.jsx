@@ -64,8 +64,8 @@ export default function RegisterMatter() {
       <SubmissionGuidelines />
       <RemeberUsCars
         handlePay={handlePay}
-        title="Remember us by"
-        text="Keep every memory alive with our digital collection – one click to eternalize the moments"
+        title="Together We Ride, Together We Rise"
+        text="Women riders unite, supporting each other as they break down walls and build up empowerment."
       />
       {/* <CompetionDetails /> */}
       {/* <button onClick={handlePay}>Register</button> */}
