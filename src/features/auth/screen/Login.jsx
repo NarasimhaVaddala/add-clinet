@@ -7,6 +7,7 @@ import { sendOtp, verifyOtp } from "../services/signup.ser";
 import NewInput from "../components/NewInput";
 import { toast } from "react-toastify";
 import SectionHeading from "../../../utils/SectionHeading";
+import BottomAd from "./BottomAd";
 
 const Login = ({ setLoggedIn }) => {
   const navigate = useNavigate();
@@ -76,8 +77,8 @@ const Login = ({ setLoggedIn }) => {
   };
 
   return (
-    <div className="w-full h-[100vh] flex justify-center items-center">
-      <div className="w-[90%] md:w-[80%] h-[85%] flex rounded-md overflow-hidden shadow-custom">
+    <div className="w-full flex justify-center items-center flex-col">
+      <div className="w-[90%] md:w-[80%] lg:h-[100vh] h-auto flex flex-col md:flex-row items-center rounded-md overflow-hidden shadow-custom">
         <form
           // onSubmit={formik.handleSubmit}
           className=" w-full  md:w-1/2 bg-white flex flex-col justify-center items-center overflow-y-scroll gap-6 p-8"
@@ -117,6 +118,8 @@ const Login = ({ setLoggedIn }) => {
           <img src="./transformer.png" className="object-cover rounded-xl" />
         </div>
       </div>
+
+      <BottomAd />
     </div>
   );
 };

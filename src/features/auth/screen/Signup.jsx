@@ -10,6 +10,8 @@ import NewInput from "../components/NewInput";
 import { useDispatch } from "react-redux";
 import { setProfile } from "../redux/profileSlice";
 import SectionHeading from "../../../utils/SectionHeading";
+import NewBtn from "../../../utils/NewBtn";
+import BottomAd from "./BottomAd";
 
 const Signup = ({ setLoggedIn }) => {
   const navigate = useNavigate();
@@ -117,11 +119,12 @@ const Signup = ({ setLoggedIn }) => {
   };
 
   return (
-    <div className="w-full h-[100vh] flex justify-center items-center">
-      <div className="w-[90%] md:w-[80%] h-[85%] flex rounded-md overflow-hidden shadow-custom">
+    <div className="w-full flex justify-center items-center flex-col">
+      {/* Signup Form */}
+      <div className="w-[90%] md:w-[80%] lg:h-[100vh] h-auto flex flex-col md:flex-row items-center rounded-md overflow-hidden shadow-custom">
         <form
           onSubmit={formik.handleSubmit}
-          className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center overflow-y-scroll gap-6 p-8"
+          className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center gap-6 p-8"
         >
           <SectionHeading txt="Sign Up" />
           <NewInput
@@ -130,7 +133,6 @@ const Signup = ({ setLoggedIn }) => {
             onChange={formik.handleChange("name")}
             isValid={formik.errors.name}
           />
-          {/* {formik.touched.name && formik.errors.name && <p className="text-red-500 text-sm">{formik.errors.name}</p>} */}
 
           <NewInput
             lable="Number *"
@@ -168,7 +170,6 @@ const Signup = ({ setLoggedIn }) => {
             onChange={formik.handleChange("address")}
             isValid={formik.errors.address}
           />
-          {/* <div className="w-full  md:pl-11 mt-[-10px] gap-1"> */}
 
           <Button
             width="100%"
@@ -176,7 +177,6 @@ const Signup = ({ setLoggedIn }) => {
             text="Submit"
             isLoading={isLoading}
           />
-          {/* </div> */}
 
           <span className="text-end text-[12px]">
             Already have an account ?{" "}
@@ -185,10 +185,19 @@ const Signup = ({ setLoggedIn }) => {
             </Link>
           </span>
         </form>
+
+        {/* Image on Desktop */}
         <div className="w-1/2 hidden md:block">
-          <img src="./transformer.png" className="object-cover rounded-xl" />
+          <img
+            src="./transformer.png"
+            className="object-cover rounded-xl"
+            alt="Signup Illustration"
+          />
         </div>
       </div>
+
+      {/* Second Section */}
+      <BottomAd />
     </div>
   );
 };
