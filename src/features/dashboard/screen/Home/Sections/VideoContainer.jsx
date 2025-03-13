@@ -24,7 +24,7 @@ export function VideoContainer({ handleNavigateRegistration }) {
         {/* <div className="mt-4 lg:mt-0 lg:ml-4 w-full"> */}
         <NewBtn
           onClick={handleNavYoutube}
-          title="Register Now"
+          title="Subscribe to YouTube Channel"
           customStyl="w-full lg:w-auto lg:max-w-none mt-4"
         />
         {/* </div> */}
