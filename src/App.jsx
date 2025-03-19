@@ -15,6 +15,11 @@ import PaymentScreen from "./features/dashboard/screen/PaymentScreen";
 import RegisterMatter from "./features/dashboard/screen/RegisterMatter/RegisterMatter";
 import AlreadyRegistered from "./features/dashboard/screen/AlreadyRegistered";
 import ScrollToTop from "./utils/ScrollToTop"; // Import the ScrollToTop component
+import AdminLogin from "./features/auth/screen/AdminLogin";
+import AdminHome from "./features/adminDashboard/AdminHome";
+import ProtectedRoute from "./Layout/ProtectedRoute";
+import DetailedView from "./features/adminDashboard/DetailedView";
+import ContactDetailView from "./features/adminDashboard/ContactDetailView";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -61,13 +66,25 @@ function App() {
             element={<Signup loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           />
           <Route
+            path="/admin-login"
+            element={
+              <AdminLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+            }
+          />
+          <Route
             element={<Layout loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           >
             <Route path="/register-form" element={<RegisterProccessForm />} />
             <Route path="/check" element={<CheckPaymentStatusModal />} />
             <Route path="/payment-screen" element={<PaymentScreen />} />
             <Route path="/registered" element={<AlreadyRegistered />} />
+            {/* <Route element={<ProtectedRoute />}> */}
+            <Route path="/admin-home" element={<AdminHome />} />
+            <Route path="/view-detail/:id" element={<DetailedView />} />
+            <Route path="/contact/:id" element={<ContactDetailView />} />
+            {/* </Route> */}
           </Route>
+
           <Route
             element={<Layout loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
           >

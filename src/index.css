@@ -21,7 +21,11 @@ span,
 button,
 input,
 textarea,
-li {
+li,
+table,
+th,
+tr,
+td {
   font-family: "Roboto", sans-serif !important;
 }
 

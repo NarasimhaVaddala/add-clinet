@@ -18,14 +18,18 @@ const ProtectedRoute = () => {
 
   const useGetUserToken = () => {
     const { token } = useSelector((state) => state.loginSlice);
-    return token || localStorage.getItem("token") || null;
+    return (
+      token ||
+      localStorage.getItem("token") ||
+      localStorage.getItem("admintoken") ||
+      null
+    );
   };
 
   const storedToken = useGetUserToken();
 
   useEffect(() => {
     if (storedToken) {
-
       dispatch(fetchUserProfile());
       //   dispatch(setRoleFromStorage(userRole));
       //   dispatch(setTokenFromStorage(storedToken));
