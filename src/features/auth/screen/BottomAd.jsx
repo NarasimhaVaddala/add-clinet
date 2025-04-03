@@ -11,12 +11,12 @@ export default function BottomAd() {
         </p>
         <p className="text-black">Duration : Min 30sec to Max 2min</p>
         <p className="text-black">Pay Registration Fee : 499/-</p>
-        <p className="text-black">Registration : 10th March to 24th March</p>
+        <p className="text-black">Registration : 03rd April to 15th April</p>
         <p className="text-black">
-          Video Submission : 10th March to 30th March
+          Video Submission : 03rd April to 20th April
         </p>
-        <p className="text-black">Voting : 6th April to 11th April</p>
-        <p className="text-black">Winner Announcement : 12th April</p>
+        <p className="text-black">Voting : 21 April to 30th April</p>
+        <p className="text-black">Winner Announcement : May 1st</p>
 
         <p className="text-black">
           Prize 1 : 15,000 + We will produce web series
