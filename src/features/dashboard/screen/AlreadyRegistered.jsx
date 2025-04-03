@@ -21,8 +21,7 @@ export default function AlreadyRegistered() {
 
           <p className="text-lg text-gray-600 mb-6">
             You've already successfully registered for the competition. Results
-            will be announced on <strong>12th April</strong> - mark your
-            calendar!
+            will be announced on <strong>1st May</strong> - mark your calendar!
           </p>
 
           <p className="font-semibold text-gray-500 mb-4">

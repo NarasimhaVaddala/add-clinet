@@ -9,7 +9,7 @@ export default function AdvertiseYourself({ handlePay }) {
       <SectionHeading txt="Design an ad for a chance to win ₹ 15,000" />
       <p>
         The best ad will be Featured on our website and Social Media.
-        Submissions due by April 12th.
+        Submissions due by April 20th.
       </p>
       <Button text={"Submit Your Video"} onClick={handlePay} />
     </SectionLayout>

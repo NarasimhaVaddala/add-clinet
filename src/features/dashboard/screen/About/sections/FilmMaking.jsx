@@ -31,7 +31,7 @@ export default function FilmMakingHeights() {
             image="/ladyicon.png"
             text="A creative routine helps produce impactful ads. Set time to brainstorm, sketch, and analyze campaigns. Practice refines creativity, leading to effective ideas. With focus, you can unlock your potential and stand out."
             bg="gray-900"
-            textColor="black" // Text color for this instance
+            textColor="white" // Text color for this instance
           />
         </div>
       </div>
