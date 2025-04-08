@@ -8,6 +8,7 @@ import NewInput from "../components/NewInput";
 import { toast } from "react-toastify";
 import SectionHeading from "../../../utils/SectionHeading";
 import BottomAd from "./BottomAd";
+import { errorMsgApi } from "../../../core/toast";
 
 const Login = ({ setLoggedIn }) => {
   const navigate = useNavigate();

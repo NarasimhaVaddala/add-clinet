@@ -76,7 +76,7 @@ export default function WelcomeContainer({ handleNavigateRegistration }) {
             Concept : "Empowered Women, Empowered World" - Women Rider
           </p>
           <p className="text-black">Duration : Min 30sec to Max 2min</p>
-          <p className="text-black">Pay Registration Fee : 499/-</p>
+
           <p className="text-black">Registration : 03rd April to 15th April</p>
           <p className="text-black">
             Video Submission : 03rd April to 20th April
