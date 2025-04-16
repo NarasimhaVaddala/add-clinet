@@ -13,7 +13,9 @@ export const useAdminHook = () => {
     submittedCount: 0,
   });
   const [registeredUsers, setRegisteredUsers] = useState([]);
+  const [unregistredUsers, setUnregisteredUsers] = useState([]);
   const [contacts, setContacts] = useState([]);
+  const [paidButNotSubmittedUsers, setPaidButNotSubmittedUsers] = useState([]);
   const { signedInCount, contactCount, submittedCount } = count;
 
   const countData = [
@@ -73,10 +75,30 @@ export const useAdminHook = () => {
     }
   };
 
+  const getUnregisteredUsers = async () => {
+    try {
+      const response = await API.get("/admin/justsinedinusers");
+      setUnregisteredUsers(response.data);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const getPaidButNotsubmittes = async () => {
+    try {
+      const response = await API.get("/admin/paidbutnotsubmitted");
+      setPaidButNotSubmittedUsers(response.data);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
     getUserCount();
     getRegisteredUsers();
     getContacys();
+    getUnregisteredUsers();
+    getPaidButNotsubmittes();
   }, []);
 
   useEffect(() => {
@@ -89,5 +111,7 @@ export const useAdminHook = () => {
     countData,
     registeredUsers,
     contacts,
+    unregistredUsers,
+    paidButNotSubmittedUsers,
   };
 };

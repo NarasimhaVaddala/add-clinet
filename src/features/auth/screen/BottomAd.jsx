@@ -10,12 +10,10 @@ export default function BottomAd() {
           Concept : "Empowered Women, Empowered World" - Women Rider
         </p>
         <p className="text-black">Duration : Min 30sec to Max 2min</p>
-        <p className="text-black">Registration : 03rd April to 15th April</p>
-        <p className="text-black">
-          Video Submission : 03rd April to 20th April
-        </p>
-        <p className="text-black">Voting : 21 April to 30th April</p>
-        <p className="text-black">Winner Announcement : May 1st</p>
+        <p className="text-black">Registration Ends in : 18th April</p>
+        <p className="text-black">Video Submission : 26th April</p>
+        <p className="text-black">Voting : 28th April to 05th May</p>
+        <p className="text-black">Winner Announcement : 11th May</p>
 
         <p className="text-black">
           Prize 1 : 15,000 + We will produce web series
