@@ -77,12 +77,10 @@ export default function WelcomeContainer({ handleNavigateRegistration }) {
           </p>
           <p className="text-black">Duration : Min 30sec to Max 2min</p>
 
-          <p className="text-black">Registration : 03rd April to 15th April</p>
-          <p className="text-black">
-            Video Submission : 03rd April to 20th April
-          </p>
-          <p className="text-black">Voting : 21st April to 30th April</p>
-          <p className="text-black">Winner Announcement : 01st May</p>
+          <p className="text-black">Registration Ends in : 18th April</p>
+          <p className="text-black">Video Submission : 26th April</p>
+          <p className="text-black">Voting : 28th April to 05th May</p>
+          <p className="text-black">Winner Announcement : 11th May</p>
 
           <p className="text-black">
             Prize 1 : 15,000 + We will produce web series

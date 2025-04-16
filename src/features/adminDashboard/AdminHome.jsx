@@ -3,9 +3,16 @@ import { useAdminHook } from "./AdminHook";
 import CountBox from "./components/CountBox";
 import ContactedUsers from "./components/ContactedUsers";
 import RegisteredUsers from "./components/RegisteredUsers";
+import UnregistredUsers from "./components/UnregisteredUsers";
 
 export default function AdminHome() {
-  const { countData, registeredUsers, contacts } = useAdminHook();
+  const {
+    countData,
+    registeredUsers,
+    contacts,
+    unregistredUsers,
+    paidButNotSubmittedUsers,
+  } = useAdminHook();
 
   return (
     <div className="container">
@@ -24,6 +31,17 @@ export default function AdminHome() {
       <div className="flex mt-8 gap-4 flex-col lg:flex-row">
         <RegisteredUsers data={registeredUsers} />
         <ContactedUsers contacts={contacts} />
+      </div>
+
+      <div className="flex mt-8 gap-4 flex-col lg:flex-row">
+        <UnregistredUsers
+          data={unregistredUsers}
+          title={"Unregistered Users"}
+        />
+        <UnregistredUsers
+          data={paidButNotSubmittedUsers}
+          title={"Paid But Not Submitted Users"}
+        />
       </div>
     </div>
   );
