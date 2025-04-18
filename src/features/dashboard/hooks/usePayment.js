@@ -32,7 +32,7 @@ export const usePayment = () => {
       // Return a promise that resolves when the payment is verified
       return new Promise((resolve, reject) => {
         const options = {
-          key: "rzp_live_zbmR4QaoePLouz",
+          key: "rzp_test_zCMFNwSBlZt1gx",
           amount: 499,
           currency: "INR",
           name: "Payment Towards AD Competetion",
