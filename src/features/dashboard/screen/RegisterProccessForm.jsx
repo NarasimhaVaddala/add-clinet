@@ -269,7 +269,7 @@ const RegisterProccessForm = () => {
             <div key={field} className="relative w-full lg:w-auto">
               <FileUploadUi
                 label={`Image ${index + 1}`}
-                accept="image/*"
+                accept="image/jpeg, image/png, image/jpg, image/webp"
                 name={field}
                 formik={formik}
               />
